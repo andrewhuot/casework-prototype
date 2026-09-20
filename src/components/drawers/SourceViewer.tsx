@@ -18,8 +18,9 @@ interface SourceViewerProps {
 
 /** The excerpt with its section labels and the criteria that cite it. The cited passage is highlighted. */
 export function SourceViewer({ sourceId, section }: SourceViewerProps) {
-  const source = SOURCES_BY_ID[sourceId];
-  const status = useStore((s) => s.sources.find((r) => r.source.id === sourceId)?.status);
+  const record = useStore((s) => s.sources.find((r) => r.source.id === sourceId));
+  const source = record?.source ?? SOURCES_BY_ID[sourceId];
+  const status = record?.status;
   const s2Cites = useStore((s) => s.rulebookVersion === '1.1');
   const openDrawer = useStore((s) => s.openDrawer);
   const highlighted = useRef<HTMLDivElement>(null);
@@ -30,6 +31,8 @@ export function SourceViewer({ sourceId, section }: SourceViewerProps) {
     const t = window.setTimeout(() => el.scrollIntoView({ block: 'center', behavior: prefersReducedMotion() ? 'auto' : 'smooth' }), 60);
     return () => window.clearTimeout(t);
   }, [sourceId, section]);
+
+  if (!source) return <p className={styles.prose}>This source is not in the library.</p>;
 
   const usedFor = source.usedFor === 'precedents' ? [] : [...source.usedFor];
   if (sourceId === 'R6' && !s2Cites) usedFor.splice(0);

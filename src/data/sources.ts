@@ -1,4 +1,4 @@
-import type { Source, SourceId } from './types';
+import type { Source } from './types';
 
 export const SOURCES: Source[] = [
   {
@@ -91,7 +91,7 @@ export const SOURCES: Source[] = [
   },
 ];
 
-export const SOURCES_BY_ID: Record<SourceId, Source> = Object.fromEntries(SOURCES.map((s) => [s.id, s])) as Record<SourceId, Source>;
+export const SOURCES_BY_ID: Record<string, Source> = Object.fromEntries(SOURCES.map((s) => [s.id, s]));
 
 /** The passage in R6 that the proposed S2 change quotes. */
 export const R6_QUOTE_SECTION = '§2';

@@ -4,7 +4,8 @@ import type { ISODate } from '@/lib/dates';
 
 export type CriterionGroup = 'adu' | 'solar' | 'cross';
 export type CriterionId = 'A1' | 'A2' | 'A3' | 'A4' | 'A5' | 'S1' | 'S2' | 'S3' | 'S4' | 'S5' | 'X1' | 'X2';
-export type SourceId = 'R1' | 'R2' | 'R3' | 'R4' | 'R5' | 'R6';
+/** R1 to R6 are seeded. Sources added during the demo get the next R number. */
+export type SourceId = 'R1' | 'R2' | 'R3' | 'R4' | 'R5' | 'R6' | (string & {});
 
 export interface Citation {
   sourceId: SourceId;

@@ -13,15 +13,16 @@ import { LetterPreview } from './LetterPreview';
 export function DrawerHost() {
   const drawer = useStore((s) => s.drawer);
   const closeDrawer = useStore((s) => s.closeDrawer);
+  const sources = useStore((s) => s.sources);
 
   let title = '';
   let eyebrow: string | undefined;
   let body: React.ReactNode = null;
 
   if (drawer?.kind === 'source') {
-    const source = SOURCES_BY_ID[drawer.sourceId];
-    title = source.name;
-    eyebrow = `Source ${source.id} · ${SOURCE_TYPE_META[source.type].label}`;
+    const source = sources.find((r) => r.source.id === drawer.sourceId)?.source ?? SOURCES_BY_ID[drawer.sourceId];
+    title = source?.name ?? drawer.sourceId;
+    eyebrow = source ? `Source ${source.id} · ${SOURCE_TYPE_META[source.type].label}` : undefined;
     body = <SourceViewer sourceId={drawer.sourceId} section={drawer.section} />;
   } else if (drawer?.kind === 'precedent') {
     const precedent = PRECEDENTS_BY_ID[drawer.precedentId];

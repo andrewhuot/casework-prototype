@@ -1,0 +1,47 @@
+.table td {
+  vertical-align: top;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.groupRow th {
+  height: 30px;
+  padding: 0 16px;
+  text-align: left;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.id {
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 56px;
+}
+
+.name {
+  font-weight: 500;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.updated {
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.test {
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
