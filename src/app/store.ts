@@ -80,6 +80,8 @@ export interface AppState {
 
   /* Queue and case actions */
   loadReview: (caseId: string) => Promise<Review>;
+  /** Loads saved reviews for every case that has already been reviewed, so the queue can show reasons. */
+  preloadReviews: () => Promise<void>;
   runReview: (caseId: string) => Promise<void>;
   openCriterion: (caseId: string, id: CriterionId) => void;
   reveal: (caseId: string) => void;
@@ -199,6 +201,11 @@ export const useStore = create<AppState>()((set, get) => ({
       };
     });
     return review;
+  },
+
+  async preloadReviews() {
+    const pending = CASES.filter((c) => c.initialStatus !== 'new' && !get().cases[c.id]?.review);
+    await Promise.all(pending.map((c) => get().loadReview(c.id)));
   },
 
   async runReview(caseId) {
