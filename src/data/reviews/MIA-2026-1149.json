@@ -1,1 +1,65 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "S1",
+      "status": "met",
+      "finding": "Meridian Solar Co. holds Florida licence EC13007777, which expires on 30 Nov 2027, after the application date.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Licence: EC13007777" },
+        { "document": "Permit application: rooftop solar", "quote": "Licence expires: 30 Nov 2027" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S2",
+      "status": "met",
+      "finding": "The roof plan shows a 36 in pathway from eave to ridge on each roof plane and an 18 in ridge setback.",
+      "evidence": [
+        { "document": "Roof plan", "quote": "36 in pathway from eave to ridge on each roof plane." },
+        { "document": "Roof plan", "quote": "Ridge setback: 18 in" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S3",
+      "status": "not_met",
+      "finding": "No signed and sealed wind load letter is in the packet; the roof plan says the attachment letter will follow under separate cover.",
+      "evidence": [{ "document": "Roof plan", "quote": "Structural attachment letter to follow under separate cover." }],
+      "precedents": []
+    },
+    {
+      "id": "S4",
+      "status": "met",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 45 A backfeed breaker.",
+      "evidence": [
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 45 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "AC disconnect: lockable, exterior, beside the meter." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S5",
+      "status": "met",
+      "finding": "The module spec sheet states a UL 61730 listing and the inverter spec sheet states a UL 1741 listing.",
+      "evidence": [
+        { "document": "Solar equipment spec sheets", "quote": "Module: SunPeak SP-410M, 410 W. UL 61730 listed." },
+        { "document": "Solar equipment spec sheets", "quote": "Inverter: VoltaLine VL-7600, 7.6 kW. UL 1741 listed." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-3210-009-0270, and address 2210 Seagrape Drive match across the application form and the design sheets.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Parcel: 01-3210-009-0270" },
+        { "document": "Solar single-line diagram notes", "quote": "2210 Seagrape Drive. Parcel 01-3210-009-0270. Owner: Wei Chen." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "needs_information",
+  "reason": "No wind load letter.",
+  "rationale": "Five of the six applicable criteria are met with evidence in the packet. The wind load letter for the High-Velocity Hurricane Zone is missing; the roof plan says it will follow but it has not arrived. Nothing else is open, so one request should complete the file.",
+  "letter": "Dear Wei Chen,\n\nThank you for your application MIA-2026-1149 for an 8.2 kW rooftop solar array at 2210 Seagrape Drive. We have reviewed your documents and need one item before we can continue:\n\n1. Wind load letter (Florida Building Code §RS-5). It shows that the module attachments are designed for the wind speeds in the High-Velocity Hurricane Zone, and it must be signed and sealed by a Florida-registered engineer. Your roof plan says this letter will follow separately. Your contractor, Meridian Solar Co., can obtain it from their engineer and send it to us.\n\nEverything else in your application meets the rooftop solar rules, so no other documents are needed.\n\nPlease reply by 5 Oct 2026 through the applicant portal or by email to permits@example.com. Call (305) 555-0100 if you have questions.\n\nBuilding Department, City of Miami"
+}

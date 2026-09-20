@@ -148,21 +148,26 @@ export interface Letterhead {
 }
 
 export interface PacketDocument {
+  missing?: false;
   title: string;
   letterhead: Letterhead;
   received: ISODate;
   blocks: DocBlock[];
 }
 
+/** An expected document that the applicant did not provide. */
 export interface MissingDocument {
+  missing: true;
   title: string;
   criterion: CriterionId;
 }
 
+export type PacketEntry = PacketDocument | MissingDocument;
+
 export interface Packet {
   caseId: string;
-  documents: PacketDocument[];
-  missing: MissingDocument[];
+  /** Documents in reading order, including expected documents that are missing. */
+  documents: PacketEntry[];
 }
 
 /* Saved review (section 9 shape) */

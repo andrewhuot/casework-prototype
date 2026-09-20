@@ -1,1 +1,65 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "A1",
+      "status": "met",
+      "finding": "The lot is in zoning district T3-R, which allows one ADU, and the site plan notes state that none exists on the lot.",
+      "evidence": [{ "document": "ADU site plan notes", "quote": "Zoning: T3-R. No existing accessory dwelling unit on the lot." }],
+      "precedents": []
+    },
+    {
+      "id": "A2",
+      "status": "met",
+      "finding": "The ADU floor area is 520 sq ft, under the 800 sq ft limit.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "ADU floor area: 520 sq ft" },
+        { "document": "Permit application: accessory dwelling unit", "quote": "Detached accessory dwelling unit of 520 sq ft in the rear yard, one bedroom." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A3",
+      "status": "met",
+      "finding": "The site plan and the survey both place the ADU 10 ft 0 in from the rear lot line and 7 ft 6 in from the side lot line, above the 5 ft minimum.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "Rear setback: 10 ft 0 in" },
+        { "document": "Boundary survey", "quote": "Proposed ADU footprint is 10 ft 0 in from the rear lot line and 7 ft 6 in from the west side lot line." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A4",
+      "status": "met",
+      "finding": "A notarised owner-occupancy affidavit signed by Grace Kim is included, sworn on 12 Sep 2026.",
+      "evidence": [
+        { "document": "Owner-occupancy affidavit", "quote": "occupy the main house as my primary residence" },
+        { "document": "Owner-occupancy affidavit", "quote": "Sworn to and subscribed before me on 12 Sep 2026 by Grace Kim." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A5",
+      "status": "met",
+      "finding": "The elevation certificate shows the lowest finished floor at 9.6 ft NAVD, 1.6 ft above the 8.0 ft base flood elevation.",
+      "evidence": [
+        { "document": "Elevation certificate", "quote": "Base flood elevation: 8.0 ft NAVD" },
+        { "document": "Elevation certificate", "quote": "Lowest finished floor: 9.6 ft NAVD" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-4103-021-0350, and address 1530 Banyan Grove Lane match across the application form, the survey, and the affidavit.",
+      "evidence": [
+        { "document": "Permit application: accessory dwelling unit", "quote": "Parcel: 01-4103-021-0350" },
+        { "document": "Boundary survey", "quote": "Parcel 01-4103-021-0350. Owner: Grace Kim. 1530 Banyan Grove Lane." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "approve_ready",
+  "reason": "All criteria met.",
+  "rationale": "All six applicable criteria are met, each with evidence in the packet. The 520 sq ft unit sits well inside the size limit and the setbacks, the survey agrees with the site plan, and the elevation certificate shows the floor 1.6 ft above base flood elevation. No judgment call is needed.",
+  "letter": "Dear Grace Kim,\n\nThank you for your application MIA-2026-1156 for a 520 sq ft accessory dwelling unit at 1530 Banyan Grove Lane. We reviewed your documents against the ADU rules and found that every requirement is met:\n\n1. The lot is in T3-R and has no existing ADU.\n2. The unit is 520 sq ft, under the 800 sq ft limit.\n3. The setbacks are 10 ft 0 in at the rear and 7 ft 6 in at the side, and the survey agrees.\n4. Your owner-occupancy affidavit is notarised.\n5. The elevation certificate shows the floor 1.6 ft above the base flood elevation.\n\nNo further documents are needed. When the permit is issued you will receive a notice with the inspection schedule.\n\nIf you have questions, call (305) 555-0100 or reply through the applicant portal.\n\nBuilding Department, City of Miami"
+}

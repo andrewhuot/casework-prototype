@@ -1,1 +1,68 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "S1",
+      "status": "met",
+      "finding": "Brightline Solar Inc. holds Florida licence EC13008888, which expires on 15 Mar 2028, after the application date.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Licence: EC13008888" },
+        { "document": "Permit application: rooftop solar", "quote": "Licence expires: 15 Mar 2028" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S2",
+      "status": "met",
+      "finding": "The roof plan shows a 36 in pathway from eave to ridge and an 18 in ridge setback.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "36 in pathway from eave to ridge on the east side of the array." },
+        { "document": "Solar equipment and structural", "quote": "Ridge setback: 18 in" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S3",
+      "status": "met",
+      "finding": "A wind load letter for the High-Velocity Hurricane Zone is signed and sealed by M. Oduya, PE 55502.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Attachment design for the High-Velocity Hurricane Zone, 175 mph design wind speed." },
+        { "document": "Solar equipment and structural", "quote": "Signed and sealed by M. Oduya, PE 55502, 2 Sep 2026" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S4",
+      "status": "met",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 30 A backfeed breaker.",
+      "evidence": [
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 30 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "AC disconnect: lockable, exterior, beside the meter." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S5",
+      "status": "met",
+      "finding": "The module spec sheet states a UL 61730 listing and the inverter spec sheet states a UL 1741 listing.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Module: SunPeak SP-400M, 400 W. UL 61730 listed." },
+        { "document": "Solar equipment and structural", "quote": "Inverter: VoltaLine VL-5000, 5.0 kW. UL 1741 listed." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-3120-044-0110, and address 78 Coral Way Terrace match across the application form and the design sheets.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Parcel: 01-3120-044-0110" },
+        { "document": "Solar single-line diagram notes", "quote": "78 Coral Way Terrace. Parcel 01-3120-044-0110. Owner: Luis Alvarez." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "approve_ready",
+  "reason": "All criteria met.",
+  "rationale": "All six applicable criteria are met, each with evidence in the packet. The 200 A panel carries the 30 A backfeed with margin, the wind load letter is sealed for the High-Velocity Hurricane Zone, and both spec sheets state their UL listings. No judgment call is needed.",
+  "letter": "Dear Luis Alvarez,\n\nThank you for your application MIA-2026-1142 for a 6.4 kW rooftop solar array at 78 Coral Way Terrace. We reviewed your documents against the rooftop solar rules and found that every requirement is met:\n\n1. Your contractor's licence, EC13008888, is current.\n2. The roof plan shows a 36 in pathway and an 18 in ridge setback.\n3. The wind load letter is signed and sealed for the High-Velocity Hurricane Zone.\n4. The single-line diagram shows the inverter, the disconnect, and the 200 A main panel.\n5. The module and inverter spec sheets state their UL listings.\n\nNo further documents are needed. When the permit is issued you will receive a notice with the inspection schedule. If anything in the design changes before installation, send us the revised sheets first.\n\nIf you have questions, call (305) 555-0100 or reply through the applicant portal.\n\nBuilding Department, City of Miami"
+}

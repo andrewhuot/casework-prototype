@@ -1,1 +1,68 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "S1",
+      "status": "met",
+      "finding": "Gulfstream Solar LLC holds Florida licence EC13005555, which expires on 28 Feb 2028, after the application date.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Licence: EC13005555" },
+        { "document": "Permit application: rooftop solar", "quote": "Licence expires: 28 Feb 2028" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S2",
+      "status": "unclear",
+      "finding": "The roof plan shows an 18 in ridge setback, but the installer notes place the modules 14 in below the ridge, so the two documents conflict.",
+      "evidence": [
+        { "document": "Roof plan", "quote": "Ridge setback: 18 in" },
+        { "document": "Installer notes", "quote": "Modules run to 14 in below the ridge to fit the third string." }
+      ],
+      "precedents": ["P-2025-0366"]
+    },
+    {
+      "id": "S3",
+      "status": "met",
+      "finding": "A wind load letter for the High-Velocity Hurricane Zone is signed and sealed by M. Oduya, PE 55502.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Attachment design for the High-Velocity Hurricane Zone." },
+        { "document": "Solar equipment and structural", "quote": "Signed and sealed by M. Oduya, PE 55502, 20 Aug 2026" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S4",
+      "status": "met",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 35 A backfeed breaker.",
+      "evidence": [
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 35 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "Inverter: 6.0 kW AC, string type. AC disconnect: lockable, exterior." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S5",
+      "status": "met",
+      "finding": "The module spec sheet states a UL 61730 listing and the inverter spec sheet states a UL 1741 listing.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Module: SunPeak SP-410M, 410 W. UL 61730 listed." },
+        { "document": "Solar equipment and structural", "quote": "Inverter: VoltaLine VL-6000, 6.0 kW. UL 1741 listed." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-3115-050-0210, and address 5120 Ibis Landing Court match across the application form and the design sheets.",
+      "evidence": [
+        { "document": "Permit application: rooftop solar", "quote": "Parcel: 01-3115-050-0210" },
+        { "document": "Solar single-line diagram notes", "quote": "5120 Ibis Landing Court. Parcel 01-3115-050-0210. Owner: Denise Brooks." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "needs_judgment",
+  "reason": "Ridge setback: roof plan and installer notes differ.",
+  "rationale": "Five of the six applicable criteria are met with evidence in the packet. The ridge setback is unclear because the roof plan shows 18 in while the installer's field notes say the modules run to 14 in below the ridge to fit a third string. The reviewer must decide whether to require a corrected plan or accept the drawing and verify the setback at inspection.",
+  "letter": "Dear Denise Brooks,\n\nThank you for your application MIA-2026-1178 for a 7.0 kW rooftop solar array at 5120 Ibis Landing Court. Your documents meet the rooftop solar rules for the contractor licence, wind load, the electrical diagram, and equipment listings. One point needs to be cleared up before we can continue:\n\n1. Ridge setback (Florida Building Code §RS-3). Your roof plan shows the modules 18 in below the ridge, but the installer notes say they run to 14 in below the ridge to fit a third string. The code requires at least 18 in so that firefighters can open the roof. Your contractor, Gulfstream Solar LLC, can send a corrected roof plan or confirm in writing that the array will be installed as drawn.\n\n[Reviewer to decide: require a corrected roof plan at 18 in, or accept the plan as drawn and verify the setback at inspection.]\n\nPlease reply by 5 Oct 2026 through the applicant portal or by email to permits@example.com. Call (305) 555-0100 if you have questions.\n\nBuilding Department, City of Miami"
+}

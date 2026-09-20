@@ -1,1 +1,126 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "A1",
+      "status": "met",
+      "finding": "The lot is in zoning district T3-R, which allows one ADU, and the site plan notes state that no accessory dwelling unit exists on the lot.",
+      "evidence": [
+        { "document": "Combined application form", "quote": "Zoning district: T3-R" },
+        { "document": "ADU site plan notes", "quote": "Zoning: T3-R. No existing accessory dwelling unit on the lot." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A2",
+      "status": "met",
+      "finding": "The ADU floor area is 640 sq ft, under the 800 sq ft limit.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "ADU floor area: 640 sq ft" },
+        { "document": "Combined application form", "quote": "Detached accessory dwelling unit of 640 sq ft in the rear yard" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A3",
+      "status": "unclear",
+      "finding": "The site plan notes give a rear setback of 5 ft 0 in, but the boundary survey places the ADU footprint 4 ft 6 in from the rear lot line, so the two documents conflict.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "Rear setback: 5 ft 0 in" },
+        { "document": "Boundary survey", "quote": "Proposed ADU footprint is 4 ft 6 in from the rear lot line" }
+      ],
+      "precedents": ["P-2025-0311", "P-2025-0127", "P-2024-0940", "P-2024-0562"]
+    },
+    {
+      "id": "A4",
+      "status": "met",
+      "finding": "A notarised owner-occupancy affidavit signed by Maria Delgado is included, sworn on 19 Sep 2026.",
+      "evidence": [
+        { "document": "Owner-occupancy affidavit", "quote": "affirm that I occupy the main house as my primary residence" },
+        { "document": "Owner-occupancy affidavit", "quote": "Sworn to and subscribed before me on 19 Sep 2026 by Maria Delgado, who is personally known to me." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A5",
+      "status": "not_met",
+      "finding": "No elevation certificate was provided, so the height of the finished floor above base flood elevation cannot be checked.",
+      "evidence": [],
+      "precedents": ["P-2024-0733"]
+    },
+    {
+      "id": "S1",
+      "status": "met",
+      "finding": "Sunward Electric LLC holds Florida licence EC13009999, which expires on 31 Aug 2027, after the application date.",
+      "evidence": [
+        { "document": "Combined application form", "quote": "Licence: EC13009999" },
+        { "document": "Combined application form", "quote": "Licence expires: 31 Aug 2027" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S2",
+      "status": "met",
+      "finding": "The roof plan shows a 36 in pathway from eave to ridge and an 18 in ridge setback.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "36 in pathway from eave to ridge on the west side of the array." },
+        { "document": "Solar equipment and structural", "quote": "Ridge setback: 18 in" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S3",
+      "status": "met",
+      "finding": "A wind load letter for attachment in the High-Velocity Hurricane Zone is signed and sealed by A. Ferreira, PE 55501.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Attachment design for the High-Velocity Hurricane Zone, 175 mph design wind speed." },
+        { "document": "Solar equipment and structural", "quote": "Signed and sealed by A. Ferreira, PE 55501, 8 Sep 2026" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S4",
+      "status": "met",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 150 A main panel rating with its 40 A backfeed breaker.",
+      "evidence": [
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 150 A, with a 40 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "AC disconnect: lockable, exterior, within sight of the meter." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S5",
+      "status": "met",
+      "finding": "The module spec sheet states a UL 61730 listing and the inverter spec sheet states a UL 1741 listing.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Module: SunPeak SP-400M, 400 W. UL 61730 listed." },
+        { "document": "Solar equipment and structural", "quote": "Inverter: VoltaLine VL-6000, 6.0 kW. UL 1741 listed." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X1",
+      "status": "not_met",
+      "finding": "The 150 A main panel cannot carry 48 A of new ADU load together with a 40 A solar backfeed, and no panel upgrade is in scope.",
+      "evidence": [
+        { "document": "ADU electrical load calculation", "quote": "Added load: 48 A" },
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 150 A, with a 40 A solar backfeed breaker" }
+      ],
+      "precedents": ["P-2025-0418"]
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-4102-018-0420, and address 412 Palmetto Court match across the application form, the survey, and the affidavit.",
+      "evidence": [
+        { "document": "Boundary survey", "quote": "Parcel 01-4102-018-0420. Owner: Maria Delgado. 412 Palmetto Court." },
+        { "document": "Owner-occupancy affidavit", "quote": "I, Maria Delgado, owner of 412 Palmetto Court, parcel 01-4102-018-0420" }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "needs_judgment",
+  "reason": "Setback conflict, no elevation certificate, panel over capacity.",
+  "rationale": "Nine of the twelve criteria are met, each with evidence in the packet. The rear setback is unclear because the site plan and the survey disagree, the elevation certificate is missing, and the 150 A main panel cannot carry the ADU load together with the solar backfeed. The setback question has a waiver path and needs a reviewer's decision, so the case needs judgment rather than a routine request.",
+  "letter": "Dear Maria Delgado,\n\nThank you for your application MIA-2026-1187 for an accessory dwelling unit and rooftop solar at 412 Palmetto Court. We have reviewed your documents and need two items before we can continue:\n\n1. Elevation certificate (Floodplain ordinance §FP-4). It shows the height of the new unit's floor above the base flood level, which must be at least 1 foot. A licensed surveyor can prepare it, and the surveyor who did your boundary survey can usually add it.\n\n2. Electrical panel upgrade or a revised load calculation (Plan review checklist item 9). Your main panel is 150 A. The new unit adds 48 A and the solar system feeds back 40 A, which is more than the panel can carry. Your contractor, Sunward Electric LLC, can add a panel upgrade to the scope of work or send a corrected calculation.\n\nYour site plan lists a rear setback of 5 ft 0 in, but the survey shows 4 ft 6 in. [Reviewer to decide: invite an administrative waiver request, or require a revised site plan.]\n\nPlease reply by 5 Oct 2026 through the applicant portal or by email to permits@example.com. Call (305) 555-0100 if you have questions.\n\nBuilding Department, City of Miami",
+  "letterSpanish": "Estimada Maria Delgado:\n\nGracias por su solicitud MIA-2026-1187 para una unidad de vivienda accesoria y paneles solares en el techo en 412 Palmetto Court. Hemos revisado sus documentos y necesitamos dos cosas antes de continuar:\n\n1. Certificado de elevación (Ordenanza de zonas inundables §FP-4). Indica la altura del piso de la nueva unidad sobre el nivel base de inundación, que debe ser de al menos 1 pie. Puede prepararlo un agrimensor con licencia, y por lo general el mismo agrimensor que hizo su levantamiento de linderos puede añadirlo.\n\n2. Ampliación del panel eléctrico o un cálculo de carga corregido (Lista de revisión de planos, punto 9). Su panel principal es de 150 A. La nueva unidad añade 48 A y el sistema solar aporta otros 40 A de retorno, más de lo que el panel puede soportar. Su contratista, Sunward Electric LLC, puede incluir la ampliación del panel en el alcance de la obra o enviar un cálculo corregido.\n\nSu plano del sitio indica un retiro trasero de 5 pies 0 pulgadas, pero el levantamiento muestra 4 pies 6 pulgadas. [Decisión del revisor: invitar a solicitar una exención administrativa, o exigir un plano del sitio revisado.]\n\nResponda antes del 5 de octubre de 2026 a través del portal de solicitantes o por correo electrónico a permits@example.com. Si tiene preguntas, llame al (305) 555-0100.\n\nDepartamento de Construcción, Ciudad de Miami"
+}

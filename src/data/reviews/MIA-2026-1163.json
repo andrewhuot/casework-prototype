@@ -1,1 +1,122 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "A1",
+      "status": "met",
+      "finding": "The lot is in zoning district T3-R, which allows one ADU, and the site plan notes state that none exists on the lot.",
+      "evidence": [{ "document": "ADU site plan notes", "quote": "Zoning: T3-R. No existing accessory dwelling unit on the lot." }],
+      "precedents": []
+    },
+    {
+      "id": "A2",
+      "status": "met",
+      "finding": "The ADU floor area is 700 sq ft, under the 800 sq ft limit.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "ADU floor area: 700 sq ft" },
+        { "document": "Combined application form", "quote": "Detached ADU of 700 sq ft in the rear yard" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A3",
+      "status": "met",
+      "finding": "The site plan and the survey both place the ADU 6 ft 0 in from the rear and side lot lines, above the 5 ft minimum.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "Rear setback: 6 ft 0 in" },
+        { "document": "Boundary survey", "quote": "Proposed ADU footprint is 6 ft 0 in from the rear and side lot lines." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A4",
+      "status": "met",
+      "finding": "A notarised owner-occupancy affidavit signed by Anika Patel is included, sworn on 4 Sep 2026.",
+      "evidence": [
+        { "document": "Owner-occupancy affidavit", "quote": "occupy the main house as my primary residence" },
+        { "document": "Owner-occupancy affidavit", "quote": "Sworn to and subscribed before me on 4 Sep 2026." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A5",
+      "status": "met",
+      "finding": "The elevation certificate shows the lowest finished floor at 9.0 ft NAVD, 1.5 ft above the 7.5 ft base flood elevation.",
+      "evidence": [
+        { "document": "Elevation certificate", "quote": "Base flood elevation: 7.5 ft NAVD" },
+        { "document": "Elevation certificate", "quote": "Lowest finished floor: 9.0 ft NAVD" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S1",
+      "status": "not_met",
+      "finding": "Keystone Electric and Solar LLC's licence EC13006666 expired on 31 Aug 2026, before the application date of 7 Sep 2026.",
+      "evidence": [
+        { "document": "Combined application form", "quote": "Licence: EC13006666" },
+        { "document": "Combined application form", "quote": "Licence expires: 31 Aug 2026" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S2",
+      "status": "met",
+      "finding": "The resubmitted roof plan shows a 36 in pathway from eave to ridge and an 18 in ridge setback.",
+      "evidence": [{ "document": "Solar equipment and structural", "quote": "36 in pathway from eave to ridge. Ridge setback: 18 in" }],
+      "precedents": []
+    },
+    {
+      "id": "S3",
+      "status": "met",
+      "finding": "A wind load letter for the High-Velocity Hurricane Zone is signed and sealed by A. Ferreira, PE 55501.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Attachment design for the High-Velocity Hurricane Zone." },
+        { "document": "Solar equipment and structural", "quote": "Signed and sealed by A. Ferreira, PE 55501, 1 Sep 2026" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S4",
+      "status": "met",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 30 A backfeed breaker.",
+      "evidence": [
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 30 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "Inverter: 5.0 kW AC. AC disconnect: lockable, exterior." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "S5",
+      "status": "met",
+      "finding": "The module spec sheet states a UL 61730 listing and the inverter spec sheet states a UL 1741 listing.",
+      "evidence": [
+        { "document": "Solar equipment and structural", "quote": "Module: SunPeak SP-400M, 400 W. UL 61730 listed." },
+        { "document": "Solar equipment and structural", "quote": "Inverter: VoltaLine VL-5000, 5.0 kW. UL 1741 listed." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X1",
+      "status": "met",
+      "finding": "The 200 A main panel can carry 40 A of new ADU load together with a 30 A solar backfeed within its rating.",
+      "evidence": [
+        { "document": "ADU electrical load calculation", "quote": "Added load: 40 A" },
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 30 A solar backfeed breaker" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-4105-033-0180, and address 960 Tamarind Street match across the application form, the survey, and the affidavit.",
+      "evidence": [
+        { "document": "Combined application form", "quote": "Parcel: 01-4105-033-0180" },
+        { "document": "Boundary survey", "quote": "Parcel 01-4105-033-0180. Owner: Anika Patel. 960 Tamarind Street." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "needs_information",
+  "reason": "Contractor licence expired 31 Aug 2026.",
+  "rationale": "Eleven of the twelve criteria are met with evidence in the packet, and the roof plan requested in the first round has arrived. The contractor's licence expired on 31 Aug 2026, a week before the application was filed, so the work cannot proceed under it. This is the only open item, and it should be the last request on this application.",
+  "letter": "Dear Anika Patel,\n\nThank you for sending the roof plan we asked for on 10 Sep 2026. Your application MIA-2026-1163 for an accessory dwelling unit and rooftop solar at 960 Tamarind Street now needs one more item before we can continue. We have checked the whole file so that this is our last request:\n\n1. A current contractor licence (Plan review checklist item 2). The licence on your application, EC13006666 for Keystone Electric and Solar LLC, expired on 31 Aug 2026. The rules require a licence that is valid on the date the application is filed. Keystone can send us proof of renewal from the Florida licensing board, or you can name another licensed contractor for the work.\n\nEverything else in your application meets the rules, including the panel capacity for both projects.\n\nPlease reply by 5 Oct 2026 through the applicant portal or by email to permits@example.com. Call (305) 555-0100 if you have questions.\n\nBuilding Department, City of Miami"
+}

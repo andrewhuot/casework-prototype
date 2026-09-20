@@ -1,1 +1,65 @@
-{"criteria":[],"recommendation":"needs_information","reason":"","rationale":"","letter":""}
+{
+  "criteria": [
+    {
+      "id": "A1",
+      "status": "met",
+      "finding": "The lot is in zoning district T3-R, which allows one ADU, and the site plan notes state that none exists on the lot.",
+      "evidence": [{ "document": "ADU site plan notes", "quote": "Zoning: T3-R. No existing accessory dwelling unit on the lot." }],
+      "precedents": []
+    },
+    {
+      "id": "A2",
+      "status": "not_met",
+      "finding": "The ADU floor area is 860 sq ft, above the 800 sq ft limit, and the applicant has requested a variance for the extra 60 sq ft.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "ADU floor area: 860 sq ft" },
+        { "document": "Variance request letter", "quote": "I request a variance from the 800 sq ft limit for an ADU of 860 sq ft." }
+      ],
+      "precedents": ["P-2025-0209"]
+    },
+    {
+      "id": "A3",
+      "status": "met",
+      "finding": "The site plan and the survey both place the ADU 8 ft 0 in from the rear lot line and 6 ft 0 in from the side, above the 5 ft minimum.",
+      "evidence": [
+        { "document": "ADU site plan notes", "quote": "Rear setback: 8 ft 0 in" },
+        { "document": "Boundary survey", "quote": "Proposed ADU footprint is 8 ft 0 in from the rear lot line and 6 ft 0 in from the side." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A4",
+      "status": "met",
+      "finding": "A notarised owner-occupancy affidavit signed by Thanh Nguyen is included, sworn on 1 Sep 2026.",
+      "evidence": [
+        { "document": "Owner-occupancy affidavit", "quote": "occupy the main house as my primary residence" },
+        { "document": "Owner-occupancy affidavit", "quote": "Sworn to and subscribed before me on 1 Sep 2026." }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "A5",
+      "status": "met",
+      "finding": "The elevation certificate shows the lowest finished floor at 8.4 ft NAVD, 1.4 ft above the 7.0 ft base flood elevation.",
+      "evidence": [
+        { "document": "Elevation certificate", "quote": "Base flood elevation: 7.0 ft NAVD" },
+        { "document": "Elevation certificate", "quote": "Lowest finished floor: 8.4 ft NAVD" }
+      ],
+      "precedents": []
+    },
+    {
+      "id": "X2",
+      "status": "met",
+      "finding": "The owner, parcel number 01-4107-012-0090, and address 3345 Mango Hill Road match across the application form, the survey, and the affidavit.",
+      "evidence": [
+        { "document": "Permit application: accessory dwelling unit", "quote": "Parcel: 01-4107-012-0090" },
+        { "document": "Boundary survey", "quote": "Parcel 01-4107-012-0090. Owner: Thanh Nguyen. 3345 Mango Hill Road." }
+      ],
+      "precedents": []
+    }
+  ],
+  "recommendation": "needs_judgment",
+  "reason": "Variance requested: ADU is 860 sq ft.",
+  "rationale": "Five of the six applicable criteria are met with evidence in the packet. The unit is 860 sq ft, 60 sq ft above the limit in §ADU-2, and the applicant has requested a variance on accessibility grounds for a family member who uses a wheelchair. A variance is a decision for a reviewer or the review board, not a routine request, so the case needs judgment.",
+  "letter": "Dear Thanh Nguyen,\n\nThank you for your application MIA-2026-1171 for an accessory dwelling unit at 3345 Mango Hill Road, and for your letter requesting a variance. Your documents meet the ADU rules for zoning, setbacks, owner occupancy, and flood elevation. The unit is 860 sq ft, which is 60 sq ft above the 800 sq ft limit in the zoning code (§ADU-2), so your variance request must be decided before a permit can be issued.\n\nTo support that decision we need one item:\n\n1. A floor plan of the unit showing the accessible bathroom and bedroom (Zoning code §ADU-2). It lets the reviewer see how the extra 60 sq ft is used. Your contractor, Coral Ridge Construction Inc., can provide it.\n\n[Reviewer to decide: refer the variance to the review board, or ask for a revised plan at 800 sq ft or less.]\n\nPlease reply by 5 Oct 2026 through the applicant portal or by email to permits@example.com. Call (305) 555-0100 if you have questions.\n\nBuilding Department, City of Miami"
+}
