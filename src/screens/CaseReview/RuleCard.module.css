@@ -197,7 +197,7 @@
 
 /* In a narrow centre pane, keep each past decision to one line so the rule card
    stays short and both evidence highlights fit below it. */
-@container (max-width: 540px) {
+@container (max-width: 500px) {
   .precedent {
     grid-template-columns: 92px auto minmax(0, 1fr);
     grid-template-areas: 'id chip summary';

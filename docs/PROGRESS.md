@@ -14,8 +14,10 @@
 - M7: decision record, reviewer changes, Ask about this case, keyboard shortcuts, request-round warning, adverse-action notice, WCAG fixes (axe clean on every screen).
 - M8: Playwright walkthrough with screenshots (docs/screenshots), axe spec, offline single-file spec, off-script QA spec (11 flows plus layouts at 1280/1920/1024), README, DEMO_SCRIPT, ACCEPTANCE, single-file build in release/.
 
+- Recorded docs/walkthrough.webm (5:02, paced to the script, cursor overlay). Tagged v1.0-demo with the single-file build attached to the GitHub release.
+
 ## Next
-- Record docs/walkthrough.webm, tag v1.0-demo, attach the single-file build to the release.
+- Nothing outstanding. To resume: `npm install`, `npm run dev`; run `npm test`, `npm run test:e2e`, `npm run check:names` before pushing.
 
 ## Decisions
 - See docs/PLAN.md section 6.
