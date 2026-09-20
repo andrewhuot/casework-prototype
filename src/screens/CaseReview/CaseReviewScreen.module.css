@@ -94,6 +94,18 @@
 
 @media (max-width: 1279px) {
   .panes {
-    grid-template-columns: 22fr 46fr 32fr;
+    grid-template-columns: 224px minmax(0, 1fr) minmax(280px, 30%);
+  }
+
+  .header {
+    padding: 8px 16px 10px;
+  }
+
+  .headerMeta:last-of-type {
+    display: none;
+  }
+
+  .headerDot:nth-last-of-type(2) {
+    display: none;
   }
 }

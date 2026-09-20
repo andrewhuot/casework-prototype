@@ -84,7 +84,9 @@ export function RuleCard({ caseId, view, next, onNext, notFound }: RuleCardProps
                 <button type="button" className={styles.precedent} onClick={() => openDrawer({ kind: 'precedent', precedentId: p.id, caseId })} data-precedent={p.id}>
                   <span className={styles.precedentId}>{p.id}</span>
                   <OutcomeChip outcome={p.outcome} />
-                  <span className={styles.precedentSummary}>{p.summary}</span>
+                  <span className={styles.precedentSummary} title={p.summary}>
+                    {p.summary}
+                  </span>
                 </button>
               </li>
             ))}

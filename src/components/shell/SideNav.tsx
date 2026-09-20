@@ -21,15 +21,15 @@ export function SideNav() {
       </div>
       <ul className={styles.list}>
         <li>
-          <span className={cx(styles.item, styles.muted)} aria-disabled="true">
+          <span className={cx(styles.item, styles.muted)} aria-disabled="true" title="Chats">
             <MessageSquare size={15} aria-hidden />
-            Chats
+            <span className={styles.itemLabel}>Chats</span>
           </span>
         </li>
         <li>
-          <span className={cx(styles.item, styles.muted)} aria-disabled="true">
+          <span className={cx(styles.item, styles.muted)} aria-disabled="true" title="Projects">
             <FolderKanban size={15} aria-hidden />
-            Projects
+            <span className={styles.itemLabel}>Projects</span>
           </span>
         </li>
       </ul>
@@ -42,9 +42,10 @@ export function SideNav() {
               end={end}
               className={({ isActive }) => cx(styles.item, isActive && styles.active)}
               aria-current={undefined}
+              title={label}
             >
               <Icon size={15} aria-hidden />
-              {label}
+              <span className={styles.itemLabel}>{label}</span>
             </NavLink>
           </li>
         ))}
@@ -59,7 +60,9 @@ export function SideNav() {
             <span className={styles.userRole}>Permit reviewer</span>
           </span>
         </div>
-        <PrototypeTag />
+        <div className={styles.tag}>
+          <PrototypeTag />
+        </div>
       </div>
     </nav>
   );

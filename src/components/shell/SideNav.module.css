@@ -121,3 +121,37 @@ a.item.active:hover {
   font-size: var(--text-xs);
   color: var(--text-muted);
 }
+
+/* Below 1280 px the navigation collapses to an icon rail. */
+@media (max-width: 1279px) {
+  .nav {
+    padding: 12px 8px;
+  }
+
+  .brand {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .wordmark {
+    font-size: var(--text-md);
+  }
+
+  .item {
+    justify-content: center;
+    padding: 0;
+    gap: 0;
+  }
+
+  .itemLabel,
+  .groupLabel,
+  .userText,
+  .tag {
+    display: none;
+  }
+
+  .user {
+    justify-content: center;
+    padding: 6px 0;
+  }
+}

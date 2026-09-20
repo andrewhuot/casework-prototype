@@ -52,3 +52,37 @@
 .version:focus-visible {
   box-shadow: var(--focus-ring);
 }
+
+.compactTag {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  margin: 0 16px;
+  font-size: var(--text-xs);
+  line-height: 1.3;
+  color: var(--gray-600);
+}
+
+.compactTag svg {
+  flex: none;
+  color: var(--gray-500);
+}
+
+@media (max-width: 1279px) {
+  .bar {
+    padding: 0 16px;
+  }
+
+  .compactTag {
+    display: flex;
+    flex: 1;
+  }
+
+  .compactTag span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

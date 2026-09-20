@@ -3,6 +3,8 @@ import { Landmark, RotateCcw } from 'lucide-react';
 import { useStore } from '@/app/store';
 import { DEPARTMENT_NAME } from '@/data/cases';
 import { Button } from '@/components/ui/Button';
+import { PROTOTYPE_TAG_TEXT } from './PrototypeTag';
+import { FlaskConical } from 'lucide-react';
 import styles from './TopBar.module.css';
 
 /** Department name, current rulebook version, and Reset demo. */
@@ -17,6 +19,10 @@ export function TopBar() {
         <Landmark size={15} aria-hidden className={styles.icon} />
         <span>{DEPARTMENT_NAME}</span>
       </div>
+      <p className={styles.compactTag} data-prototype-tag-compact>
+        <FlaskConical size={12} aria-hidden />
+        <span>{PROTOTYPE_TAG_TEXT}</span>
+      </p>
       <div className={styles.right}>
         <Link to="/rulebook" className={styles.version} data-rulebook-version>
           Rulebook v{version}

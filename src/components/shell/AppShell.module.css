@@ -19,3 +19,9 @@
   flex-direction: column;
   overflow: clip;
 }
+
+@media (max-width: 1279px) {
+  .shell {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+}

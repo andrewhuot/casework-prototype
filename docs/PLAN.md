@@ -78,3 +78,11 @@ A document's searchable text is the concatenation of its text blocks. Evidence q
 | Reviewer changes and the recommendation | A change updates the counts and tags the row. The saved recommendation is not re-derived, and the change is listed in the decision record. |
 | Escalate outcome | The case becomes Decided with the outcome "Escalated to senior reviewer". |
 | Spanish copy after edits | The preview shows the saved Spanish letter. The decision record notes that the copy was updated to match the reviewer's edits when sent, as the helper text promises. |
+| "Also send a Spanish copy" on other cases | Shown only when the application states a preferred language (Delgado). Other applicants did not ask for one, and a copy would need a live model call. |
+| "What this review does not cover" | Opens as a small dialog rather than the drawer, which the spec reserves for four uses. |
+| Progress dialog timing | Steps tick at 1.0, 2.1 and 3.1 seconds and the case opens at 3.9 seconds, so the third tick is visible for a beat. |
+| Drawer and dialog Escape | Handled both through the native dialog cancel event and a keydown handler, because some automation environments do not fire cancel for synthetic key presses. |
+| Rulebook version on a case | The decision record and the review progress show the version that applies to the case (v1.0 for every seeded case). The top bar shows the global version. |
+| Layout below 1280 px | The sidebar collapses to an icon rail and the prototype tag moves into the top bar so it stays visible. Phones are out of scope. |
+| Source viewer for R6 before approval | "Used for" reads "No criteria cite this source yet" until the S2 change is approved, then lists S2. |
+| Evidence scrolling | The centre pane centres the whole span of highlights when it fits, so every quote for the selected criterion is on screen at once. Otherwise the first quote sits near the top. |

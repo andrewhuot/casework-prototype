@@ -24,7 +24,7 @@ const ICONS: Record<NonNullable<BannerProps['tone']>, LucideIcon> = {
 export function Banner({ tone = 'info', icon, children, onDismiss, className, action }: BannerProps) {
   const Icon = icon ?? ICONS[tone];
   return (
-    <div className={cx(styles.banner, styles[tone], className)} role={tone === 'warning' ? 'alert' : undefined}>
+    <div className={cx(styles.banner, styles[tone], className)}>
       <Icon size={15} className={styles.icon} aria-hidden />
       <div className={styles.text}>{children}</div>
       {action}

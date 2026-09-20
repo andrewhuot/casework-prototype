@@ -43,16 +43,21 @@ export function EvidencePane({ caseId, packet, selected, next, onNext }: Evidenc
   useEffect(() => {
     const el = scroller.current;
     if (!el || !selected) return;
-    const target = el.querySelector<HTMLElement>('[data-evidence-first]') ?? (focusMissing ? el.querySelector<HTMLElement>(`[data-missing][data-document="${CSS.escape(focusMissing)}"]`) : null);
+    const marks = [...el.querySelectorAll<HTMLElement>('mark[data-evidence]')];
+    const target = marks[0] ?? (focusMissing ? el.querySelector<HTMLElement>(`[data-missing][data-document="${CSS.escape(focusMissing)}"]`) : null);
     const t = window.setTimeout(() => {
       if (!target) {
         el.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
         return;
       }
       const elRect = el.getBoundingClientRect();
-      const rect = target.getBoundingClientRect();
-      const offset = rect.top - elRect.top + el.scrollTop;
-      const top = Math.max(0, offset - el.clientHeight * 0.2);
+      const offsetOf = (node: HTMLElement) => node.getBoundingClientRect().top - elRect.top + el.scrollTop;
+      const first = offsetOf(target);
+      const last = marks.length > 1 ? offsetOf(marks[marks.length - 1] as HTMLElement) + (marks[marks.length - 1]?.offsetHeight ?? 0) : first + target.offsetHeight;
+      const span = last - first;
+      const viewport = el.clientHeight;
+      // Centre the whole span of highlights when it fits, so every quote is on screen at once.
+      const top = span + 48 <= viewport ? Math.max(0, first - (viewport - span) / 2) : Math.max(0, first - viewport * 0.15);
       el.scrollTo({ top, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     }, 30);
     return () => window.clearTimeout(t);

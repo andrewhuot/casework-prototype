@@ -11,8 +11,11 @@
 - M5: Rulebook: sources table, Add source dialog with Load example, Processing then proposed change, side-by-side S2 diff with impact line and effective date, v1.1 published everywhere, criteria tab with Updated tag.
 - M6: Proving ground (headline, readiness banner, agreement bars with threshold, blind disagreement queue with reveal and count-up tally) and Scoreboard (tiles, usage and override lines, backlog chart with week-4 marker, trust ladder, model update card).
 
+- M7: decision record, reviewer changes, Ask about this case, keyboard shortcuts, request-round warning, adverse-action notice, WCAG fixes (axe clean on every screen).
+- M8: Playwright walkthrough with screenshots (docs/screenshots), axe spec, offline single-file spec, off-script QA spec (11 flows plus layouts at 1280/1920/1024), README, DEMO_SCRIPT, ACCEPTANCE, single-file build in release/.
+
 ## Next
-- M7/M8: Playwright walkthrough with screenshots, axe, offline single-file test, QA pass, acceptance checklist, README, release.
+- Record docs/walkthrough.webm, tag v1.0-demo, attach the single-file build to the release.
 
 ## Decisions
 - See docs/PLAN.md section 6.
