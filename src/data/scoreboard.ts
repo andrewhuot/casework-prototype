@@ -53,8 +53,8 @@ export const TRUST_LADDER: TrustRung[] = [
   { id: 'shadow', name: 'Shadow', description: 'Claude reviews in the background. Nobody sees its findings.', threshold: 'No threshold', on: true },
   { id: 'xray', name: 'X-ray', description: 'Findings appear beside each case, with links to evidence.', threshold: '80% agreement on closed cases', on: true },
   { id: 'second_reader', name: 'Second reader', description: 'Claude’s review is compared with the human review before a decision.', threshold: '85% agreement on closed cases', on: true },
-  { id: 'first_review', name: 'First review', description: 'Claude prepares the review the human starts from.', threshold: '90% agreement on closed cases', on: true, note: 'unlocked at 90% agreement' },
-  { id: 'front_door', name: 'Front door', description: 'Applicants get completeness feedback before they file.', threshold: 'Planned for v2', on: false, locked: true, note: 'planned for v2' },
+  { id: 'first_review', name: 'First review', description: 'Claude prepares the review the human starts from.', threshold: 'Threshold 90%', on: true, note: 'unlocked at 90% agreement' },
+  { id: 'front_door', name: 'Front door', description: 'Applicants get completeness feedback before they file.', threshold: 'No threshold set', on: false, locked: true, note: 'planned for v2' },
 ];
 
 export const MODEL_UPDATE = {

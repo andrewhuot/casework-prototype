@@ -1,0 +1,293 @@
+.screen {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.inner {
+  max-width: var(--content-max);
+  padding: var(--space-6) var(--space-8) var(--space-8);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 18px 14px;
+}
+
+.tileLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.tileNote {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.tileRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.tileCurrent {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+
+.tileUnit {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.tileMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--text-sm);
+}
+
+.tileBaseline {
+  color: var(--text-muted);
+}
+
+.tileChange {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px 1px 4px;
+  border-radius: var(--radius-sm);
+  background: var(--green-bg);
+  color: var(--green-fg);
+  font-weight: 600;
+}
+
+.lines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-bottom: var(--space-4);
+  padding: 0 2px;
+}
+
+.line {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+
+.line strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.lineHelper {
+  margin-left: 8px;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.cardMeta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.modelCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-color: var(--accent-200);
+  background: var(--accent-50);
+  transition: background-color var(--dur-slow) var(--ease-out), border-color var(--dur-slow) var(--ease-out);
+}
+
+.modelCardDone {
+  border-color: var(--green-border);
+  background: var(--green-bg);
+}
+
+.modelIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  color: var(--accent-600);
+  flex: none;
+  border: 1px solid var(--accent-200);
+}
+
+.modelCardDone .modelIcon {
+  color: var(--green-icon);
+  border-color: var(--green-border);
+}
+
+.modelText {
+  flex: 1;
+  min-width: 0;
+}
+
+.modelHeadline {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modelSub {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.ladder {
+  min-width: 0;
+}
+
+.ladderHead {
+  padding: var(--space-4) var(--space-5) 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ladderSub {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.rungs {
+  display: flex;
+  flex-direction: column;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.rung:last-child {
+  border-bottom: 0;
+}
+
+.rungLocked {
+  background: repeating-linear-gradient(-45deg, transparent 0 8px, rgba(22, 27, 34, 0.025) 8px 16px), var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.rungLevel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-100);
+  color: var(--accent-700);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.rungLocked .rungLevel {
+  background: var(--gray-150);
+  color: var(--text-muted);
+}
+
+.rungText {
+  min-width: 0;
+}
+
+.rungName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rungLocked .rungName {
+  color: var(--text-secondary);
+}
+
+.lockTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--gray-150);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.rungDescription {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+.rungThreshold {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.rungNote {
+  color: var(--accent-700);
+  font-weight: 500;
+}
+
+.footnote {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}

@@ -1,0 +1,146 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 48px;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.headerLabel {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 0 6px;
+}
+
+.groupLabel {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 4px 0 2px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 12px;
+  min-height: 24px;
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: var(--text-md);
+}
+
+.id {
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 22px;
+}
+
+.name {
+  color: var(--text-primary);
+}
+
+.track {
+  position: relative;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--gray-100);
+  overflow: visible;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent-500);
+  animation: grow 0.6s var(--ease-out);
+  transform-origin: left;
+}
+
+.barBelow {
+  background: var(--amber-icon);
+}
+
+.threshold {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 0;
+  border-left: 2px dashed var(--gray-500);
+}
+
+.value {
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-align: right;
+  color: var(--text-primary);
+}
+
+.valueBelow {
+  color: var(--amber-fg);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 8px;
+  margin-top: 2px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendSwatch {
+  width: 12px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent-500);
+}
+
+.legendBelow {
+  background: var(--amber-icon);
+}
+
+.legendLine {
+  width: 0;
+  height: 12px;
+  border-left: 2px dashed var(--gray-500);
+}
+
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
