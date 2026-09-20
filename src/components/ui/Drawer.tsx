@@ -88,7 +88,9 @@ export function Drawer({ open, title, eyebrow, onClose, children, footer, kind }
             <X size={16} aria-hidden />
           </button>
         </header>
-        <div className={cx(styles.body)}>{children}</div>
+        <div className={cx(styles.body)} tabIndex={0} role="region" aria-label="Drawer content">
+          {children}
+        </div>
         {footer && <footer className={styles.footer}>{footer}</footer>}
       </div>
     </dialog>

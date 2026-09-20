@@ -17,7 +17,7 @@ interface RunReviewDialogProps {
 
 /** Three steps tick off over about three seconds, then the saved review loads and Case review opens. */
 const STEP_TIMINGS = [1000, 2100, 3100];
-const FINISH_AT = 3400;
+const FINISH_AT = 3900;
 
 export function RunReviewDialog({ caseId, onClose }: RunReviewDialogProps) {
   const navigate = useNavigate();

@@ -40,7 +40,7 @@ export function Tabs<T extends string>({ tabs, value, onChange, label, className
             type="button"
             id={`${base}-tab-${tab.id}`}
             aria-selected={selected}
-            aria-controls={`${base}-panel-${tab.id}`}
+            aria-controls={`panel-${tab.id}`}
             tabIndex={selected ? 0 : -1}
             className={cx(styles.tab, selected && styles.selected)}
             onClick={() => onChange(tab.id)}
@@ -54,10 +54,9 @@ export function Tabs<T extends string>({ tabs, value, onChange, label, className
 }
 
 export function TabPanel({ id, active, children, className }: { id: string; active: boolean; children: ReactNode; className?: string }) {
-  if (!active) return null;
   return (
-    <div role="tabpanel" id={id} className={className}>
-      {children}
+    <div role="tabpanel" id={id} className={className} hidden={!active}>
+      {active ? children : null}
     </div>
   );
 }
