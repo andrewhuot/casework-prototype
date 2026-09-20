@@ -1,0 +1,82 @@
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  font-size: var(--text-md);
+  line-height: 1.4;
+}
+
+.icon {
+  flex: none;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.info {
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+}
+
+.info .icon {
+  color: var(--text-muted);
+}
+
+.hint {
+  background: var(--accent-50);
+  border-color: var(--accent-200);
+  color: var(--accent-700);
+}
+
+.hint .icon {
+  color: var(--accent-500);
+}
+
+.warning {
+  background: var(--amber-bg);
+  border-color: var(--amber-border);
+  color: var(--amber-fg);
+}
+
+.warning .icon {
+  color: var(--amber-icon);
+}
+
+.success {
+  background: var(--green-bg);
+  border-color: var(--green-border);
+  color: var(--green-fg);
+}
+
+.success .icon {
+  color: var(--green-icon);
+}
+
+.dismiss {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-md);
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+}
+
+.dismiss:hover {
+  opacity: 1;
+  background: rgba(16, 24, 40, 0.06);
+}
+
+.dismiss:focus-visible {
+  opacity: 1;
+  box-shadow: var(--focus-ring);
+}

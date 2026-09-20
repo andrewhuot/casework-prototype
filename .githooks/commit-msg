@@ -1,0 +1,10 @@
+#!/bin/sh
+# Strips machine-added trailers from every commit message so history stays clean:
+# co-author lines, "Generated with" lines, and session trailers.
+msg="$1"
+tmp="$msg.clean"
+grep -viE '^[[:space:]]*(co-authored-by:|generated with|session:|session-id:|🤖)' "$msg" > "$tmp" || true
+# Drop trailing blank lines.
+awk 'NF{p=1} p{lines[++n]=$0} END{while(n>0 && lines[n] ~ /^[[:space:]]*$/) n--; for(i=1;i<=n;i++) print lines[i]}' "$tmp" > "$msg"
+rm -f "$tmp"
+exit 0

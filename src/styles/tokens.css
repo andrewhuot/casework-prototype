@@ -1,0 +1,131 @@
+/* Casework design tokens. Every colour, size, radius, shadow and duration used
+   in the interface is defined here once. Components consume these variables. */
+:root {
+  color-scheme: light;
+
+  /* Neutral scale (cool grey) */
+  --gray-0: #ffffff;
+  --gray-25: #fcfcfd;
+  --gray-50: #f7f8fa;
+  --gray-100: #eff1f4;
+  --gray-150: #e6e9ed;
+  --gray-200: #dde1e6;
+  --gray-300: #c8ced6;
+  --gray-400: #9aa3b0;
+  --gray-500: #5f6a78;
+  --gray-600: #4d5866;
+  --gray-700: #3a4350;
+  --gray-800: #272e38;
+  --gray-900: #161b22;
+
+  /* Accent (one colour) */
+  --accent-50: #eef3ff;
+  --accent-100: #dce6ff;
+  --accent-200: #b8ccff;
+  --accent-300: #8aabff;
+  --accent-500: #2f5fe0;
+  --accent-600: #244fc4;
+  --accent-700: #1c3f9f;
+
+  /* Status tints: background, foreground text, icon, border. Each foreground
+     passes 4.5:1 on its own background. */
+  --blue-bg: #e8effe;   --blue-fg: #1e46b8;   --blue-icon: #2f5fe0;   --blue-border: #c5d5fb;
+  --green-bg: #e3f5ea;  --green-fg: #146c3a;  --green-icon: #1f8a4c;  --green-border: #b9e4c9;
+  --amber-bg: #fdf0d5;  --amber-fg: #8a4b0b;  --amber-icon: #c77414;  --amber-border: #f2d59a;
+  --violet-bg: #efeafd; --violet-fg: #5b3bb5; --violet-icon: #7c5cd6; --violet-border: #d6cbf6;
+  --slate-bg: #e8edf3;  --slate-fg: #3b4a5e;  --slate-icon: #5b6b82;  --slate-border: #cbd5e1;
+  --neutral-bg: #eceef1;--neutral-fg: #4b5361;--neutral-icon: #6f7a89;--neutral-border: #d5d9df;
+  --red-bg: #fdeaea;    --red-fg: #a3262b;    --red-icon: #c9353b;    --red-border: #f3c3c5;
+
+  /* Evidence highlight */
+  --highlight-bg: #fff1a3;
+  --highlight-underline: #dcae00;
+  --highlight-pulse: #ffd54a;
+
+  /* Paper documents */
+  --paper-bg: #fffefb;
+  --paper-border: #e6e1d6;
+  --paper-ink: #2b2925;
+  --paper-muted: #625d54;
+  --paper-rule: #d9d2c2;
+  --paper-field: #f6f3ec;
+  --stamp-ink: #b23a48;
+  --drawing-line: #3d4652;
+  --drawing-light: #9aa3b0;
+  --drawing-fill: #eef1f5;
+  --drawing-accent: #2f5fe0;
+  --drawing-accent-fill: #dce6ff;
+
+  /* Semantic aliases */
+  --bg-app: var(--gray-50);
+  --bg-surface: var(--gray-0);
+  --bg-subtle: var(--gray-50);
+  --bg-hover: var(--gray-100);
+  --bg-active: var(--gray-150);
+  --bg-selected: var(--accent-50);
+  --border-subtle: var(--gray-150);
+  --border-default: var(--gray-200);
+  --border-strong: var(--gray-300);
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-muted: var(--gray-500);
+  --text-disabled: var(--gray-400);
+  --text-inverse: #ffffff;
+  --link: var(--accent-600);
+  --focus-ring: 0 0 0 2px var(--gray-0), 0 0 0 4px var(--accent-500);
+  --focus-ring-inset: inset 0 0 0 2px var(--accent-500);
+
+  /* Type */
+  --font-ui: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Source Serif 4 Variable', 'Iowan Old Style', Georgia, serif;
+  --font-hand: 'Caveat', 'Bradley Hand', cursive;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 28px;
+  --leading-tight: 1.3;
+  --leading-normal: 1.45;
+  --leading-relaxed: 1.6;
+  --tracking-caps: 0.06em;
+
+  /* Spacing (4 px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06), 0 0 0 1px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.1), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16), 0 2px 6px rgba(16, 24, 40, 0.08);
+  --shadow-paper: 0 1px 2px rgba(43, 41, 37, 0.08), 0 4px 14px rgba(43, 41, 37, 0.06), 0 0 0 1px var(--paper-border);
+
+  /* Motion */
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-slow: 250ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --nav-width: 220px;
+  --topbar-height: 48px;
+  --drawer-width: 480px;
+  --content-max: 1360px;
+}

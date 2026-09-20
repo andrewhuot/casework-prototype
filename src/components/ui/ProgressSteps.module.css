@@ -1,0 +1,81 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.active {
+  color: var(--text-primary);
+}
+
+.done {
+  color: var(--text-secondary);
+}
+
+.marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  flex: none;
+  transition: background-color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+
+.active .marker {
+  border-color: var(--accent-500);
+  color: var(--accent-500);
+}
+
+.done .marker {
+  background: var(--green-icon);
+  border-color: var(--green-icon);
+  color: #fff;
+}
+
+.check {
+  animation: tick var(--dur-slow) var(--ease-out);
+}
+
+.index {
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.spinner {
+  animation: spin 0.9s linear infinite;
+}
+
+.label {
+  font-weight: 500;
+}
+
+@keyframes tick {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
