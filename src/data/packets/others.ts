@@ -40,11 +40,11 @@ export const ALVAREZ_PACKET: Packet = {
       received: '2026-09-12',
       blocks: [
         { type: 'para', text: '78 Coral Way Terrace. Parcel 01-3120-044-0110. Owner: Luis Alvarez.' },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '30 A', inverter: '5.0 kW' }, caption: 'Single-line diagram' },
         {
           type: 'list',
           items: ['Main service panel: 200 A, with a 30 A solar backfeed breaker', 'Inverter: 5.0 kW AC, string type, garage wall.', 'AC disconnect: lockable, exterior, beside the meter.'],
         },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '30 A', inverter: '5.0 kW' }, caption: 'Single-line diagram' },
       ],
     },
     {
@@ -184,8 +184,8 @@ export const CHEN_PACKET: Packet = {
       received: '2026-08-31',
       blocks: [
         { type: 'para', text: '2210 Seagrape Drive. Parcel 01-3210-009-0270. Owner: Wei Chen.' },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '45 A', inverter: '7.6 kW' }, caption: 'Single-line diagram' },
         { type: 'list', items: ['Main service panel: 200 A, with a 45 A solar backfeed breaker', 'Inverter: 7.6 kW AC, string type, exterior wall.', 'AC disconnect: lockable, exterior, beside the meter.'] },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '45 A', inverter: '7.6 kW' }, caption: 'Single-line diagram' },
       ],
     },
     {
@@ -284,8 +284,8 @@ export const PATEL_PACKET: Packet = {
       letterhead: { kind: 'contractor', org: 'Keystone Electric and Solar LLC', sub: 'EC13006666 · Sheet PV-2' },
       received: '2026-09-07',
       blocks: [
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '30 A', inverter: '5.0 kW', subpanel: '60 A' }, caption: 'Single-line diagram' },
         { type: 'list', items: ['Main service panel: 200 A, with a 30 A solar backfeed breaker', 'Inverter: 5.0 kW AC. AC disconnect: lockable, exterior.'] },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '30 A', inverter: '5.0 kW', subpanel: '60 A' }, caption: 'Single-line diagram' },
       ],
     },
     {
@@ -438,8 +438,8 @@ export const BROOKS_PACKET: Packet = {
       received: '2026-08-25',
       blocks: [
         { type: 'para', text: '5120 Ibis Landing Court. Parcel 01-3115-050-0210. Owner: Denise Brooks.' },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '35 A', inverter: '6.0 kW' }, caption: 'Single-line diagram' },
         { type: 'list', items: ['Main service panel: 200 A, with a 35 A solar backfeed breaker', 'Inverter: 6.0 kW AC, string type. AC disconnect: lockable, exterior.'] },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '35 A', inverter: '6.0 kW' }, caption: 'Single-line diagram' },
       ],
     },
     {

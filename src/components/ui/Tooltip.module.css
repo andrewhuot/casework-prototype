@@ -45,3 +45,15 @@
   opacity: 1;
   transform: translate(-50%, 0);
 }
+
+.alignEnd {
+  left: auto;
+  right: 0;
+  transform: translate(0, -4px);
+}
+
+.wrapper:hover .alignEnd,
+.wrapper:focus-visible .alignEnd,
+.wrapper:focus-within .alignEnd {
+  transform: translate(0, 0);
+}

@@ -120,7 +120,7 @@ export function QueueScreen() {
                     <td className={cx(tableStyles.numeric, styles.days)}>
                       {row.paused ? (
                         <span className={styles.paused}>
-                          <span className="tnum">{row.daysInQueue}</span>
+                          {row.daysInQueue === 0 ? <span className={styles.today}>Today</span> : <span className="tnum">{row.daysInQueue}</span>}
                           <span className={styles.pausedTag}>
                             <Pause size={10} strokeWidth={3} aria-hidden />
                             paused

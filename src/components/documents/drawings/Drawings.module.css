@@ -1,0 +1,100 @@
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  fill: var(--drawing-line);
+}
+
+.line {
+  fill: none;
+  stroke: var(--drawing-line);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heavy {
+  fill: none;
+  stroke: var(--drawing-line);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.light {
+  fill: none;
+  stroke: var(--drawing-light);
+  stroke-width: 1;
+}
+
+.lotLine {
+  fill: none;
+  stroke: var(--drawing-line);
+  stroke-width: 1.2;
+  stroke-dasharray: 10 3 2 3;
+}
+
+.dashed {
+  fill: none;
+  stroke: var(--drawing-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 3;
+}
+
+.fill {
+  fill: var(--drawing-fill);
+  stroke: var(--drawing-line);
+  stroke-width: 1.2;
+}
+
+.accentFill {
+  fill: var(--drawing-accent-fill);
+  stroke: var(--drawing-accent);
+  stroke-width: 1.4;
+}
+
+.module {
+  fill: #dbe4f3;
+  stroke: var(--drawing-line);
+  stroke-width: 0.8;
+}
+
+.pathway {
+  fill: rgba(47, 95, 224, 0.12);
+  stroke: var(--drawing-accent);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.dim {
+  fill: none;
+  stroke: var(--drawing-accent);
+  stroke-width: 1;
+}
+
+.dimText {
+  fill: var(--drawing-accent);
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.label {
+  fill: var(--drawing-line);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.muted {
+  fill: var(--drawing-light);
+}
+
+.small {
+  font-size: 8px;
+}
+
+.hatch {
+  stroke: var(--drawing-light);
+  stroke-width: 0.6;
+}

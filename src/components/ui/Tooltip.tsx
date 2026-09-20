@@ -9,15 +9,17 @@ interface TooltipProps {
   focusable?: boolean;
   className?: string;
   placement?: 'bottom' | 'top';
+  /** Anchor the bubble to the trigger's end edge, for triggers near the right edge of the screen. */
+  align?: 'center' | 'end';
 }
 
 /** A small hover/focus tooltip. The trigger is described by the tooltip text. */
-export function Tooltip({ text, children, focusable = true, className, placement = 'bottom' }: TooltipProps) {
+export function Tooltip({ text, children, focusable = true, className, placement = 'bottom', align = 'center' }: TooltipProps) {
   const id = useId();
   return (
     <span className={cx(styles.wrapper, className)} tabIndex={focusable ? 0 : undefined} aria-describedby={id}>
       {children}
-      <span role="tooltip" id={id} className={cx(styles.bubble, styles[placement])}>
+      <span role="tooltip" id={id} className={cx(styles.bubble, styles[placement], align === 'end' && styles.alignEnd)}>
         {text}
       </span>
     </span>

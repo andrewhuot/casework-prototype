@@ -97,7 +97,6 @@ export const DELGADO_PACKET: Packet = {
       received: '2026-09-21',
       blocks: [
         { type: 'heading', text: 'Single-line diagram notes' },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '150 A', backfeedBreaker: '40 A', inverter: '6.0 kW', subpanel: '60 A' }, caption: 'Single-line diagram' },
         {
           type: 'list',
           items: [
@@ -107,6 +106,7 @@ export const DELGADO_PACKET: Packet = {
             'AC disconnect: lockable, exterior, within sight of the meter.',
           ],
         },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '150 A', backfeedBreaker: '40 A', inverter: '6.0 kW', subpanel: '60 A' }, caption: 'Single-line diagram' },
       ],
     },
     {

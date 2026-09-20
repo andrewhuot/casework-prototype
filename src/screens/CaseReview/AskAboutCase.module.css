@@ -1,0 +1,127 @@
+.block {
+  max-width: 640px;
+  margin: 28px auto 0;
+  padding: 16px 18px 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.itemOpen {
+  border-color: var(--accent-200);
+}
+
+.question {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--accent-700);
+  background: var(--bg-surface);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.question:hover {
+  background: var(--accent-50);
+}
+
+.question:focus-visible {
+  box-shadow: var(--focus-ring-inset);
+}
+
+.answer {
+  padding: 4px 12px 12px;
+  font-size: var(--text-md);
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--accent-50);
+  animation: reveal var(--dur-base) var(--ease-out);
+}
+
+.quote {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  background: var(--paper-bg);
+  border-left: 3px solid var(--highlight-underline);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--paper-ink);
+}
+
+.quoteIcon {
+  flex: none;
+  margin-top: 3px;
+  color: var(--text-muted);
+}
+
+.quoteSource {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.freeform {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.freeformLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.input {
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  font-size: var(--text-md);
+}
+
+.note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

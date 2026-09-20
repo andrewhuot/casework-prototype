@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dialog } from '@/components/ui/Dialog';
 import { ProgressSteps, type StepState } from '@/components/ui/ProgressSteps';
@@ -23,6 +23,8 @@ export function RunReviewDialog({ caseId, onClose }: RunReviewDialogProps) {
   const navigate = useNavigate();
   const runReview = useStore((s) => s.runReview);
   const [done, setDone] = useState(0);
+  const callbacks = useRef({ onClose, runReview, navigate });
+  callbacks.current = { onClose, runReview, navigate };
   const meta = caseId ? CASES_BY_ID[caseId] : undefined;
   const packet = caseId ? PACKETS[caseId] : undefined;
   const documentCount = packet ? providedDocuments(packet).length : 0;
@@ -34,16 +36,16 @@ export function RunReviewDialog({ caseId, onClose }: RunReviewDialogProps) {
     setDone(0);
     const timers = STEP_TIMINGS.map((ms, i) => window.setTimeout(() => setDone(i + 1), ms));
     const finish = window.setTimeout(() => {
-      void runReview(caseId).then(() => {
-        onClose();
-        navigate(`/cases/${caseId}`);
+      void callbacks.current.runReview(caseId).then(() => {
+        callbacks.current.onClose();
+        callbacks.current.navigate(`/cases/${caseId}`);
       });
     }, FINISH_AT);
     return () => {
       timers.forEach((t) => window.clearTimeout(t));
       window.clearTimeout(finish);
     };
-  }, [caseId, navigate, onClose, runReview]);
+  }, [caseId]);
 
   const labels = [`Reading ${documentCount} documents`, `Checking ${criteriaCount} criteria against Rulebook v${version}`, 'Finding similar past decisions'];
   const steps = labels.map((label, i) => ({ label, state: (i < done ? 'done' : i === done ? 'active' : 'pending') as StepState }));

@@ -70,6 +70,15 @@ export function Dialog({ open, title, description, onClose, children, footer, si
       onClick={(e) => {
         if (!locked && e.target === e.currentTarget) onClose();
       }}
+      onKeyDown={(e) => {
+        // Escape closes. Handled here as well as through the native cancel event,
+        // which some environments do not fire for synthetic key presses.
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!locked) onClose();
+        }
+      }}
     >
       <div className={styles.panel}>
         <header className={styles.header}>

@@ -66,6 +66,15 @@ export function Drawer({ open, title, eyebrow, onClose, children, footer, kind }
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
+      onKeyDown={(e) => {
+        // Escape closes. Handled here as well as through the native cancel event,
+        // which some environments do not fire for synthetic key presses.
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+          onClose();
+        }
+      }}
     >
       <div className={styles.panel}>
         <header className={styles.header}>

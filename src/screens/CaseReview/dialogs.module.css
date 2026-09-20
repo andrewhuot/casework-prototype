@@ -1,0 +1,22 @@
+.prose {
+  font-size: var(--text-md);
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.bullets {
+  margin: 10px 0;
+  padding-left: 18px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--text-md);
+  font-weight: 500;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

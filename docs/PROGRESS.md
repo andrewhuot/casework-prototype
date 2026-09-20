@@ -5,8 +5,11 @@
 
 - M2: seven packets as typed paper documents (Delgado 389 words, others under 250), seven saved reviews performed from the packet text (see docs/REVIEW_GENERATION.md), Spanish letter, saved questions, section 9 checks as Vitest (63 tests passing).
 
+- M3: Queue with sorting, filters, summary line, first-visit hint, Run review progress dialog.
+- M4: Case review: criteria pane, rule card with source chips and precedents, paper documents with SVG drawings and exact-string highlights, missing-document page, recommendation gate, letter editor with bracket highlighting, send options, action bar with Decide differently, approve/escalate/deny/change dialogs, drawers (Source viewer, Past decision, Decision record, Letter preview), keyboard shortcuts, Ask about this case, not-covered note.
+
 ## Next
-- M3: Queue and the review progress.
+- M5: Rulebook and sources.
 
 ## Decisions
 - See docs/PLAN.md section 6.
