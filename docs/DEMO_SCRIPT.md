@@ -9,7 +9,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 - Open the prototype in a browser window at least 1280 px wide (1440 is what the recording uses).
 - Click **Reset demo** in the top bar. You should be on the Queue with seven cases and the blue "New here?" hint.
 - Rehearse twice with a timer. The script has almost no slack at 5:00. To land near 4:00, drop the 3:02 beat and the click in the 4:00 beat.
-- The lines under "Say" are written to be read aloud. Put them in your own words if you prefer.
+- The lines under "Say" are written to be read aloud and land the same points as the strategy memo. Put them in your own words if you prefer.
 
 ## The script
 
@@ -21,7 +21,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 3. Point at the Delgado row at the top, marked New.
 
 **Say**
-"Everything you'll see here is synthetic, and the City of Miami is used for illustration only. In this scenario a permit decision takes a median of 34 days. Casework sits inside the Claude that staff already use. The queue is sorted by how much judgment each case needs. These two are approve-ready: every criterion met and linked to its evidence, so each takes under a minute. And Maria Delgado filed this morning: a backyard ADU and rooftop solar, in one application."
+"Everything here is synthetic, and the City of Miami is used for illustration only. In this scenario a permit decision takes a median of 34 days, and most of that is queue wait and rework, not review time. Casework sits inside the Claude that staff already use. The queue is sorted by how much judgment each case needs. These two are approve-ready: every criterion met, under a minute each. And Maria Delgado filed this morning: a backyard ADU and rooftop solar, in one application."
 
 ### 0:25 · Run review
 
@@ -40,7 +40,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 3. Point at the two yellow highlights: "Rear setback: 5 ft 0 in" in the site plan notes, then "4 ft 6 in from the rear lot line" in the survey.
 
 **Say**
-"Nine criteria are met, each linked to its evidence. Three are flagged. First, setbacks. The site plan says five feet; the survey says four foot six. Claude marks it unclear. It doesn't guess."
+"Nine criteria are met, each linked to its evidence. Three are flagged. And at the foot of the list, it states what this review did not check. First, setbacks. The site plan says five feet; the survey says four foot six. Claude marks it unclear. It doesn't guess."
 
 ### 1:12 · The rule and the precedents
 
@@ -79,7 +79,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 4. Click **Send request for information**. The Queue returns with the Undo toast counting down.
 
 **Say**
-"Only now does the recommendation appear: evidence before verdict. Judgment is needed, so Claude proposes no action, and it never proposes denial. The letter is one consolidated request in plain language, not three rounds of back and forth. I invite the waiver. Maria asked for Spanish on her form, so a Spanish copy goes with it. If she hasn't replied, reminders go out by email and text, so the case never stalls in silence. I send, and I have ten seconds to undo."
+"Only now does the recommendation appear: evidence before verdict. Judgment is needed, so Claude proposes no action, and it never proposes denial: it can speed a yes, never automate a no. The letter is one consolidated request in plain language, not three rounds of rework. I invite the waiver. Maria asked for Spanish on her form, so a Spanish copy goes with it. If she hasn't replied, reminders go out by email and text, so the case never stalls in silence. I send, and I have ten seconds to undo."
 
 ### 3:02 · Decision record
 
@@ -109,7 +109,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 3. Click **B is right**. The row reveals "B was Claude" and the tally moves to 41 of 108.
 
 **Say**
-"Before any of this touched a live case, Claude ran silently on 1,200 closed cases and agreed with the city 91 percent of the time. The disagreements matter most. Senior reviewers settle them blind: decision A or decision B, with no names. Here B was Claude, and it caught the overloaded panel. Settled cases become the golden set."
+"Before any of this touched a live case, Claude ran silently on 1,200 closed cases, from an export, with no integration. That is the Shadow rung, and it agreed with the city 91 percent of the time. The disagreements matter most. Senior reviewers settle them blind: decision A or decision B, no names. Here B was Claude, and it caught the overloaded panel. Settled cases become the golden set."
 
 ### 4:28 · Scoreboard
 
@@ -120,7 +120,7 @@ The recording in `docs/walkthrough.webm` performs exactly these clicks at exactl
 4. Point at the model card, then click **Approve switch**.
 
 **Say**
-"This is the director's view. Days to decision fell from 34 to 21, and the backlog is down by a third. The figures are for the team, never for ranking individuals. The director decides how far up the trust ladder to go. When a stronger model ships, it's re-run on the golden set first: 91 to 94. That's how stronger AI becomes a measurably better agency."
+"This is the director's view, and the numbers Casework is paid against. Days to decision fell from 34 to 21; the backlog is down by a third. The figures are for the team, never for ranking people, and the override rate sits beside them: near zero would mean rubber-stamping. The director sets how far up the trust ladder to go. A stronger model is re-run on the golden set first: 91 to 94. That's how stronger AI becomes a measurably better agency."
 
 ### 4:56 · Close
 
