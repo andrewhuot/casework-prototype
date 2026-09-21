@@ -67,8 +67,9 @@ export function LetterPreview({ caseId, language, text }: LetterPreviewProps) {
             const lines = para.split('\n');
             const numbered = lines.every((l) => /^\d+\.\s/.test(l.trim()));
             if (numbered) {
+              const start = Number(lines[0]?.trim().match(/^(\d+)\./)?.[1] ?? 1);
               return (
-                <ol key={i}>
+                <ol key={i} start={start}>
                   {lines.map((l, j) => (
                     <li key={j}>{withBrackets(l.replace(/^\d+\.\s/, ''))}</li>
                   ))}

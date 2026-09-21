@@ -44,7 +44,7 @@
 .letterheadText {
   min-width: 0;
   flex: 1;
-  padding-right: 96px;
+  padding-right: 128px;
 }
 
 .letterheadOrg {
