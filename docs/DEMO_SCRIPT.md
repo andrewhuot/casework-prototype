@@ -1,39 +1,142 @@
-# Casework: five-minute demo script
+# Casework: the five-minute demo script
 
-The demo follows one application from arrival to decision, then shows where the rules come from, why the city trusts them, and what changes for the mission. It runs 5:00 at a normal speaking pace. The first three minutes are the reviewer's story; the last two belong to the policy lead and the director.
+One application from arrival to decision, then where the rules come from, why the city trusts them, and what changes for the mission. It runs 5:00 at a normal speaking pace. The first three minutes are the reviewer's story; the last two belong to the policy lead and the director.
 
-## Before recording
+The recording in `docs/walkthrough.webm` performs exactly these clicks at exactly these times, with no voice, so you can rehearse against it.
 
-- Open the prototype, click **Reset demo**, and start on the Queue. Browser at 1440 px wide (never under 1280).
-- Rehearse twice with a timer. The script has almost no slack at 5:00.
-- To land near 4:00, drop the 3:02 beat and the click in the 4:00 beat.
-- The Say column is talking points. Put them in your own words.
+## Before you start
 
-## Script
+- Open the prototype in a browser window at least 1280 px wide (1440 is what the recording uses).
+- Click **Reset demo** in the top bar. You should be on the Queue with seven cases and the blue "New here?" hint.
+- Rehearse twice with a timer. The script has almost no slack at 5:00. To land near 4:00, drop the 3:02 beat and the click in the 4:00 beat.
+- The lines under "Say" are written to be read aloud. Put them in your own words if you prefer.
 
-| Time | Do | What appears | Talking points |
-| --- | --- | --- | --- |
-| 0:00 | Start on the Queue. Point to the two approve-ready rows, then to Delgado. | Seven cases sorted by status. Delgado on top, marked New. | Everything here is synthetic; the City of Miami is illustration only. In this scenario a permit decision takes a median of 34 days. Casework sits inside the Claude staff already use. The queue is sorted by how much judgment each case needs. Two are approve-ready, every criterion met and linked to evidence, under a minute each. Maria Delgado filed this morning: a backyard ADU and rooftop solar in one application. |
-| 0:25 | Click **Run review** on the Delgado row. | Three progress steps tick off: reading 7 documents, checking 12 criteria, finding similar past decisions. Case review opens, tagged Saved review. | In production this runs on arrival. For the demo, Claude generated each review from these exact documents and it was saved, so the walkthrough is repeatable. |
-| 0:47 | Look at the left pane, then at A3. | "12 criteria: 9 met, 3 flagged." A3 Setbacks is selected with two highlights: "5 ft 0 in" and "4 ft 6 in". | Nine criteria met, each linked to its evidence. Three flagged. First, setbacks: the site plan says five feet, the survey says four foot six. Claude marks it unclear. It does not guess. |
-| 1:12 | Click the source chip **R1 §ADU-3**, then close the drawer. Point to Similar past decisions. | The drawer shows the rule passage highlighted. The rule card lists four past decisions: three approved with waiver, one denied. | The rule is one click away, in the source the city uploaded. So are past decisions: three similar encroachments approved with a waiver, one denied. That is a judgment call, and it stays with the reviewer. |
-| 1:37 | Click **Next flagged**. | A5 Flood elevation: Not met. The elevation certificate shows "Not provided". | Second, no elevation certificate. Today that becomes a rejection letter three weeks from now. Here it is caught in the first minute. |
-| 1:52 | Click **Next flagged**. | X1 Electrical capacity: Not met. Highlights: "Added load: 48 A" and "Main service panel: 150 A, with a 40 A solar backfeed breaker". One past decision. | Third, the one two separate reviewers would miss. The ADU adds 48 amps, the solar backfeeds 40, the panel is 150. Each permit passes alone. Together they do not. |
-| 2:17 | Read the right pane. Replace the bracketed line with "You may apply for an administrative waiver for the rear setback." Point to the send options, then click **Send request for information**. | The recommendation reveals: Needs judgment, a rationale, the draft letter, three equal buttons. Send options show the reply due date, email and text reminders ticked, Spanish copy ticked. Then the Undo toast and the Queue. | Only now does the recommendation appear: evidence before verdict. Judgment is needed, so Claude proposes no action, and it never proposes denial. The letter is one consolidated request in plain language, not three rounds. I invite the waiver. Maria asked for Spanish, so a Spanish copy goes with it. Reminders go out by email and text, so the case never stalls in silence. I send, and I have ten seconds to undo. |
-| 3:02 | Click **Decision record** on the Delgado row, then close the drawer. | The row reads "Waiting on applicant" with a paused clock. Timeline: saved review, Rulebook v1.0, criteria opened, letter edited, request sent, reminders scheduled, reviewer. | Her clock is paused, so applicant time never counts against the city. Every action leaves a record: what was read, which rulebook version, what the human changed, who decided. That is what an appeals officer or an inspector general asks for. |
-| 3:15 | Open **Rulebook**. Click **Add source**, **Load example**, **Add**. Click **1 proposed change**, read the impact line, click **Approve change**. | Five sources. R6 appears as Processing, then "1 proposed change". Side-by-side S2, the impact line, the effective date. Toast: "Rulebook v1.1 published by J. Okafor." | Where do the rules come from? The city's own documents: code excerpts, the internal checklist, two years of closed cases. When a bulletin arrives a policy lead adds it, and Claude proposes the change with the passage cited. Before approving she sees the impact: 37 past decisions would have differed. It applies only to new applications, so nobody's rules change mid-application. A person approves, and Rulebook 1.1 is live. |
-| 4:00 | Open **Proving ground**. On the first X1 row, click **B is right**. | The 91% headline and bars by criterion, X1 at 79%. The row reveals that B was Claude; the tally moves to 41 of 108. | Before any of this touched a live case, Claude ran silently on 1,200 closed cases and agreed with the city 91% of the time. The disagreements matter most. Senior reviewers settle them blind: A or B, no names. Here B was Claude, and it caught the overloaded panel. Settled cases become the golden set. |
-| 4:28 | Open **Scoreboard**. Point to the tiles and the ladder. Click **Approve switch**. | 34 to 21 days, backlog 412 to 286, the team-level footnote, the trust ladder with Front door locked, the model card at 91% to 94%. | The director's view. Days to decision fell from 34 to 21; the backlog is down by a third. Figures are for the team, never for ranking individuals. The director decides how far up the trust ladder to go. When a stronger model ships it is re-run on the golden set first: 91 to 94. That is how stronger AI becomes a measurably better agency. |
-| 4:56 | Stay on the Scoreboard. | No change. | Casework: from seats to cases. |
+## The script
+
+### 0:00 · Queue
+
+**Do**
+1. Stay on the Queue.
+2. Point at the two Approve-ready rows (Alvarez, then Kim).
+3. Point at the Delgado row at the top, marked New.
+
+**Say**
+"Everything you'll see here is synthetic, and the City of Miami is used for illustration only. In this scenario a permit decision takes a median of 34 days. Casework sits inside the Claude that staff already use. The queue is sorted by how much judgment each case needs. These two are approve-ready: every criterion met and linked to its evidence, so each takes under a minute. And Maria Delgado filed this morning: a backyard ADU and rooftop solar, in one application."
+
+### 0:25 · Run review
+
+**Do**
+1. Click **Run review** on the Delgado row.
+2. Let the three steps tick: reading 7 documents, checking 12 criteria, finding similar past decisions. Case review opens with a "Saved review" tag.
+
+**Say**
+"In production this runs the moment an application arrives. For this demo, Claude generated each review from these exact documents, and it was saved, so the walkthrough is repeatable."
+
+### 0:47 · A3 Setbacks
+
+**Do**
+1. Point at "12 criteria: 9 met, 3 flagged." at the top of the left pane.
+2. Point at A3 Setbacks. It is already selected.
+3. Point at the two yellow highlights: "Rear setback: 5 ft 0 in" in the site plan notes, then "4 ft 6 in from the rear lot line" in the survey.
+
+**Say**
+"Nine criteria are met, each linked to its evidence. Three are flagged. First, setbacks. The site plan says five feet; the survey says four foot six. Claude marks it unclear. It doesn't guess."
+
+### 1:12 · The rule and the precedents
+
+**Do**
+1. Click the source chip **R1 §ADU-3** in the rule card. The drawer opens with the passage highlighted.
+2. Let it sit for a few seconds, then press **Escape**.
+3. Point at Similar past decisions: three Approved with waiver, one Denied.
+
+**Say**
+"The rule is one click away, in the source the city uploaded. So are past decisions: three similar encroachments were approved with a waiver, and one was denied. That's a judgment call, and it stays with the reviewer."
+
+### 1:37 · A5 Flood elevation
+
+**Do**
+1. Click **Next flagged**.
+2. Point at the dashed page marked "Not provided".
+
+**Say**
+"Second: there's no elevation certificate. Today that becomes a rejection letter three weeks from now. Here it's caught in the first minute."
+
+### 1:52 · X1 Electrical capacity
+
+**Do**
+1. Click **Next flagged**.
+2. Point at "Added load: 48 A", then at "Main service panel: 150 A, with a 40 A solar backfeed breaker".
+
+**Say**
+"Third, the one that two separate reviewers would miss. The ADU adds 48 amps, the solar backfeeds 40, and the panel is 150. Each permit passes on its own. Together, they don't."
+
+### 2:17 · The recommendation and the letter
+
+**Do**
+1. Look at the right pane: Needs judgment, the rationale, the draft letter, three equal buttons.
+2. Click into the letter, select the bracketed line, and type: **You may apply for an administrative waiver for the rear setback.**
+3. Point at the send options: reply due 5 Oct 2026, Email and Text message ticked, "Also send a Spanish copy" ticked.
+4. Click **Send request for information**. The Queue returns with the Undo toast counting down.
+
+**Say**
+"Only now does the recommendation appear: evidence before verdict. Judgment is needed, so Claude proposes no action, and it never proposes denial. The letter is one consolidated request in plain language, not three rounds of back and forth. I invite the waiver. Maria asked for Spanish on her form, so a Spanish copy goes with it. If she hasn't replied, reminders go out by email and text, so the case never stalls in silence. I send, and I have ten seconds to undo."
+
+### 3:02 · Decision record
+
+**Do**
+1. On the Delgado row, now at the bottom and marked Waiting on applicant with a paused clock, click **Decision record**.
+2. Let the timeline sit for a few seconds, then press **Escape**.
+
+**Say**
+"Her clock is paused, so applicant time never counts against the city. Every action leaves a record: what was read, which rulebook version, what the human changed, and who decided. That's what an appeals officer or an inspector general asks for."
+
+### 3:15 · Rulebook
+
+**Do**
+1. Click **Rulebook** in the sidebar. Five sources.
+2. Click **Add source**, then **Load example**, then **Add**. R6 appears as Processing, then "1 proposed change".
+3. Click **1 proposed change**. Point at the impact line.
+4. Click **Approve change**. Point at "Rulebook v1.1" in the top bar.
+
+**Say**
+"Where do the rules come from? The city's own documents: code excerpts, the internal checklist, and two years of closed cases. When a new bulletin arrives, a policy lead adds it, and Claude proposes the change with the passage cited. Before approving, she sees the impact: 37 past decisions would have differed. It applies only to new applications, so nobody's rules change mid-application. A person approves, and Rulebook 1.1 is live."
+
+### 4:00 · Proving ground
+
+**Do**
+1. Click **Proving ground**. Point at the X1 bar at 79%.
+2. Point at the first X1 row in the disagreement queue.
+3. Click **B is right**. The row reveals "B was Claude" and the tally moves to 41 of 108.
+
+**Say**
+"Before any of this touched a live case, Claude ran silently on 1,200 closed cases and agreed with the city 91 percent of the time. The disagreements matter most. Senior reviewers settle them blind: decision A or decision B, with no names. Here B was Claude, and it caught the overloaded panel. Settled cases become the golden set."
+
+### 4:28 · Scoreboard
+
+**Do**
+1. Click **Scoreboard**. Point at the days tile (34 to 21) and the backlog tile (412 to 286).
+2. Point at the footnote: figures are for the team.
+3. Point at the trust ladder, with Front door locked.
+4. Point at the model card, then click **Approve switch**.
+
+**Say**
+"This is the director's view. Days to decision fell from 34 to 21, and the backlog is down by a third. The figures are for the team, never for ranking individuals. The director decides how far up the trust ladder to go. When a stronger model ships, it's re-run on the golden set first: 91 to 94. That's how stronger AI becomes a measurably better agency."
+
+### 4:56 · Close
+
+**Do**
+Stay on the Scoreboard.
+
+**Say**
+"Casework: from seats to cases."
 
 ## If something goes wrong
 
-- A click lands somewhere unexpected: press Escape to close any drawer, and carry on from the Queue.
+- A click lands somewhere unexpected: press **Escape** to close any drawer, and carry on from the Queue.
 - Lost your place: click **Reset demo** and start again from the Queue.
 - Running long: skip the 3:02 beat first, then the click in the 4:00 beat.
 
 ## Keyboard shortcuts on Case review
 
-- Up and Down move between criteria.
-- N selects the next flagged criterion.
+- Up and Down move between criteria. N selects the next flagged criterion.
 - Escape closes any drawer or dialog.
