@@ -2,7 +2,7 @@
 
 Chat makes employees faster. Casework makes agencies faster.
 
-Casework is a review layer inside Claude Enterprise and Claude for Government. It prepares every case against an agency's own rules, and it proves its accuracy on that agency's closed cases before anyone relies on it. This repository is the clickable prototype that accompanies the memo *Casework: turning model capability into state capacity*.
+Casework is a review layer inside Claude Enterprise and Claude for Government. It prepares every case against an agency's own rules, and it proves its accuracy on that agency's closed cases before anyone relies on it. This repository is the clickable prototype that accompanies the memo [*Casework: turning model capability into state capacity*](docs/MEMO.md).
 
 ![Case review: the electrical finding, with its evidence, rule, and precedent](docs/screenshots/06-case-review-x1.png)
 
