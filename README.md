@@ -2,7 +2,7 @@
 
 Chat makes employees faster. Casework makes agencies faster.
 
-Casework is a review layer inside Claude Enterprise and Claude for Government. It prepares every case against an agency's own rules, and it proves its accuracy on that agency's closed cases before anyone relies on it. This repository is the clickable prototype that accompanies the memo [*Casework: turning model capability into state capacity*](docs/MEMO.md).
+Casework is a review layer inside Claude for Government and Claude Enterprise. It prepares every case against an agency's own rules, and it proves its accuracy on that agency's closed cases before anyone relies on it. This repository is the clickable prototype that accompanies the memo [*Casework: turning model capability into state capacity*](docs/MEMO.md).
 
 ![Case review: the electrical finding, with its evidence, rule, and precedent](docs/screenshots/06-case-review-x1.png)
 
@@ -15,41 +15,40 @@ Casework is a review layer inside Claude Enterprise and Claude for Government. I
 
 ## What the prototype has to prove
 
-The memo makes five claims. A prototype earns its place by making each one concrete enough to argue with.
-
 | The memo claims | Where you see it |
 | --- | --- |
-| Time to decision is wait, plus touch, plus rework, and chat only trims touch inside a case already open | The queue is sorted by how much judgment each case needs. One consolidated letter replaces three rounds. The applicant's clock pauses while she replies |
-| Claude catches what separate reviewers miss, and shows its work | The Delgado case, X1: each electrical sheet passes alone, and together they fail. Every finding is one click from its evidence, its rule, and its precedents |
-| Trust is earned per criterion, on the agency's own cases | Proving ground: 91% agreed, 95% on the golden set. Setbacks sits below the city's bar, so it stays at Second reader |
-| A stronger model becomes a measured gain | Scoreboard: a new model is re-run on the golden set first, and setbacks moves up a rung when the director says so |
-| Revenue can follow the mission | Scoreboard: calendar days to decision against a baseline and a comparison group, which is what a share of fees at risk would be measured on |
-
-## Four surfaces, one for each person who can say no
-
-| Surface | For | The question it answers |
-| --- | --- | --- |
-| Review (the Queue and Case review) | The reviewer | What do I open next, and what did Claude find? |
-| Rulebook | The policy lead | Where do the rules come from, and what changes if I approve this? |
-| Proving ground | The general counsel | How accurate is it on our own cases? |
-| Scoreboard | The director | Is the mission metric moving, and how far do we trust it? |
+| Much of a case's life is waiting and rework, and chat only trims the minutes inside an open case | The queue is sorted by what each case needs. One letter asks for everything missing. The applicant's clock pauses while she replies |
+| Claude catches what separate reviewers miss, and shows its work | Delgado, X1: each electrical sheet passes alone, and together they fail. Every finding is one click from its evidence, its rule, and its precedents |
+| Trust is earned per criterion on the agency's own cases, so a stronger model is a measured gain | Proving ground: 91% agreed, 95% on the golden set, and setbacks stays at Second reader. Scoreboard: a new model lifts setbacks over the bar, and the director moves it up |
+| The agency pays for results | Scoreboard: calendar days against the baseline, with a comparison group beside it, and accuracy on known-answer cases, the two numbers the share at risk would be paid on |
 
 ## Design decisions worth arguing with
 
-- **The reviewer never writes a prompt.** Opening a case shows the finished review. Prompting is a skill we should not require of every reviewer.
-- **Evidence before verdict.** The recommendation stays hidden until every flagged criterion has been opened. It is the cheapest defense against rubber-stamping.
-- **Claude can speed a yes, never automate a no.** It never proposes a denial. Only a person starts an adverse action.
-- **Agreement is not accuracy.** A disagreement is not an error until someone settles it, blind, and an agreement is not proof, so senior reviewers also relabel a random sample of agreed cases. Electrical capacity has the lowest agreement and the largest gain once settled, 79% to 94%, because the original reviewers approved two permits separately.
-- **A stronger model changes the scores, never the permissions.** Its new disagreements are settled blind first, and criteria move up one at a time, only when a person moves them.
-- **Two clocks, on purpose.** The queue clock pauses while a request is out, so no reviewer is blamed for the applicant's time. The metric a fee would be paid on never pauses: it counts calendar days, as the applicant lives them, so more requests can never look like speed.
-- **Rules never change mid-application.** Every change carries an effective date and a preview of its effect on past decisions.
-- **Team-level metrics only, with the override rate beside them.** The tool measures the mission, not the person. An override rate near zero would be a warning, not a win.
+- **The reviewer never writes a prompt.** Opening a case shows the finished review.
+- **Evidence before verdict.** The recommendation stays hidden until every flagged criterion has been opened.
+- **Claude can speed a yes, never propose a no.** Only a person starts an adverse action.
+- **Agreement is not accuracy.** Senior reviewers settle every disagreement blind and relabel a random sample of agreements, so a mistake Claude shares with the original reviewer still counts.
+- **Up takes a person; down takes nobody.** A criterion moves up a rung only when the director moves it, and drops a rung on its own when Claude's findings on known-answer cases slip.
+- **Two clocks, on purpose.** The queue clock pauses while a request is out, so no reviewer is blamed for the applicant's time. The metric the share at risk is paid on counts calendar days, so more requests can never look like speed.
+- **Team metrics only.** The tool measures the mission, not the person, and an override rate near zero is a warning, not a win.
+
+## Left out on purpose
+
+- **A second workflow.** Permits, SNAP, and federal reviews share one shape, and one case done properly shows it better than three done lightly.
+- **Denials.** Claude never drafts one.
+- **A blank chat box.** A reviewer can ask about a case, but the review never waits on a question.
+- **The Front door.** Checking applications before they are filed is the last rung, and it stays locked, because public-facing comes after trust.
+- **Colour for its own sake.** The interface is quiet so that the few things needing attention stand out.
+
+## What I got wrong on the way
+
+The first version of the hero finding added the new unit's load to the solar backfeed, as if the two currents stacked. They don't, and a plans examiner would have said so in a second. The real conflict is subtler. To fit a 40 A solar backfeed on a 150 A panel under the 120% busbar rule, the installer derated the main breaker to 125 A, and the backyard unit brings the house's load to 144 A. Each sheet passes on its own; together, 144 A sits on a 125 A breaker. [`src/lib/electrical.ts`](src/lib/electrical.ts) now states both rules as arithmetic, and the tests re-derive every electrical conclusion from the packets' numbers.
 
 ## What is real and what is not
 
-- **Real.** The seven saved reviews are Claude's output from the packet text, produced as described in [`docs/REVIEW_GENERATION.md`](docs/REVIEW_GENERATION.md). The tests hold that output to its packets: every quote is an exact substring, every ID exists, each recommendation follows the rules, and each electrical conclusion is re-derived from the packet's own numbers ([`src/lib/electrical.ts`](src/lib/electrical.ts)).
+- **Real.** The seven saved reviews are Claude's output from the packet text, produced as described in [`docs/REVIEW_GENERATION.md`](docs/REVIEW_GENERATION.md). The tests hold that output to its packets: every quote is an exact substring, every ID exists, each recommendation follows the rules, and each electrical conclusion is re-derived from the numbers.
 - **Illustrative.** Every figure on the Proving ground and the Scoreboard, every rule excerpt, and every name.
-- **Not built.** Live model calls (`reviewCase(caseId)` in `src/data/reviews/index.ts` is the seam), integrations, sign-in, persistence, and the applicant-facing Front door.
+- **Not built.** Live model calls (`reviewCase(caseId)` in `src/data/reviews/index.ts` is the seam), integrations, sign-in, and persistence.
 
 ## The four-minute demo
 
@@ -57,15 +56,15 @@ Click **Reset demo** first. The full script, with what to click and what to say,
 
 | Time | Beat | The point it lands |
 | --- | --- | --- |
-| 0:00 | Queue | Most of 34 days is waiting and rework, not reading |
+| 0:00 | Queue | Much of 34 days is waiting and rework, not reading |
 | 0:20 | Run review on Delgado | The reviewer never writes a prompt |
-| 0:35 | A3 Setbacks | Conflicts are marked unclear, not guessed. Setbacks is still at Second reader, so the call is the reviewer's |
+| 0:35 | A3 Setbacks | Conflicts are marked unclear, not guessed, and setbacks is still at Second reader |
 | 1:10 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
 | 1:20 | X1 Electrical capacity | Each sheet passes alone; together, 144 A of load sits on a 125 A breaker |
 | 1:50 | Recommendation and send | Evidence before verdict. One letter, in Spanish, with reminders, on the record |
 | 2:35 | Rulebook | A new bulletin becomes a proposed change, with its effect on 37 past decisions |
 | 3:10 | Proving ground | Agreement is not accuracy: electrical capacity is 79% agreed, 94% on the golden set |
-| 3:45 | Scoreboard | 34 to 21 days against a comparison group. A new model lifts setbacks over the bar, and the director moves it up |
+| 3:45 | Scoreboard | What the share at risk is paid on, and a new model that lifts setbacks over the bar |
 | 4:20 | Close | "Casework: from seats to cases." |
 
 ## Run it from source

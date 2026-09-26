@@ -14,7 +14,7 @@ One application from arrival to decision, then one screen each for the people wh
 
 **Do.** Stay on the Queue. Point at the two Approve-ready rows, then at Delgado at the top, marked New.
 
-**Say.** "Everything here is synthetic. In this scenario a permit takes a median of 34 days, and most of that is waiting and rework, not reading. Casework sits inside the Claude that staff already use, and the queue is sorted by how much judgment each case needs. Maria Delgado filed this morning: a backyard unit and rooftop solar, in one application."
+**Say.** "Everything here is synthetic. I've worked on permit and SNAP queues in Pennsylvania, and the pattern holds here: a permit takes a median of 34 days, much of it waiting and rework. Casework sorts the queue by how much judgment each case needs. Maria Delgado filed this morning: a backyard unit and rooftop solar, in one application."
 
 ### 0:20 · Run review
 
@@ -44,7 +44,7 @@ One application from arrival to decision, then one screen each for the people wh
 
 **Do.** Look at the right pane: Needs judgment, the rationale, the draft letter, three equal buttons. Select the bracketed line in the letter and type **You may apply for an administrative waiver for the rear setback.** Point at the send options, then click **Send request for information**.
 
-**Say.** "Only now does a recommendation appear: evidence before verdict. It is a judgment call, so Claude proposes no action, and it never proposes a denial. One letter replaces three rounds of rework, in Spanish because she asked, with reminders so it never stalls. Every step goes on the record: what was read, which rulebook, what I changed, and who decided."
+**Say.** "Only now does a recommendation appear: evidence before verdict. It is a judgment call, so Claude proposes no action, and it never proposes a denial. One letter asks for everything at once, in Spanish because she asked, with reminders so it never stalls. Every step goes on the record: what was read, which rulebook, what I changed, and who decided."
 
 ### 2:35 · Rulebook
 
@@ -56,13 +56,13 @@ One application from arrival to decision, then one screen each for the people wh
 
 **Do.** Click **Proving ground**. Point at 91% and 95%, then at the X1 row in the chart, where the ring and the dot are furthest apart. On the first X1 row of the disagreement queue, click **B is right**.
 
-**Say.** "Why trust any of it? Before touching a live case, Claude ran on a sample of 1,200 closed cases and agreed with the city 91% of the time. But agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a sample of agreements too. On electrical capacity Claude was usually right: the originals approved two permits separately. On that golden set Claude scores 95%, and the city's bar applies criterion by criterion."
+**Say.** "Why trust any of it? Before touching a live case, Claude ran on a sample of 1,200 closed cases and agreed with the city 91% of the time. But agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a sample of agreements too. On electrical capacity Claude was usually right, because the original reviewers judged each permit on its own. On that golden set Claude scores 95%, and the city's bar applies criterion by criterion."
 
 ### 3:45 · Scoreboard
 
-**Do.** Click **Scoreboard**. Point at the days tile and its comparison group, then at the override rate and the First review rung. Click **Approve switch**, then **Move A3 to First review**.
+**Do.** Click **Scoreboard**. Point at the days tile and its comparison group, then at the known-answer tile and the override rate. Click **Approve switch**, then **Move A3 to First review**, and point at the ladder's subtitle.
 
-**Say.** "The director's view: 34 calendar days down to 21, while permit types not yet on Casework barely moved. Reviewers still change 11% of findings, because zero would mean rubber-stamping. A new model arrives and is re-run on the golden set first. Setbacks rises to 91%, over the bar, so the director moves it up. That is what 'AI gets stronger' should mean for an agency."
+**Say.** "The director's view, and what we would be paid on: calendar days, down from 34 to 21 while permit types not yet on Casework barely moved, and accuracy on known-answer cases, which held. Reviewers still change 11% of findings; zero would mean rubber-stamping. A new model is run on the golden set first. Setbacks rises to 91%, over the bar, so the director moves it up, and if it ever slips it drops back on its own. That is what 'as AI gets stronger' should mean for an agency."
 
 ### 4:20 · Close
 

@@ -1,135 +1,109 @@
 # Casework: turning model capability into state capacity
 
-Sep 26, 2026 · Andrew Huot
+26 September 2026 · Andrew Huot
 
 ## Summary
 
-We should build Casework: a review layer inside Claude Enterprise and Claude for Government that prepares every case against an agency's own rules, and proves its accuracy on that agency's closed cases before anyone relies on it.
+We should build Casework, a review layer inside Claude for Government and Claude Enterprise that prepares every case against an agency's own rules and proves its accuracy on that agency's closed cases before anyone relies on it.
 
-Chat makes employees faster. It has not made agencies faster, because an agency is judged by its cases, and a case spends most of its life waiting or being reworked rather than being read. Casework works on the case itself, so it moves the number the agency answers for: days to decision.
+Chat makes employees faster. Casework makes agencies faster, and it earns each new responsibility on the agency's golden set, its past cases with settled answers, so every stronger model becomes a measured gain.
 
-What makes it work is the golden set: the agency's own past cases, with answers settled by its senior reviewers. It decides when Casework can go live, tests each new model before the switch, and checks that faster has not meant sloppier.
+We should sell it the way NASA bought cargo flights from SpaceX, with part of the fee at risk on results. The ask is one team for two quarters, gated at month six on routine permits decided 30% faster than a comparison group, with no loss of accuracy.
 
-The ask is one team for two quarters, with three design partners. At month six we continue only if median days to decision on routine cases have fallen by 30%, with no loss of accuracy.
+## 1. Where the time goes
 
-## 1. The problem: the mission is measured in cases
+In Pennsylvania I worked with Governor Shapiro's administration on permits and on SNAP applications, where accuracy now has a price. Under the One Big Beautiful Bill Act, from fiscal 2028 a state with a payment error rate of 6% or more pays [5% to 15% of its SNAP benefits](https://www.usda.gov/sites/default/files/guidance-documents/fns.snap-obbb-implementation.pdf). Pennsylvania's rate fell to [9.21%](https://www.fns.usda.gov/snap/qc/per) in fiscal 2025, which still means a bill of [up to $400 million a year](https://www.inquirer.com/politics/pennsylvania/snap-benefits-trump-pennsylvania-budget-20260920.html).
 
-State capacity is a government's ability to do what it has already decided to do. In civilian government, what runs short is rarely law or money. It is reviewer time.
+A city building permit, a state SNAP application, a federal land permit and a veteran's disability claim share one shape: evidence, a rulebook, a person who decides, and a record that must survive appeal. They differ mostly in their rules.
 
-Permits, claims, and drug approvals share one shape: a packet of evidence, judged against a rulebook, by a person, with a record that must survive appeal. A legislature can fund housing, but whether anything gets built depends on a plan reviewer's queue.
+Time to decision is waiting, plus the minutes someone works the case, plus rework. Only the middle term is review, and the other two take much of the time. San Francisco's median housing permit needed [three rounds of review](https://sfbos.org/sites/default/files/BLA_Post_Entitlement_Permitting_030526.pdf), and among recent permits the median took 114 days to issue while no department's median review ran past 30 days.
 
-Time to decision is wait time, plus touch time, plus rework. Chat trims touch time, and only inside a case a reviewer has already opened. It does not choose what to open next, catch a missing document before the first letter goes out, or notice that two permits conflict, so the minutes it saves rarely turn into more decisions. Meanwhile, rework sends an incomplete application to the back of the queue two or three times. A system that sorts the queue, prepares each case, and asks for everything missing in one letter changes all three.
+Chat shortens the minutes; staff in Pennsylvania's ChatGPT pilot reported saving an average of [95 minutes a day](https://www.pa.gov/governor/newsroom/2025-press-releases/-shapiro-administration-leads-the-way-in-ethical-use-of-ai). But it works inside a case someone has already opened. It does not choose what to open next, catch the missing document before the first letter, or notice that two permits conflict.
 
-The second problem is trust. Claude can already prepare most cases well, but an agency cannot use what it cannot audit. A general counsel needs to know Claude's accuracy on the agency's own cases, and an appeals officer needs to see how each decision was reached. What is missing is evidence, not capability, so each model release widens the gap between what Claude can do and what an agency can safely use.
+Trust is the other constraint. An agency cannot rely on what it cannot measure on its own cases. Each model release raises what Claude can do but not what the agency can prove, so the gap keeps widening.
 
 ## 2. The proposal
 
-Casework turns an agency's own rules into a reviewer's first pass. It has four surfaces, one for each person who can say no.
+Casework turns an agency's rulebook into a reviewer's first pass. It checks every criterion, links each finding to its evidence, rule and precedents, and drafts one letter asking for everything missing. A person makes every decision. Claude flags errors in both directions but never proposes a denial or a cut in benefits, because those carry due-process rights.
 
-| Surface | Built for | What it does |
-| --- | --- | --- |
-| Review | The reviewer | Checks every criterion, links each finding to its evidence, rule, and precedents, and drafts one consolidated letter |
-| Rulebook | The policy lead | Turns regulations and manuals into cited criteria and surfaces conflicts. Staff approve each change after seeing its effect on past cases |
-| Proving ground | The general counsel | Runs silently on closed cases. Senior reviewers settle disagreements blind, which builds the golden set |
-| Scoreboard | The director | Tracks days to decision, backlog, rework, and reversals, and sets how far Claude is trusted |
+The golden set, the agency's past cases with answers settled by its senior reviewers, does three jobs.
 
-Three rules make it safe to adopt. A person makes every decision, and Claude never proposes a denial, so it can speed up a yes but never automate a no. Casework sits on top of the agency's system of record instead of replacing it. And every review says what it did not check. Each decision leaves a record that holds up on appeal and audit.
+- **It earns trust.** Agreement with past decisions is not accuracy, so senior reviewers settle every disagreement blind and relabel a random sample of agreements, catching mistakes Claude shares with the original reviewer.
+- **It turns model progress into agency progress.** Each new model runs on the golden set before the switch, and any criterion that now clears the bar can move up.
+- **It keeps speed honest.** Cases with known answers, some carrying a deliberately wrong draft, enter the live queue unmarked, and staff know the practice exists. A faster agency cannot quietly become a sloppier one.
 
-Trust is earned one criterion at a time, on a five-rung ladder. A checklist rule, like a contractor license, can reach First review while a judgment call, like a setback waiver, stays at Second reader. A criterion moves up only when it clears the agency's threshold on the golden set, and only when a person moves it.
+Each criterion climbs on its own, so a license check can reach First review while a setback waiver stays at Second reader.
 
-| Rung | What Claude does | Risk to the agency |
-| --- | --- | --- |
-| 1. Shadow | Reviews closed cases and reports agreement | No live decisions; an export of case files to protect |
-| 2. X-ray | Sorts the live queue by what each case needs | Order of work only |
-| 3. Second reader | Checks the reviewer's call before it goes out | Can catch an error; the reviewer still decides |
-| 4. First review | Prepares each case before the reviewer opens it | Over-reliance, checked by showing evidence before the verdict, and by the override rate |
-| 5. Front door | Checks an application before it is filed | Public-facing, so it comes last |
+| Rung | What Claude does |
+| --- | --- |
+| 1. Shadow | Reviews closed cases; nothing reaches a live one |
+| 2. X-ray | Sorts the live queue by what each case needs |
+| 3. Second reader | Checks the reviewer's call before it goes out |
+| 4. First review | Prepares each case before the reviewer opens it |
+| 5. Front door | Checks an application before it is filed |
 
-The prototype (appendix) follows one synthetic application: a backyard unit and rooftop solar on one Miami house. Each permit passes on its own. Together, they ask more of the electrical panel than it can give, and Claude catches it in the first minute.
+A criterion moves up when it clears the agency's bar on the golden set and the director moves it. It moves down on its own when Claude's findings on known-answer cases, over a rolling window, fall below the bar.
 
-## 3. Why this is the next thing
+Why not something simpler? A Claude Project with a good prompt writes a good review but leaves no baseline, golden set, versioned rulebook or record an appeals officer will accept, and an AI plan checker speeds up one step for one code. Neither runs the queue or proves itself on the agency's own cases.
 
-The golden set is what makes Casework more than a better chat. It does four jobs.
+## 3. A long-term partner, the way SpaceX became one
 
-- **It earns trust.** No criterion goes live until the agency's own cases support it. Agreeing with past decisions is not the same as being right, so senior reviewers settle every disagreement blind and also relabel a random sample of agreements. A mistake Claude shares with the original reviewer still counts against it.
-- **It turns model progress into mission progress.** Each new model is run on the golden set before the switch, and its new disagreements are settled blind. A criterion that now clears the bar can move up a rung, so a better model shows up as a measured gain for the agency.
-- **It keeps speed honest.** Known-answer cases from the golden set are seeded into the live queue, so a faster agency cannot quietly become a sloppier one. That is what makes the outcome safe to price.
-- **It compounds.** Each settled case makes the next upgrade easier to prove. The agency owns the set, and it grows more valuable with every model we release.
+The dollar deals are running out. Our OneGov agreement runs to 31 October, and OpenAI moves to [usage pricing](https://www.gsa.gov/about-gsa/newsroom/news-releases/gsa-expands-onegov-ai-offerings-with-discounted-openais-chatgpt-09102026) on 1 October. What we sell next should be priced on what agencies exist to do.
 
-Why not a Project with a good prompt? A prompt produces a good review. It does not produce a baseline, a golden set, a versioned rulebook, or a record an appeals officer will accept. Those are the product.
+Agencies can buy Casework the way NASA learned to buy cargo for the space station. Starting in 2006, instead of building the vehicle itself, NASA paid SpaceX [$396 million](https://ntrs.nasa.gov/api/citations/20170008895/downloads/20170008895.pdf) against fixed milestones, SpaceX put in $454 million of its own, and NASA's cost model put the traditional route at ten times the price. NASA then bought cargo flights at a fixed price each, and SpaceX went on to fly astronauts and national security missions.
 
-I weighed four alternatives. **Detection** (outbreaks, fraud) has a narrower buyer and a counterfactual that is hard to measure; it should come second. **An applicant-facing check** takes public risk before trust is earned; it is rung five. **A dashboard** measures the mission without moving it. **A general agent platform** is a toolkit, and counsel needs something specific to approve.
+We should be that partner for the country's state capacity: we build and improve the capability, and the agency pays for what is delivered. Casework charges a platform fee and a fee per case, and 20% to 30% of those fees are at risk, paid only when calendar days to decision fall below the agency's baseline and decisions on known-answer cases stay as accurate as before. That is enough for an agency to notice and small enough for us to absorb a bad quarter, and [federal acquisition rules](https://www.acquisition.gov/far/subpart-37.6) already allow such incentives. At $25 a case, [VA claims](https://news.va.gov/press-room/va-reduces-backlog-of-veterans-waiting-for-va-benefits-by-57/) and [SSA disability decisions](https://www.ssa.gov/foia/resources/proactivedisclosure/2026/FY25%20Workload%20Data.pdf) alone, 5.2 million a year, would one day be worth $130 million a year.
 
-Adjudication also travels. A permit office and a benefits program have different rules but the same shape, in the US and abroad. And Casework puts our safety practice into the product: test before deploying, keep people in charge, show the work. Where the gatekeepers are lawyers and inspectors general, that is hard to copy.
+A partner should also be easy to replace; NASA kept a second cargo provider. The agency owns its rulebook, golden set and records, so it can test any model against them. That is the bet: we should win on the agency's own scoreboard, every year.
 
-## 4. How it fits the civilian strategy
+Getting in should be easy too. In 2025 I helped bring OpenAI's o-series models onto [Venado](https://www.energy.gov/nnsa/articles/nnsas-los-alamos-national-laboratory-launches-frontier-ai-models-venado-supercomputer), the NNSA supercomputer at Los Alamos, after it moved to a classified network, and I installed the weights myself. Casework asks far less of an agency. It ships inside Claude for Government, which is already [authorized at FedRAMP High](https://support.claude.com/en/articles/13756069-public-sector-faqs), so it should need a significant-change review rather than a new authorization. Agency data never trains a model, and the decision record stays open to FOIA and state right-to-know requests.
 
-The strategy is three layers on one engine, and Casework is the missing middle.
+## 4. Plan and the ask
 
-| Layer | Serves | Channel | Priced by |
-| --- | --- | --- | --- |
-| Claude Enterprise and Claude for Government | The employee | Direct | Seat |
-| Casework | The agency: case in, decision out | Direct in the same tenant, and embedded by software vendors | Case, with a share at risk |
-| API | Bespoke mission systems | Integrators and software vendors | Usage |
+Start with permits, in cities and states and then federal offices, and bring benefits and claims live later. Permit rules are closest to a checklist, a wrong answer costs less than a wrongly denied benefit, and federal agencies were told last year to adopt [automated screening and case management](https://permitting.innovation.gov/CEQ_Permitting_Technology_Action_Plan.pdf) for environmental reviews.
 
-**It lands where we already are.** I assume reviewers in our accounts already use chat for case work, and our account teams will know where. Shadow needs only an export of closed cases, with no live decisions and no integration, inside the authorization the agency has already granted. A pilot needs a feature flag, not a new procurement.
-
-**It feeds the channel.** Integrators build connectors and onboard rulebooks, with Claude Code doing much of the engineering. Case-management vendors embed the review through the API. The rulebook, golden set, and record stay in the agency's tenant, so partners extend Casework rather than replace it.
-
-**Revenue follows the mission.** Casework has a small platform fee and a fee per case. A capped share of fees, which I estimate at 20% to 30%, is earned only when calendar days to decision fall against the agency's own baseline and accuracy on known-answer cases holds. Chat cannot be priced this way, because it has no baseline. We are paid on speed and accuracy, never on whether the answer is yes or no. And days are counted on the calendar, as the applicant lives them, so sending more requests can never look like speed.
-
-**It leads to the public.** The order is the employee, then the agency, then the applicant, and each step is earned with evidence from the one before.
-
-## 5. Plan, measures, and the ask
-
-Start with state and local permits, then move to federal claims. Permit rules are checklist-like, the stakes are lower than a benefits denial, procurement is faster, and housing and energy make it urgent.
+SNAP stays in Shadow for at least six months, on the state's quality-control sample. That sample is already a golden set, re-examined every month to measure the error rate, so Casework can show which errors it would have caught before benefits went out.
 
 | When | What ships | With whom |
 | --- | --- | --- |
-| Months 0 to 3 | Rulebook and Shadow, working from exports | Three design partners: a city permit office and a state agency, plus a federal claims program in Shadow only |
-| Months 3 to 6 | X-ray, Second reader, and First review on live queues; a connector kit | The two permit partners, plus one integrator |
-| Months 6 to 12 | A Front door pilot, an embed API, the share at risk, claims beyond Shadow, and a decision on detection | Software vendors and the wider channel |
+| Months 0 to 3 | Rulebook and Shadow on exports of closed cases | A city building department; a state, for its permits and SNAP quality control |
+| Months 3 to 6 | X-ray, Second reader and First review on live permit queues; a connector kit | The same two, plus a federal land office in Shadow on categorical exclusions |
+| Months 6 to 12 | The share at risk, an embed API, SNAP and federal work beyond Shadow | Case-management vendors and integrators |
 
-The mission metric is median calendar days to decision, against each agency's own baseline. The business metric is cases reviewed. Three guardrails keep speed honest: accuracy on seeded known-answer cases holds, rework falls, and the reviewer override rate stays well above zero, since zero would mean rubber-stamping. Reversals on appeal are tracked too, but they lag and rarely catch a wrong approval. Rollouts are staggered by permit type, so each partner has a comparison group and we can see what Casework caused.
+The 30% comes from the rounds. Each round adds a wait for the applicant's reply and another for a reviewer to pick the case up, so if one complete letter saves one of a typical permit's three rounds, about a third of the elapsed time goes. Honolulu's AI plan checker, which cut review rounds from 3.4 to 1.4 on its [first 19 permits](https://www.govtech.com/artificial-intelligence/honolulu-launches-ai-assisted-fast-track-permit-review), also cut review time by more than half. Staggered rollouts give each partner a comparison group of permit types not yet on Casework.
 
-The ask is one product manager, one designer, five engineers, and one partner lead for two quarters. The gate at month six:
+The ask is one product manager, one designer, five engineers and one partner lead for two quarters. If we slip, the connector kit and live X-ray are cut first. The gate at month six:
 
-- First review covers the criteria behind most case volume, each at 90% or better on its golden set
-- A 30% cut in median calendar days to decision for routine cases
-- No drop in accuracy on known-answer cases
+- First review covers the criteria behind most permit volume, each at 90% or better on its golden set.
+- Median calendar days on routine permits filed since launch are down 30% against the comparison group.
+- Decisions on known-answer cases are no less accurate.
 
-## 6. Risks, and what would prove us wrong
+## 5. Risks, and what would prove me wrong
 
-The biggest risk is that reviewers stop checking.
+The biggest risk is that reviewers stop checking. Evidence comes before the verdict, the override rate sits on the director's screen, where a number near zero is a warning, and seeded cases with wrong drafts show whether anyone is still reading. People start every adverse action, consistency checks compare outcomes by neighborhood and language without collecting protected traits, and the Scoreboard measures teams, never individuals.
 
-| Risk | Response |
-| --- | --- |
-| Rubber-stamping | Evidence before verdict; override rate on the scoreboard; seeded known-answer cases |
-| Due process and disparate impact | Humans originate every adverse action; a full decision record; consistency checks across reviewers and applicant groups |
-| Workforce fear | Team-level metrics only; the pitch is clearing the backlog, not cutting staff |
+The likelier early failure is paperwork: data-sharing agreements and procurement, the partner lead's first job. Federal access is also unsettled. The Pentagon's designation stands for defense work after the 25 September ruling, and civilian use rests on a court injunction, one more reason to start with cities and states.
 
-I would stop or reshape the bet if, at month six:
+Short of the gate, I would extend by a quarter. I would stop or reshape the bet if, at month six:
 
-- **Golden-set scores stay below 85% on the criteria behind most case volume, after tuning.** The rules are less checkable than they look.
-- **Reviewers stop opening the evidence.** The design is not preventing rubber-stamping.
-- **Quality improves but days to decision does not.** The bottleneck is elsewhere, and Casework should be priced on quality alone.
+- golden-set scores stay below 85% on high-volume criteria after tuning, meaning the rules are less checkable than they look;
+- reviewers stop opening the evidence, meaning the design is not preventing rubber-stamping;
+- quality improves but days to decision do not, meaning the bottleneck is elsewhere.
 
-We will not build a case management system, a public chatbot, or autonomous adjudication.
-
-**Assumptions.** Most time to decision is wait and rework. Agencies can export closed cases with their outcomes. A new surface inside Enterprise inherits its authorization after a light review. Per-case fees with a share at risk can be bought as performance-based contracts. Targets will be reset against partner baselines. All prototype data is synthetic, and Miami is illustrative.
+We will not build a case management system, a public chatbot or autonomous adjudication.
 
 ## Appendix: the prototype in three screens
 
-A clickable prototype on synthetic data, with a four-minute walkthrough. The [repository](https://github.com/andrewhuot/casework-prototype) holds the code, the [walkthrough](https://github.com/andrewhuot/casework-prototype/blob/main/docs/walkthrough.mp4), and a [single-file build](https://github.com/andrewhuot/casework-prototype/releases/latest) that opens offline; its README maps each claim in this memo to the screen that shows it. I built it with Claude Code from a written spec, as I would here. The polish reflects agent time, not mine.
+The clickable prototype follows one synthetic application, a backyard unit and rooftop solar on one house, and its numbers are illustrative. The [repository](https://github.com/andrewhuot/casework-prototype) holds the code, a four-minute [walkthrough](https://github.com/andrewhuot/casework-prototype/blob/main/docs/walkthrough.mp4) and a [single-file build](https://github.com/andrewhuot/casework-prototype/releases/latest) that opens offline. I built it with Claude Code from a written spec.
 
 ![Review: the electrical finding, with its evidence, rule, and precedent](screenshots/06-case-review-x1.png)
 
-**Review, for the reviewer.** Each electrical sheet passes alone: the solar plan derates the main breaker to 125 A, and the new unit brings the load to 144 A. Together they fail. Every finding sits beside its evidence, its rule, and similar past decisions, and the recommendation stays hidden until each flag has been opened.
+**Review, for the reviewer.** Each electrical sheet passes alone, but together they put 144 A of load on a main breaker the solar plan derated to 125 A.
 
 ![Proving ground: agreement and golden-set score by criterion, and the blind disagreement queue](screenshots/15-proving-ground-settled.png)
 
-**Proving ground, for the general counsel.** Electrical capacity agrees with past decisions only 79% of the time, yet scores 94% once disagreements are settled blind, because the original reviewers approved the two permits separately. Setbacks, at 88%, stays at Second reader.
+**Proving ground, for the general counsel.** Electrical capacity agrees with past decisions 79% of the time but scores 94% once disagreements are settled blind, because the original reviewers judged each permit on its own. Setbacks, at 88%, stays at Second reader.
 
 ![Scoreboard: calendar days with a comparison group, the trust ladder, and a model update measured on the golden set](screenshots/16-scoreboard.png)
 
-**Scoreboard, for the director.** Calendar days to decision fall from 34 to 21, while permit types not yet on Casework move from 34 to 33. A new model lifts setbacks to 91% on the golden set, and it moves up a rung when the director says so.
+**Scoreboard, for the director.** Calendar days to decision fall from 34 to 21 while the comparison group goes from 34 to 33, and decisions on known-answer cases hold. A new model lifts setbacks to 91% on the golden set, and the director moves it up.
