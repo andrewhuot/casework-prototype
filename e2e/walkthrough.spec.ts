@@ -225,8 +225,8 @@ test.describe('four-minute demo script', () => {
     await expect(page.locator('[data-metric="backlog"]')).toContainText('Baseline 412');
     await expect(page.locator('[data-metric="rework"] [data-current]')).toHaveText('24%');
     await expect(page.locator('[data-metric="rework"]')).toContainText('Baseline 38%');
-    await expect(page.locator('[data-metric="reversed"] [data-current]')).toHaveText('2.9%');
-    await expect(page.locator('[data-metric="reversed"]')).toContainText('Baseline 3.1%');
+    await expect(page.locator('[data-metric="known"] [data-current]')).toHaveText('96.1%');
+    await expect(page.locator('[data-metric="known"]')).toContainText('Baseline 95.2%');
     await expect(page.locator('[data-usage-line]')).toContainText('Cases reviewed with Casework this quarter: 1,482.');
     await expect(page.locator('[data-override-line]')).toContainText("Reviewer changes to Claude's findings: 11%.");
     await expect(page.locator('[data-override-line]')).toContainText('A rate near zero would suggest rubber-stamping.');

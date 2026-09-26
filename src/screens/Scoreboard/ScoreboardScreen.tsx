@@ -1,4 +1,4 @@
-import { ArrowDownRight, Check, Lock, Sparkles } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Check, Lock, Sparkles } from 'lucide-react';
 import { useStore } from '@/app/store';
 import { BACKLOG_SERIES, CASES_REVIEWED_THIS_QUARTER, METRICS, METRIC_NOTES, MODEL_UPDATE, OVERRIDE_RATE, TRUST_LADDER, type MetricTile } from '@/data/scoreboard';
 import { AGREEMENT, THRESHOLD } from '@/data/provingGround';
@@ -62,7 +62,11 @@ export function ScoreboardScreen() {
                   Baseline {formatValue(tile, tile.baseline)}
                 </span>
                 <span className={cx(styles.tileChange, tile.neutral && styles.tileChangeNeutral, 'tnum')}>
-                  <ArrowDownRight size={12} strokeWidth={2.5} aria-hidden />
+                  {tile.current >= tile.baseline ? (
+                    <ArrowUpRight size={12} strokeWidth={2.5} aria-hidden />
+                  ) : (
+                    <ArrowDownRight size={12} strokeWidth={2.5} aria-hidden />
+                  )}
                   {change(tile)}
                 </span>
               </div>
@@ -134,7 +138,7 @@ export function ScoreboardScreen() {
           <Card className={styles.ladder} padded={false} data-trust-ladder>
             <div className={styles.ladderHead}>
               <h2 className={styles.cardTitle}>Trust ladder</h2>
-              <p className={styles.ladderSub}>The director moves criteria up one at a time, once they clear the rung's threshold.</p>
+              <p className={styles.ladderSub}>Up when the director says so. Down on its own if accuracy slips.</p>
             </div>
             <ol className={styles.rungs}>
               {[...TRUST_LADDER].reverse().map((rung, index) => {

@@ -8,7 +8,6 @@ export interface MetricTile {
   unit: 'days' | 'cases' | 'percent';
   /** Shown without a good-news colour, because the figure is too early to call. */
   neutral?: boolean;
-  /** Lower is better for every tile on this screen. */
   decimals?: number;
 }
 
@@ -16,7 +15,7 @@ export const METRICS: MetricTile[] = [
   { id: 'days', label: 'Median calendar days to decision', baseline: 34, current: 21, unit: 'days' },
   { id: 'backlog', label: 'Open backlog', baseline: 412, current: 286, unit: 'cases' },
   { id: 'rework', label: 'Rework rate', baseline: 38, current: 24, unit: 'percent' },
-  { id: 'reversed', label: 'Decisions reversed on appeal', baseline: 3.1, current: 2.9, unit: 'percent', decimals: 1, neutral: true },
+  { id: 'known', label: 'Accuracy on known-answer cases', baseline: 95.2, current: 96.1, unit: 'percent', decimals: 1 },
 ];
 
 /**
@@ -29,7 +28,7 @@ export const COMPARISON_GROUP = { baseline: 34, current: 33 };
 export const METRIC_NOTES: Record<string, string> = {
   days: `Permit types not yet on Casework: ${COMPARISON_GROUP.baseline} to ${COMPARISON_GROUP.current}`,
   rework: 'Sent back more than once',
-  reversed: 'Early read: appeals lag decisions',
+  known: 'Settled cases seeded into the live queue',
 };
 
 export const CASES_REVIEWED_THIS_QUARTER = 1482;

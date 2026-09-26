@@ -62,6 +62,6 @@ export const DISAGREEMENTS: Disagreement[] = [
 
 /**
  * 100 of 108 disagreements settled. Counting unclear and unsettled cases
- * against Claude, the golden-set score is (1,092 agreed + 46) / 1,192 = 95%.
+ * against Claude, the golden-set score is (1,092 agreed + 46) / 1,200 = 94.8%, shown as 95%.
  */
 export const INITIAL_TALLY = { settled: 100, total: 108, claude: 46, reviewer: 48, unclear: 6 };

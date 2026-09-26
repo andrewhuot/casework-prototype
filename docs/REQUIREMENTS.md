@@ -297,7 +297,7 @@ The screen separates two numbers that are easy to conflate. Agreement with the o
 - Settling is blind. A and B are the original decision and Claude's finding in random order, and original reviewers are never named.
 - The first X1 row reads: "A: both permits approved separately. B: the solar derate leaves the main breaker too small for the ADU load."
 - Each row has three buttons: "A is right", "B is right", "Unclear". A click reveals which side was Claude, greys the row, and updates the tally.
-- The tally starts at "100 of 108 settled: Claude right 46, reviewer right 48, unclear 6" and ends with "Settled cases become the golden set." Counting unclear and unsettled cases against Claude, the golden-set score is (1,092 agreed + 46) / 1,192 = 95%.
+- The tally starts at "100 of 108 settled: Claude right 46, reviewer right 48, unclear 6" and ends with "Settled cases become the golden set." Counting unclear and unsettled cases against Claude, the golden-set score is (1,092 agreed + 46) / 1,200 = 94.8%, shown as 95%.
 
 ## 8. Screen 5: Scoreboard
 
@@ -310,7 +310,7 @@ This screen shows the mission metric moving, and it is where the director contro
 | Median calendar days to decision | 34 | 21, with the comparison group beneath: "Permit types not yet on Casework: 34 to 33". Calendar days never pause, unlike the queue clock, so more requests cannot look like speed |
 | Open backlog (cases) | 412 | 286 |
 | Rework rate (sent back more than once) | 38% | 24% |
-| Decisions reversed on appeal | 3.1% | 2.9%, labelled "Early read: appeals lag decisions", with the change shown in neutral grey |
+| Accuracy on known-answer cases | 95.2% | 96.1%, labelled "Settled cases seeded into the live queue". It is the guardrail the fee at risk depends on, so the tile shows it holding |
 
 - One line under the tiles reads: "Cases reviewed with Casework this quarter: 1,482." It is the usage measure that per-case pricing would follow.
 - A second line reads: "Reviewer changes to Claude's findings: 11%." Its helper text says: "A rate near zero would suggest rubber-stamping."
@@ -323,7 +323,7 @@ This screen shows the mission metric moving, and it is where the director contro
 **Trust ladder**
 
 - Five rungs in a vertical list, each with a one-line description, its threshold on the golden set, and a state. Thresholds: X-ray 80%, Second reader 85%, First review 90% per criterion.
-- Trust is earned per criterion. A criterion is eligible for the highest rung its golden-set score clears, and moves up only when the director moves it.
+- Trust is earned per criterion. A criterion is eligible for the highest rung its golden-set score clears, and moves up only when the director moves it. It drops a rung on its own if its accuracy on known-answer cases, over a rolling window, falls below the bar. The ladder's subtitle says both.
 - Shadow: on. X-ray: on. Second reader: on. First review: on, "On for 11 of 12 criteria. A3 Setbacks at Second reader." Front door: locked, "planned for v2".
 - On Case review, a criterion below First review carries a "Second reader" tag with the tooltip "Below the city's 90% bar for First review on its golden set. Your call comes first; treat Claude's finding as a second read."
 - Each unlocked rung has an on/off switch that only changes its label. The locked rung's switch is disabled.
@@ -460,7 +460,7 @@ The table maps each line of the brief to where the prototype meets it.
 
 | The brief says | Where it is met |
 | --- | --- |
-| Mission transformation: agencies get measurably better at what they exist to do | Scoreboard: days to decision, backlog, rework, reversals (section 8) |
+| Mission transformation: agencies get measurably better at what they exist to do | Scoreboard: days to decision, backlog, rework, accuracy on known-answer cases (section 8) |
 | "Permits take days instead of months" | The vignette is a permit, and the script opens and closes on days to decision |
 | "As AI gets stronger" | Model update card: a new model is re-run on the golden set, and a criterion that now clears the bar moves up a rung when the director says so (section 8) |
 | Decided "faster and more accurately" | The cross-permit catch on X1, evidence-linked findings, and the golden-set score per criterion |
@@ -508,4 +508,5 @@ These small details show care for the three people the product touches: the revi
 - **Electrical capacity follows the 120% busbar rule.** The first version added ADU load amps to solar backfeed amps, which do not add. The packet now carries the real conflict, a main breaker derated to fit solar that cannot carry the ADU, and tests re-derive the finding from the packet's numbers.
 - **Trust is earned per criterion, on the golden set.** The first version applied one threshold to overall agreement while four criteria sat below it. The golden set now settles every disagreement blind and relabels a random sample of agreements, the threshold applies to each criterion's score on it, and a model switch lets the director move one criterion up.
 - **The script is four minutes.** The brief says three to five is plenty, and a shorter demo lands the argument harder.
-- **The measurement holds up to a skeptic.** The closed cases are a sample, the golden-set score reconciles with the tally, the days metric counts calendar days so extra requests cannot look like speed, the reversal rate is shown as too early to call, and the backlog chart is a line rather than a filled area on a cut axis.
+- **The measurement holds up to a skeptic.** The closed cases are a sample, the golden-set score reconciles with the tally, the days metric counts calendar days so extra requests cannot look like speed, the backlog chart is a line rather than a filled area on a cut axis.
+- **The guardrail is visible.** The reversal tile gave way to accuracy on known-answer cases, because reversals lag and rarely catch a wrong approval, and because known-answer accuracy is what the fee at risk is paid on. The trust ladder now says that criteria move down on their own.
