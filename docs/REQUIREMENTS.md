@@ -1,10 +1,10 @@
 # Casework prototype: requirements
 
-2026-09-20 · @Someone
+Andrew Huot · 20 Sep 2026, revised 26 Sep 2026 (see the revision note at the end)
 
 ## 1. Purpose and scope
 
-The deliverable is a five-minute, end-to-end demo, and section 11 is its script. Every requirement in this document exists to make that script run without a dead end.
+The deliverable is a four-minute, end-to-end demo, and section 11 is its script. Every requirement in this document exists to make that script run without a dead end.
 
 The demo shows a City of Miami reviewer clearing a combined ADU and rooftop solar application in minutes. Claude has already checked it against the city's own rules, and every finding links to its evidence, its rule, and similar past decisions. Three supporting screens show where the rules come from (Rulebook), how trust is earned (Proving ground), and how the mission metric moves (Scoreboard).
 
@@ -27,19 +27,11 @@ The demo shows a City of Miami reviewer clearing a combined ADU and rooftop sola
 - Evidence comes before verdict, and Claude never proposes denial.
 - Status always carries an icon and a text label, never colour alone.
 
-**Build path and your time**
+**Build path**
 
-Claude Code builds the prototype from this document and the handoff prompt, so the brief's 3 to 4 hours goes to your own work.
-
-| Your time | Minutes |
-| --- | --- |
-| Review the build against section 10 and ask for fixes | 45 |
-| Rehearse the section 11 script twice, then record | 45 |
-| Write the memo | 120 |
-
-- The brief says rough is fine. High fidelity is a choice here because the build costs agent time, not yours. Say so in one line of the memo or the recording.
+- Claude Code builds the prototype from this document, and the checks in sections 9 and 10 hold it to the spec. Fidelity is cheap when an agent does the building, so the prototype can be clickable without taking time from the product thinking.
 - Keep it prototype-shaped: no services, no deployment pipeline, no accounts.
-- The memo is the main deliverable, and nothing in this document writes it.
+- The memo carries the argument. This document specifies only what the prototype must show.
 
 ## 2. Scenario and synthetic data
 
@@ -55,13 +47,13 @@ The customer is the City of Miami Building Department, and the hero case is one 
 | Combined application form | Owner, parcel 01-4102-018-0420, scope of both projects, signature. Preferred language: Spanish. Contact: a synthetic email address and mobile number. Contractor: Sunward Electric LLC, licence EC13009999, expires 31 Aug 2027 |
 | ADU site plan notes | "Rear setback: 5 ft 0 in", "Side setback: 5 ft 6 in", "ADU floor area: 640 sq ft" |
 | Boundary survey | "Proposed ADU footprint is 4 ft 6 in from the rear lot line" |
-| ADU electrical load calculation | "New 60 A subpanel fed from the main panel. Added load: 48 A" |
-| Solar single-line diagram notes | "Main service panel: 150 A, with a 40 A solar backfeed breaker", inverter and disconnect shown |
+| ADU electrical load calculation | "New 60 A subpanel fed from the main panel. Added load: 48 A", "Existing house calculated load: 96 A. Total with the ADU: 144 A, within the 150 A service." |
+| Solar single-line diagram notes | "Main service panel: 150 A busbar. Main breaker derated to 125 A for a 40 A solar backfeed breaker.", the busbar check (125 A + 40 A = 165 A, within 180 A), inverter and disconnect shown. The diagram does not show the ADU |
 | Solar equipment and structural | Module and inverter spec sheets stating UL listing. Signed and sealed wind load letter for the High-Velocity Hurricane Zone. Roof plan with a 36 in pathway and an 18 in ridge setback |
 | Owner-occupancy affidavit | Notarised |
 
 - The elevation certificate is absent on purpose.
-- Expected review: nine criteria met and three flagged. A3 is unclear (5 ft 0 in against 4 ft 6 in). A5 is not met (no elevation certificate). X1 is not met (a 150 A panel cannot carry 48 A of new load plus a 40 A backfeed, and no upgrade is in scope).
+- Expected review: nine criteria met and three flagged. A3 is unclear (5 ft 0 in against 4 ft 6 in). A5 is not met (no elevation certificate). X1 is not met: each electrical sheet passes alone, but together they put 144 A of load on a main breaker the solar plan derated to 125 A. A 200 A panel fixes both, because 200 A + 40 A is exactly 120% of a 200 A busbar.
 - Expected recommendation: Needs judgment. The draft letter requests the elevation certificate and a panel upgrade or revised load calculation.
 - The letter also holds one bracketed line for the reviewer: "\[Reviewer to decide: invite an administrative waiver request, or require a revised site plan.\]" A saved Spanish version of the letter is stored with the case.
 
@@ -79,7 +71,7 @@ The customer is the City of Miami Building Department, and the hero case is one 
 | S3 | Rooftop solar | Wind load | Signed and sealed engineer's letter covers attachment in the High-Velocity Hurricane Zone | R2 §RS-5 |
 | S4 | Rooftop solar | Electrical diagram | Single-line diagram shows inverter, disconnect, and main panel rating | R2 §RS-6 |
 | S5 | Rooftop solar | Equipment listing | Spec sheets for modules and inverter each state a UL listing | R2 §RS-7 |
-| X1 | Across both | Electrical capacity | Main panel can carry the ADU load and the solar backfeed together, or a panel upgrade is in scope | R4 item 9 |
+| X1 | Across both | Electrical capacity | Main breaker carries the combined load, and main plus backfeed stay within 120% of the busbar, or an upgrade is in scope | R4 item 9 |
 | X2 | Across both | Consistency | Owner, parcel number, and address match across all documents | R4 item 1 |
 
 **Sources: the reference library**
@@ -283,13 +275,27 @@ The screen has two tabs, Sources (default) and Criteria. Its heading shows the c
 
 This screen shows how accurate Claude was on the city's own closed cases before anyone relied on it. All numbers are hard-coded.
 
-- Headline: "1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%." A source chip for R5 sits beside it.
-- Readiness banner: "Threshold for first review: 90%. Met."
-- One horizontal bar per criterion, grouped as in section 2, showing agreement: A1 98%, A2 97%, A3 84%, A4 99%, A5 88%, S1 97%, S2 86%, S3 90%, S4 93%, S5 96%, X1 79%, X2 95%.
-- One line under the bars: "Most disagreement sits in setbacks, roof pathways, and electrical capacity across permits."
+The screen separates two numbers that are easy to conflate. Agreement with the original decision is a floor on accuracy, because the original can be wrong. The golden set, which adds disagreements settled blind by senior reviewers, is the measure the city's thresholds apply to.
+
+- Headline: "1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%." Beside it, two figures: 91% agreed and 95% on the golden set. A source chip for R5 sits below.
+- A second line: "Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on 95%."
+- Readiness banner: "Threshold for First review: 90% on the golden set, per criterion. 11 of 12 met."
+- A dot plot per criterion, grouped as in section 2, on an axis from 70% to 100%. A ring marks agreement, a dot marks the golden-set score, and a dashed line marks the 90% threshold. Numbers sit at the right of each row.
+
+| Criterion | Agreed | Golden set | Criterion | Agreed | Golden set |
+| --- | --- | --- | --- | --- | --- |
+| A1 | 98% | 99% | S2 | 86% | 92% |
+| A2 | 97% | 98% | S3 | 90% | 94% |
+| A3 | 84% | 88% | S4 | 93% | 96% |
+| A4 | 99% | 99% | S5 | 96% | 97% |
+| A5 | 88% | 94% | X1 | 79% | 94% |
+| S1 | 97% | 98% | X2 | 95% | 96% |
+
+- A3 Setbacks is the only criterion below the threshold. Its row carries a "Second reader" tag.
+- One line under the plot: "Electrical capacity has the lowest agreement and one of the highest golden-set scores: most of those originals approved two permits separately and missed the combined load." When a criterion sits below the line, the note adds that it stays at Second reader.
 - Disagreement queue: "108 cases to settle". Show five rows with Case ID, criterion, "Decision A", "Decision B", and a one-line reason for each. Two of the five are X1 rows.
 - Settling is blind. A and B are the original decision and Claude's finding in random order, and original reviewers are never named.
-- The first X1 row reads: "A: both permits approved separately. B: combined load exceeds the 150 A panel."
+- The first X1 row reads: "A: both permits approved separately. B: the solar derate leaves the main breaker too small for the ADU load."
 - Each row has three buttons: "A is right", "B is right", "Unclear". A click reveals which side was Claude, greys the row, and updates the tally.
 - The tally starts at "40 of 108 settled: Claude right 19, reviewer right 17, unclear 4" and ends with "Settled cases become the golden set."
 
@@ -301,10 +307,10 @@ This screen shows the mission metric moving, and it is where the director contro
 
 | Metric | Baseline (Q1 2026) | Last 30 days |
 | --- | --- | --- |
-| Median days to decision | 34 | 21 |
+| Median days to decision | 34 | 21, with the comparison group beneath: "Permit types not yet on Casework: 34 to 33" |
 | Open backlog (cases) | 412 | 286 |
 | Rework rate (sent back more than once) | 38% | 24% |
-| Decisions reversed on appeal | 3.1% | 2.9% |
+| Decisions reversed on appeal | 3.1% | 2.9%, labelled "Early read: appeals lag decisions" |
 
 - One line under the tiles reads: "Cases reviewed with Casework this quarter: 1,482." It is the usage measure that per-case pricing would follow.
 - A second line reads: "Reviewer changes to Claude's findings: 11%." Its helper text says: "A rate near zero would suggest rubber-stamping."
@@ -316,14 +322,18 @@ This screen shows the mission metric moving, and it is where the director contro
 
 **Trust ladder**
 
-- Five rungs in a vertical list, each with a one-line description, its threshold, and a state.
-- Shadow: on. X-ray: on. Second reader: on. First review: on, "unlocked at 90% agreement". Front door: locked, "planned for v2".
+- Five rungs in a vertical list, each with a one-line description, its threshold on the golden set, and a state. Thresholds: X-ray 80%, Second reader 85%, First review 90% per criterion.
+- Trust is earned per criterion. Each criterion sits on the highest rung its golden-set score clears, and moves up only when the director moves it.
+- Shadow: on. X-ray: on. Second reader: on. First review: on, "On for 11 of 12 criteria. A3 Setbacks at Second reader." Front door: locked, "planned for v2".
+- On Case review, a criterion below First review carries a "Second reader" tag with the tooltip "Below the city's 90% threshold for First review on its golden set. Check this one yourself."
 - Each unlocked rung has an on/off switch that only changes its label. The locked rung's switch is disabled.
 
 **Model update card**
 
-- Text: "A new model is available. Golden set agreement: 91% to 94%. No criterion got worse."
-- An "Approve switch" button changes the card to "Switched to the new model. The rulebook is unchanged."
+- State 1: "A new model is available. Golden set: 95% to 97%. No criterion got worse." Beneath: "A3 Setbacks rises from 88% to 91%, above the 90% threshold. Every new model is re-run on the golden set before it touches a live case." Button: "Approve switch".
+- State 2: "Switched to the new model. The rulebook is unchanged." Beneath: "A3 Setbacks now clears the 90% threshold. Moving it up is the director's call." Button: "Move A3 to First review".
+- State 3: the ladder reads "On for all 12 criteria", the tag leaves A3 on Case review, and a toast confirms "A3 Setbacks moved to First review."
+- A stronger model changes the scores, never the permissions. That is the mechanism by which "AI gets stronger" becomes "this agency gets measurably better".
 
 ## 9. Review generation and data contract
 
@@ -360,7 +370,7 @@ The builder runs each packet through Claude with the instructions below, and sav
 - First decide which groups apply from the scope of work. Return every applicable criterion, in rulebook order, with exactly one status.
 - Copy evidence quotes character for character, 25 words at most and two per criterion at most. Use an empty list when the evidence is an absence.
 - When two documents conflict, mark the criterion unclear and quote both. Do not guess.
-- For X1, compare the ADU load and the solar backfeed against the main panel rating, and quote the load line and the panel line.
+- For X1, check both electrical sheets against one panel: the main breaker must carry the combined calculated load, and the main breaker plus the backfeed breaker must stay within 120% of the busbar. Quote the load total and the main breaker line.
 - List only prior decisions that share the criterion and resemble the facts. Never invent an ID.
 - Apply the recommendation logic from section 2. Never recommend denial.
 - The letter is polite, specific, and in plain language at about an eighth-grade reading level. It numbers the requested items, and for each one says what it is, why it is needed, and who can provide it.
@@ -373,6 +383,7 @@ The builder runs each packet through Claude with the instructions below, and sav
 - Every criterion ID and precedent ID exists in the data, and every applicable criterion appears exactly once.
 - Each recommendation follows the logic in section 2, and each case matches its expected result there.
 - The Delgado letter holds exactly one bracketed line, and its saved Spanish version says the same thing as the English.
+- Every X1 conclusion is re-derived from the numbers in its packet by two rules written as arithmetic (`src/lib/electrical.ts`): the main breaker carries the load, and main plus backfeed stay within 120% of the busbar.
 
 **Later, not now**
 
@@ -384,7 +395,7 @@ The build is done when the script in section 11 runs start to finish, and every 
 
 **Must work**
 
-- [ ] The section 11 script runs start to finish inside five minutes, with no dead end
+- [ ] The section 11 script runs start to finish in about four minutes, with no dead end
 - [ ] Navigation between Queue, Rulebook, Proving ground, and Scoreboard, with no sign-in and no setup
 - [ ] Queue sorting, filter chips, the first-visit hint, and the summary line updating after each change
 - [ ] "Run review" on the Delgado case: three readable progress steps, then the saved review with its "Saved review" tag and tooltip
@@ -400,8 +411,10 @@ The build is done when the script in section 11 runs start to finish, and every 
 - [ ] Waiting and Decided cases open a Decision record that lists the send options chosen
 - [ ] Source viewer, Past decision, Decision record, and Letter preview all use the same drawer
 - [ ] Add source with "Load example", the proposed S2 change with its impact line and effective date, approval, and v1.1 shown everywhere
-- [ ] Proving ground settles disagreements blind and reveals Claude's side after the click
-- [ ] Scoreboard renders the numbers given here, the override-rate line, and the team-level footnote
+- [ ] Proving ground shows agreement and the golden set per criterion, applies the threshold to the golden set, and settles disagreements blind, revealing Claude's side after the click
+- [ ] A3 carries a "Second reader" tag on Case review until the director moves it up
+- [ ] The model card moves through its three states, and moving A3 up updates the ladder and removes the tag
+- [ ] Scoreboard renders the numbers given here, the comparison group, the override-rate line, and the team-level footnote
 - [ ] "What this review does not cover" opens its note
 - [ ] "Reset demo" restores the starting state
 - [ ] The section 9 build-time checks pass
@@ -417,80 +430,51 @@ The build is done when the script in section 11 runs start to finish, and every 
 - [ ] Request-round warning on the Patel case
 - [ ] Adverse-action notice on Deny
 
-## 11. Five-minute demo flow and script
+## 11. Four-minute demo flow and script
 
-The demo follows one application from arrival to decision, then shows where the rules come from, why the city trusts them, and what changes for the mission. It runs 5:00 at a normal speaking pace.
+The demo follows one application from arrival to decision, then shows where the rules come from, why the city trusts them, and what changes for the mission. Each surface is shown to the person who can say no: the reviewer, the policy lead, the general counsel, and the director. It runs about 4:20 at a normal speaking pace.
 
 ```mermaid
 flowchart LR
-  Q[Queue] --> R[Run review] --> C[Case review] --> D[Decide and record] --> B[Rulebook] --> P[Proving ground] --> S[Scoreboard]
+  Q[Queue] --> R[Run review] --> C[Case review] --> D[Send one letter] --> B[Rulebook] --> P[Proving ground] --> S[Scoreboard]
 ```
 
-The first three minutes are the reviewer's story, and the last two are the policy lead's and the director's.
+The full script, with what to click and what to say, is in `docs/DEMO_SCRIPT.md`. Its beats:
 
-**Before recording**
-
-- Click "Reset demo" and start on the Queue, with the browser at 1440 px wide if you can, and never under 1280.
-- Rehearse twice with a timer. The script has almost no slack at 5:00.
-- The brief says 3 to 5 minutes is plenty. To land near 4:00, drop the 3:02 beat and the click in the 4:00 beat.
-- Treat the Say column as talking points and put them in your own words. The brief expects written output to be yours.
-
-**Script**
-
-| Time | Do | What appears | Say |
-| --- | --- | --- | --- |
-| 0:00 | Start on the Queue. Point to the two approve-ready rows, then to Delgado. | Seven cases sorted by status. Delgado is on top, marked New. | "Everything here is synthetic, and the City of Miami is used for illustration only. In this scenario, a permit decision takes a median of 34 days. Casework sits inside the Claude that staff already use, and the queue is sorted by how much judgment each case needs. Two are approve-ready, with every criterion met and linked to its evidence, so each takes under a minute. Maria Delgado filed this morning: a backyard ADU and rooftop solar, in one application." |
-| 0:25 | Click "Run review" on the Delgado row. | Three progress steps tick off: reading 7 documents, checking 12 criteria, finding similar past decisions. Case review opens, tagged Saved review. | "In production this runs on arrival. For this demo, Claude generated each review from these exact documents, and it was saved so the walkthrough is repeatable." |
-| 0:47 | Look at the left pane, then at A3. | "12 criteria: 9 met, 3 flagged." A3 Setbacks is selected, with two highlights: "5 ft 0 in" and "4 ft 6 in". | "Nine criteria are met, each linked to its evidence. Three are flagged. First, setbacks: the site plan says five feet and the survey says four foot six. Claude marks it unclear. It does not guess." |
-| 1:12 | Click the source chip "R1 §ADU-3", then close the drawer. Point to Similar past decisions. | The drawer shows the rule passage highlighted. The rule card lists four past decisions: three approved with waiver, one denied. | "The rule is one click away, in the source the city uploaded. So are past decisions. Three similar encroachments were approved with a waiver and one was denied. That is a judgment call, and it stays with the reviewer." |
-| 1:37 | Click "Next flagged". | A5 Flood elevation: Not met. The elevation certificate shows "Not provided". | "Second, there is no elevation certificate. Today that becomes a rejection letter three weeks from now. Here it is caught in the first minute." |
-| 1:52 | Click "Next flagged". | X1 Electrical capacity: Not met. Highlights: "Added load: 48 A" and "Main service panel: 150 A, with a 40 A solar backfeed breaker". One past decision. | "Third, the one that two separate reviewers would miss. The ADU adds 48 amps, the solar backfeeds 40, and the panel is 150. Each permit passes alone. Together they do not." |
-| 2:17 | Read the right pane. Replace the bracketed line with "You may apply for an administrative waiver for the rear setback." Point to the send options, then click "Send request for information". | The recommendation reveals: Needs judgment, a rationale, the draft letter, and three equal buttons. Send options show the reply due date, email and text reminders ticked, and the Spanish copy ticked. Then the Undo toast and the Queue. | "Only now does the recommendation appear: evidence before verdict. Judgment is needed, so Claude proposes no action, and it never proposes denial. The letter is one consolidated request in plain language, not three rounds of back and forth. I invite the waiver. Maria asked for Spanish on her form, so a Spanish copy goes with it. If she has not replied, reminders go out by email and text, so the case never stalls in silence. I send, and I have ten seconds to undo." |
-| 3:02 | Click "Decision record" on the Delgado row, then close the drawer. | The row reads "Waiting on applicant" with a paused clock. Timeline: saved review, Rulebook v1.0, criteria opened, letter edited, request sent, reminders scheduled, reviewer. | "Her clock is paused, so applicant time never counts against the city. Every action leaves a record: what was read, which rulebook version, what the human changed, and who decided. That is what an appeals officer or an inspector general asks for." |
-| 3:15 | Open Rulebook. Click "Add source", "Load example", "Add". Click "1 proposed change", read the impact line, then click "Approve change". | Five sources. R6 appears as Processing, then "1 proposed change". Side-by-side S2, the impact line, and the effective date. Toast: "Rulebook v1.1 published by J. Okafor." | "Where do the rules come from? The city's own documents: code excerpts, the internal checklist, and two years of closed cases. When a new bulletin arrives, a policy lead adds it, and Claude proposes the change with the passage cited. Before approving, she sees the impact: 37 past decisions would have differed. It applies only to new applications, so nobody's rules change mid-application. A person approves, and Rulebook 1.1 is live." |
-| 4:00 | Open Proving ground. On the first X1 row, click "B is right". | The 91% headline and bars by criterion, with X1 at 79%. The row reveals that B was Claude, and the tally moves to 41 of 108. | "Before any of this touched a live case, Claude ran silently on 1,200 closed cases and agreed with the city 91% of the time. The disagreements matter most. Senior reviewers settle them blind: decision A or decision B, with no names. Here B was Claude, and it caught the overloaded panel. Settled cases become the golden set." |
-| 4:28 | Open Scoreboard. Point to the tiles and the ladder. Click "Approve switch". | 34 to 21 days, backlog 412 to 286, the team-level footnote, the trust ladder with Front door locked, and the model card at 91% to 94%. | "This is the director's view. Days to decision fell from 34 to 21, and the backlog is down by a third. The figures are for the team, never for ranking individuals. The director decides how far up the trust ladder to go. When a stronger model ships, it is re-run on the golden set first: 91 to 94. That is how stronger AI becomes a measurably better agency." |
-| 4:56 | Stay on the Scoreboard. | No change. | "Casework: from seats to cases." |
-
-**If something goes wrong**
-
-- A click lands somewhere unexpected: press Escape to close any drawer, and carry on from the Queue.
-- Lost your place: click "Reset demo" and start again from the Queue.
-- Running long: skip the 3:02 beat first, then the click in the 4:00 beat.
+| Time | Beat | The point it lands |
+| --- | --- | --- |
+| 0:00 | Queue | Most of 34 days is waiting and rework, not reading. The queue is sorted by how much judgment each case needs |
+| 0:20 | Run review | The reviewer never writes a prompt |
+| 0:35 | A3 Setbacks | Conflicting documents are marked unclear, not guessed. Rule and precedents are one click away. Setbacks is still at Second reader, so the call is the reviewer's |
+| 1:10 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
+| 1:20 | X1 Electrical capacity | Each electrical sheet passes alone; together, 144 A of load sits on a 125 A breaker |
+| 1:50 | Recommendation and send | Evidence before verdict. One letter instead of three rounds, in Spanish, with reminders, on the record |
+| 2:35 | Rulebook | A new bulletin becomes a proposed change with its effect on 37 past decisions, for new applications only |
+| 3:10 | Proving ground | Agreement is a floor. Electrical capacity: 79% agreed, 94% on the golden set |
+| 3:45 | Scoreboard | 34 to 21 days against a comparison group of 34 to 33. A new model lifts setbacks over the bar, and the director moves it up |
+| 4:20 | Close | "Casework: from seats to cases." |
 
 ## 12. Fit with the exercise brief
 
-This document covers the prototype half of the brief in full, and it sets up the memo without writing it. The table maps each line of the brief to where it is met.
+The table maps each line of the brief to where the prototype meets it.
 
 | The brief says | Where it is met |
 | --- | --- |
 | Mission transformation: agencies get measurably better at what they exist to do | Scoreboard: days to decision, backlog, rework, reversals (section 8) |
 | "Permits take days instead of months" | The vignette is a permit, and the script opens and closes on days to decision |
-| "As AI gets stronger" | Model update card: a new model is re-run on the golden set before the switch (section 8) |
-| Decided "faster and more accurately" | The cross-permit catch on X1, evidence-linked findings, and the Proving ground agreement rate |
+| "As AI gets stronger" | Model update card: a new model is re-run on the golden set, and a criterion that now clears the bar moves up a rung when the director says so (section 8) |
+| Decided "faster and more accurately" | The cross-permit catch on X1, evidence-linked findings, and the golden-set score per criterion |
 | Today's usage is knowledge workers chatting in Claude Enterprise | Casework sits in the same navigation as Chats and Projects (section 3) |
-| Revenue follows mission success | The "Cases reviewed" usage line on the Scoreboard. Pricing itself belongs in the memo |
+| Revenue follows mission success | Days to decision against a baseline and a comparison group, which is what a share of fees at risk would be measured on, and the "Cases reviewed" usage line |
 | What to build next, and where it fits the strategy | The prototype shows the product. The strategy belongs in the memo |
-| A prototype, mockup, or sketch; a recording of 3 to 5 minutes is plenty | A clickable prototype with a single-file build, plus the script in section 11 |
+| A prototype, mockup, or sketch; a recording of 3 to 5 minutes is plenty | A clickable prototype with a single-file build, and a four-minute walkthrough of the section 11 script |
 | Do not use the company name in anything hosted publicly | The naming rule in section 3, enforced by a name check in the build |
 | Synthetic data is fine; do not chase real data | All data is invented and tagged on every screen (section 2) |
 | No cloud infrastructure, nothing production-shaped, no configuring services | Front-end only, with no network calls at runtime and no services to configure |
-| Rough is expected; plausibility matters and polish does not | The brief sets a floor, not a ceiling. High fidelity costs agent time here, not yours (section 1) |
+| Rough is expected; plausibility matters and polish does not | Plausibility is the bar, so the domain logic is checked (the electrical rules are tested) and the fidelity is a by-product of building with an agent (section 1) |
 | Where you lack a fact, make an assumption and state it | The assumptions listed below |
-| About 3 to 4 hours in total | Your own time is budgeted in section 1: review, rehearsal, recording, and the memo |
-| Written output is human produced | The memo is yours. The script's Say column is talking points to reword |
 
-**What to send**
-
-- The memo, about three pages, written by you. Include three screenshots: Case review on X1, the proposed S2 change, and the Scoreboard.
-- The screen recording of the section 11 script, sent as a file or an unlisted link.
-- Optionally, the single-file build of the prototype, or a share link if you choose to host it.
-
-**What this document does not cover**
-
-- The memo's argument: why this product is next, how it serves the Enterprise, Government, and integrator channels, pricing, sequencing, and risks.
-
-**Assumptions to state in the memo and the recording**
+**Assumptions**
 
 - All Miami figures, cases, and rules are invented. The city is used for illustration and has no involvement.
 - A large share of permit delay comes from rework loops and queue wait, not from decision time.
@@ -518,3 +502,9 @@ These small details show care for the three people the product touches: the revi
 | First-visit hint and "Reset demo" | Anyone opening the share link | The prototype explains itself without the recording | No |
 | Keyboard operation and accessibility basics | Reviewer | Reviewers work here all day, and government must meet accessibility law | No |
 | Request-round warning on a second request | Applicant | The goal is one round of questions, not three | If time allows |
+
+## Revision note, 26 Sep 2026
+
+- **Electrical capacity follows the 120% busbar rule.** The first version added ADU load amps to solar backfeed amps, which do not add. The packet now carries the real conflict, a main breaker derated to fit solar that cannot carry the ADU, and tests re-derive the finding from the packet's numbers.
+- **Trust is earned per criterion, on the golden set.** The first version applied one threshold to overall agreement while four criteria sat below it. Agreement is now shown as a floor, the threshold applies to each criterion's golden-set score, and a model switch lets the director move one criterion up.
+- **The script is four minutes.** The brief says three to five is plenty, and a shorter demo lands the argument harder.

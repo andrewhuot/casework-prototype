@@ -2,10 +2,10 @@ import { expect, test, type Page } from '@playwright/test';
 import { openQueue, runDelgadoReview, shot, watchConsole } from './helpers';
 
 /**
- * The section 11 script, beat by beat. Each step asserts what the "What
- * appears" column says and captures a screenshot into docs/screenshots.
+ * The section 11 script (docs/DEMO_SCRIPT.md), beat by beat. Each step
+ * asserts what should appear and captures a screenshot into docs/screenshots.
  */
-test.describe('five-minute demo script', () => {
+test.describe('four-minute demo script', () => {
   test('runs start to finish with no dead end', async ({ page }) => {
     const { errors, requests } = watchConsole(page);
 
@@ -24,7 +24,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-prototype-tag]')).toBeVisible();
     await shot(page, '01-queue');
 
-    // 0:25 Run review on the Delgado row.
+    // 0:20 Run review on the Delgado row.
     await page.locator('[data-case-row="MIA-2026-1187"] [data-run-review]').click();
     const progress = page.locator('dialog[data-dialog="run-review"]');
     await expect(progress.getByText('Reading 7 documents')).toBeVisible();
@@ -43,7 +43,7 @@ test.describe('five-minute demo script', () => {
     await expect.poll(() => tooltip.evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
     await page.mouse.move(700, 450);
 
-    // 0:47 Left pane, then A3.
+    // 0:35 Left pane, then A3 at Second reader.
     await expect(page.locator('[data-criteria-count]')).toHaveText('12 criteria: 9 met, 3 flagged.');
     await expect(page.locator('[data-criterion="A3"]')).toHaveAttribute('aria-selected', 'true');
     await expect(page.locator('[data-rule-card="A3"]')).toContainText('Setbacks');
@@ -58,7 +58,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-recommendation-gate]')).toContainText('Open the flagged criteria to see the recommendation (2 left)');
     await shot(page, '03-case-review-a3');
 
-    // 1:12 Source chip, then past decisions.
+    // 0:35 (cont.) Source chip, then past decisions.
     await page.getByRole('button', { name: 'Open source R1 §ADU-3' }).click();
     const drawer = page.locator('dialog[data-drawer="source"]');
     await expect(drawer).toBeVisible();
@@ -73,7 +73,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-rule-card="A3"] [data-precedents]').getByText('Approved with waiver')).toHaveCount(3);
     await expect(page.locator('[data-rule-card="A3"] [data-precedents]').getByText('Denied')).toHaveCount(1);
 
-    // 1:37 Next flagged: A5.
+    // 1:10 Next flagged: A5.
     await page.locator('[data-next-flagged]').click();
     await expect(page.locator('[data-criterion="A5"]')).toHaveAttribute('aria-selected', 'true');
     await expect(page.locator('[data-rule-card="A5"]')).toContainText('Flood elevation');
@@ -85,7 +85,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-recommendation-gate]')).toContainText('(1 left)');
     await shot(page, '05-case-review-a5');
 
-    // 1:52 Next flagged: X1.
+    // 1:20 Next flagged: X1.
     await page.locator('[data-next-flagged]').click();
     await expect(page.locator('[data-criterion="X1"]')).toHaveAttribute('aria-selected', 'true');
     await expect(page.locator('[data-rule-card="X1"]')).toContainText('Electrical capacity');
@@ -102,7 +102,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-next-flagged]')).toBeDisabled();
     await shot(page, '06-case-review-x1');
 
-    // 2:17 The recommendation reveals. Replace the bracketed line, then send.
+    // 1:50 The recommendation reveals. Replace the bracketed line, then send.
     const recommendation = page.locator('[data-recommendation]');
     await expect(recommendation).toBeVisible();
     await expect(recommendation).toContainText('Needs judgment');
@@ -144,7 +144,7 @@ test.describe('five-minute demo script', () => {
     await expect(page).toHaveURL(/#\/$/);
     await shot(page, '09-queue-after-send');
 
-    // 3:02 Decision record on the Delgado row.
+    // 1:50 (cont.) Decision record on the Delgado row: spoken over in the script, opened here to check it.
     const delgadoRow = page.locator('[data-case-row="MIA-2026-1187"]');
     await expect(delgadoRow).toHaveAttribute('data-status', 'waiting');
     await expect(delgadoRow).toContainText('Waiting on applicant');
@@ -161,7 +161,7 @@ test.describe('five-minute demo script', () => {
     await page.keyboard.press('Escape');
     await expect(record).toBeHidden();
 
-    // 3:15 Rulebook: add the bulletin, approve the change. (The Undo toast has drained by now.)
+    // 2:35 Rulebook: add the bulletin, approve the change. (The Undo toast has drained by now.)
     await expect(page.locator('[data-toast]')).toHaveCount(0, { timeout: 12000 });
     await page.getByRole('link', { name: 'Rulebook' }).first().click();
     await expect(page.locator('[data-rulebook-headline]')).toHaveText('Rulebook v1.0, approved by policy staff');
@@ -195,7 +195,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-criterion-row="S2"]')).toContainText('R6 §2');
     await shot(page, '13-rulebook-criteria-v11');
 
-    // 4:00 Proving ground: settle the first X1 row.
+    // 3:10 Proving ground: agreement and golden set; settle the first X1 row.
     await page.getByRole('link', { name: 'Proving ground' }).first().click();
     await expect(page.locator('[data-headline]')).toHaveText('1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%.');
     await expect(page.locator('[data-floor]')).toHaveText('Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on 95%.');
@@ -215,7 +215,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-tally]')).toContainText('Settled cases become the golden set.');
     await shot(page, '15-proving-ground-settled');
 
-    // 4:28 Scoreboard: tiles, ladder, model switch.
+    // 3:45 Scoreboard: tiles, comparison group, ladder, model switch, move A3 up.
     await expect(page.locator('[data-toast]')).toHaveCount(0, { timeout: 8000 });
     await page.getByRole('link', { name: 'Scoreboard' }).first().click();
     await expect(page.locator('[data-metric="days"] [data-current]')).toHaveText('21');
@@ -250,7 +250,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-move-up]')).toHaveCount(0);
     await shot(page, '17-scoreboard-switched');
 
-    // 4:56 Stay on the Scoreboard. No change.
+    // 4:20 Stay on the Scoreboard. No change.
     await expect(page.locator('[data-prototype-tag]')).toBeVisible();
 
     expect(errors, `console errors: ${errors.join('\n')}`).toEqual([]);

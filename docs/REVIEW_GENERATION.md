@@ -15,7 +15,7 @@ Nothing calls a model at runtime. `reviewCase(caseId)` in `src/data/reviews/inde
 1. Decide which groups apply from the scope of work: ADU criteria (A1 to A5) for an ADU, rooftop solar criteria (S1 to S5) for solar, X1 only when both are filed together, X2 always. Return every applicable criterion, in rulebook order, with exactly one status: `met`, `not_met`, or `unclear`.
 2. Copy evidence quotes character for character from the packet, 25 words at most and two per criterion at most. Use an empty list when the evidence is an absence.
 3. When two documents conflict, mark the criterion `unclear` and quote both. Do not guess.
-4. For X1, compare the ADU load and the solar backfeed against the main panel rating, and quote the load line and the panel line.
+4. For X1, check both electrical sheets against one panel: the main breaker must carry the combined calculated load, and the main breaker plus the backfeed breaker must stay within 120% of the busbar. Quote the load total and the main breaker line.
 5. List only prior decisions that share the criterion and resemble the facts. Never invent an ID.
 6. Recommendation: `approve_ready` when every applicable criterion is met; `needs_judgment` when any criterion is unclear or the packet asks for a variance or waiver; `needs_information` otherwise. Never recommend denial.
 7. `reason`: one line for the queue, under 12 words. `rationale`: two or three sentences.
@@ -36,8 +36,12 @@ Nothing calls a model at runtime. `reviewCase(caseId)` in `src/data/reviews/inde
 
 ## Checks at build time
 
-`npm test` runs `src/data/reviews.test.ts`, which enforces: every evidence quote is an exact substring of the document it names and sits inside one line so the highlighter can find it; every criterion and precedent ID exists and each applicable criterion appears exactly once in rulebook order; each recommendation follows the section 2 logic and matches the expected result for its case; the Delgado letter holds exactly one bracketed line and its Spanish version carries the same numbered items, dates, figures, and bracketed line; and each packet is within its word budget.
+`npm test` runs `src/data/reviews.test.ts` and `src/lib/electrical.test.ts`, which enforce: every evidence quote is an exact substring of the document it names and sits inside one line so the highlighter can find it; every criterion and precedent ID exists and each applicable criterion appears exactly once in rulebook order; each recommendation follows the section 2 logic and matches the expected result for its case; the Delgado letter holds exactly one bracketed line and its Spanish version carries the same numbered items, dates, figures, and bracketed line; each packet is within its word budget; and every X1 conclusion matches the two electrical rules applied to the numbers in its packet.
 
 ## Edits after checks
 
 None were needed. This section is updated if a check ever requires an edit.
+
+## Regenerations
+
+- **26 Sep 2026.** The first packets had an electrical error: the Delgado finding added ADU load amps to solar backfeed amps, which do not add. The electrical sheets were corrected (a main breaker derated to 125 A for solar, and a 144 A load that assumes the full 150 A), instruction 4 above was rewritten, and Claude re-ran the affected reviews from the corrected packets: Delgado (X1, S4, the reason, the rationale, and both letters), Patel (X1), and Chen (S4, after its backfeed breaker changed from 45 A to 40 A). Nothing else changed.
