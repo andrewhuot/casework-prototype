@@ -4,27 +4,37 @@ export type SettleChoice = 'a' | 'b' | 'unclear';
 
 export interface AgreementRow {
   id: CriterionId;
+  /** Agreement with the original decision. A floor on accuracy, because the original can be wrong. */
   agreement: number;
+  /** Score on the golden set: agreed cases plus disagreements settled blind by senior reviewers. */
+  goldenSet: number;
 }
 
-/** Agreement with the original decision on 1,200 closed cases, by criterion. */
+/**
+ * Shadow results on 1,200 closed cases, by criterion. The golden-set score is
+ * never below agreement: settling can only credit Claude where the original
+ * decision was wrong. Electrical capacity shows the gap most, because the
+ * originals approved two permits separately and missed the combined load.
+ */
 export const AGREEMENT: AgreementRow[] = [
-  { id: 'A1', agreement: 98 },
-  { id: 'A2', agreement: 97 },
-  { id: 'A3', agreement: 84 },
-  { id: 'A4', agreement: 99 },
-  { id: 'A5', agreement: 88 },
-  { id: 'S1', agreement: 97 },
-  { id: 'S2', agreement: 86 },
-  { id: 'S3', agreement: 90 },
-  { id: 'S4', agreement: 93 },
-  { id: 'S5', agreement: 96 },
-  { id: 'X1', agreement: 79 },
-  { id: 'X2', agreement: 95 },
+  { id: 'A1', agreement: 98, goldenSet: 99 },
+  { id: 'A2', agreement: 97, goldenSet: 98 },
+  { id: 'A3', agreement: 84, goldenSet: 88 },
+  { id: 'A4', agreement: 99, goldenSet: 99 },
+  { id: 'A5', agreement: 88, goldenSet: 94 },
+  { id: 'S1', agreement: 97, goldenSet: 98 },
+  { id: 'S2', agreement: 86, goldenSet: 92 },
+  { id: 'S3', agreement: 90, goldenSet: 94 },
+  { id: 'S4', agreement: 93, goldenSet: 96 },
+  { id: 'S5', agreement: 96, goldenSet: 97 },
+  { id: 'X1', agreement: 79, goldenSet: 94 },
+  { id: 'X2', agreement: 95, goldenSet: 96 },
 ];
 
 export const OVERALL_AGREEMENT = 91;
+export const OVERALL_GOLDEN_SET = 95;
 export const CLOSED_CASES = 1200;
+/** The city's threshold for First review, applied per criterion to the golden-set score. */
 export const THRESHOLD = 90;
 
 export interface Disagreement {

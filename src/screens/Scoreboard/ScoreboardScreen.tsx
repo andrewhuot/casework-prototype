@@ -1,6 +1,9 @@
 import { ArrowDownRight, Check, Lock, Sparkles } from 'lucide-react';
 import { useStore } from '@/app/store';
 import { BACKLOG_SERIES, CASES_REVIEWED_THIS_QUARTER, METRICS, METRIC_NOTES, MODEL_UPDATE, OVERRIDE_RATE, TRUST_LADDER, type MetricTile } from '@/data/scoreboard';
+import { AGREEMENT, THRESHOLD } from '@/data/provingGround';
+import { CRITERIA, CRITERIA_BY_ID } from '@/data/criteria';
+import { eligibleToMoveUp } from '@/lib/trust';
 import { BacklogChart } from '@/components/charts/BacklogChart';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -27,6 +30,12 @@ export function ScoreboardScreen() {
   const modelSwitched = useStore((s) => s.scoreboard.modelSwitched);
   const toggleRung = useStore((s) => s.toggleRung);
   const approveModelSwitch = useStore((s) => s.approveModelSwitch);
+  const firstReview = useStore((s) => s.scoreboard.firstReview);
+  const moveUp = useStore((s) => s.moveUpToFirstReview);
+  const eligible = eligibleToMoveUp(modelSwitched, firstReview);
+  const unlock = CRITERIA_BY_ID[MODEL_UPDATE.unlocks];
+  const unlockBefore = AGREEMENT.find((r) => r.id === MODEL_UPDATE.unlocks)?.goldenSet ?? 0;
+  const atSecondReader = CRITERIA.filter((c) => !firstReview.includes(c.id));
   const first = BACKLOG_SERIES[0]?.backlog ?? 0;
   const last = BACKLOG_SERIES[BACKLOG_SERIES.length - 1]?.backlog ?? 0;
 
@@ -88,15 +97,24 @@ export function ScoreboardScreen() {
               </span>
               <div className={styles.modelText}>
                 {modelSwitched ? (
-                  <p className={styles.modelHeadline} data-model-text>
-                    Switched to the new model. The rulebook is unchanged.
-                  </p>
+                  <>
+                    <p className={styles.modelHeadline} data-model-text>
+                      Switched to the new model. The rulebook is unchanged.
+                    </p>
+                    <p className={styles.modelSub} data-model-sub>
+                      {eligible.includes(unlock.id)
+                        ? `${unlock.id} ${unlock.shortName} now clears the ${THRESHOLD}% threshold. Moving it up is the director's call.`
+                        : `${unlock.id} ${unlock.shortName} is at First review, with every other criterion.`}
+                    </p>
+                  </>
                 ) : (
                   <>
                     <p className={styles.modelHeadline} data-model-text>
-                      A new model is available. Golden set agreement: {MODEL_UPDATE.before}% to {MODEL_UPDATE.after}%. No criterion got worse.
+                      A new model is available. Golden set: {MODEL_UPDATE.before}% to {MODEL_UPDATE.after}%. No criterion got worse.
                     </p>
-                    <p className={styles.modelSub}>Every new model is re-run on the golden set before it touches a live case.</p>
+                    <p className={styles.modelSub} data-model-sub>
+                      {unlock.id} {unlock.shortName} rises from {unlockBefore}% to {MODEL_UPDATE.goldenSet[unlock.id]}%, above the {THRESHOLD}% threshold. Every new model is re-run on the golden set before it touches a live case.
+                    </p>
                   </>
                 )}
               </div>
@@ -105,13 +123,18 @@ export function ScoreboardScreen() {
                   Approve switch
                 </Button>
               )}
+              {modelSwitched && eligible.includes(unlock.id) && (
+                <Button variant="primary" onClick={() => moveUp(unlock.id)} data-move-up>
+                  Move {unlock.id} to First review
+                </Button>
+              )}
             </Card>
           </div>
 
           <Card className={styles.ladder} padded={false} data-trust-ladder>
             <div className={styles.ladderHead}>
               <h2 className={styles.cardTitle}>Trust ladder</h2>
-              <p className={styles.ladderSub}>The director decides how far up to go. Each rung has a threshold on the golden set.</p>
+              <p className={styles.ladderSub}>The director moves criteria up one at a time, once they clear the rung's threshold.</p>
             </div>
             <ol className={styles.rungs}>
               {[...TRUST_LADDER].reverse().map((rung, index) => {
@@ -137,6 +160,13 @@ export function ScoreboardScreen() {
                         {rung.threshold}
                         {rung.note && <span className={styles.rungNote}> · {rung.note}</span>}
                       </div>
+                      {rung.id === 'first_review' && (
+                        <div className={styles.rungCoverage} data-first-review-coverage>
+                          {atSecondReader.length === 0
+                            ? `On for all ${CRITERIA.length} criteria.`
+                            : `On for ${CRITERIA.length - atSecondReader.length} of ${CRITERIA.length} criteria. ${atSecondReader.map((c) => `${c.id} ${c.shortName}`).join(', ')} at Second reader.`}
+                        </div>
+                      )}
                     </div>
                     <Switch checked={on} onChange={(v) => toggleRung(rung.id, v)} label={`${rung.name} rung`} disabled={rung.locked} />
                   </li>

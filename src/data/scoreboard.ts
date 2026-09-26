@@ -1,3 +1,5 @@
+import type { CriterionId } from './types';
+
 export interface MetricTile {
   id: string;
   label: string;
@@ -15,8 +17,17 @@ export const METRICS: MetricTile[] = [
   { id: 'reversed', label: 'Decisions reversed on appeal', baseline: 3.1, current: 2.9, unit: 'percent', decimals: 1 },
 ];
 
+/**
+ * The comparison group: median days to decision over the same period for
+ * permit types not yet on Casework. Rollouts stagger by permit type so the
+ * gain is measured, not assumed.
+ */
+export const COMPARISON_GROUP = { baseline: 34, current: 33 };
+
 export const METRIC_NOTES: Record<string, string> = {
+  days: `Permit types not yet on Casework: ${COMPARISON_GROUP.baseline} to ${COMPARISON_GROUP.current}`,
   rework: 'Sent back more than once',
+  reversed: 'Early read: appeals lag decisions',
 };
 
 export const CASES_REVIEWED_THIS_QUARTER = 1482;
@@ -51,13 +62,21 @@ export interface TrustRung {
 
 export const TRUST_LADDER: TrustRung[] = [
   { id: 'shadow', name: 'Shadow', description: 'Reviews closed cases and reports agreement. No live case is touched.', threshold: 'No threshold', on: true },
-  { id: 'xray', name: 'X-ray', description: 'Sorts the live queue by what each case needs, with findings beside each case.', threshold: '80% agreement on closed cases', on: true },
-  { id: 'second_reader', name: 'Second reader', description: 'Checks decisions before they go out. Catches errors, adds none.', threshold: '85% agreement on closed cases', on: true },
-  { id: 'first_review', name: 'First review', description: 'Prepares the case before the reviewer opens it. Evidence before verdict.', threshold: 'Threshold 90%', on: true, note: 'unlocked at 90% agreement' },
+  { id: 'xray', name: 'X-ray', description: 'Sorts the live queue by what each case needs.', threshold: '80% on the golden set', on: true },
+  { id: 'second_reader', name: 'Second reader', description: 'Checks decisions before they go out. Catches errors, adds none.', threshold: '85% on the golden set', on: true },
+  { id: 'first_review', name: 'First review', description: 'Prepares the case before the reviewer opens it. Evidence before verdict.', threshold: '90% on the golden set, per criterion', on: true },
   { id: 'front_door', name: 'Front door', description: 'Checks an application before it is filed. Public-facing, so it comes last.', threshold: 'No threshold set', on: false, locked: true, note: 'planned for v2' },
 ];
 
-export const MODEL_UPDATE = {
-  before: 91,
-  after: 94,
+/**
+ * A new model, re-run on the golden set before it touches a live case. No
+ * criterion gets worse, and setbacks cross the 90% threshold, so the director
+ * can move it up to First review.
+ */
+export const MODEL_UPDATE: { before: number; after: number; goldenSet: Record<CriterionId, number>; unlocks: CriterionId } = {
+  before: 95,
+  after: 97,
+  goldenSet: { A1: 99, A2: 99, A3: 91, A4: 99, A5: 96, S1: 99, S2: 95, S3: 96, S4: 97, S5: 98, X1: 96, X2: 98 },
+  unlocks: 'A3',
 };
+

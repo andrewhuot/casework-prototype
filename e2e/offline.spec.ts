@@ -69,6 +69,8 @@ test.describe('single-file build, offline', () => {
     await page.goto(`file://${file}#/scoreboard`);
     await page.locator('[data-approve-switch]').click();
     await expect(page.locator('[data-model-text]')).toHaveText('Switched to the new model. The rulebook is unchanged.');
+    await page.locator('[data-move-up]').click();
+    await expect(page.locator('[data-first-review-coverage]')).toHaveText('On for all 12 criteria.');
 
     expect(attempted, `network requests attempted: ${attempted.join('\n')}`).toEqual([]);
     expect(errors, `errors: ${errors.join('\n')}`).toEqual([]);

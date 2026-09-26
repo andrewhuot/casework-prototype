@@ -1,6 +1,8 @@
 import { Check, EyeOff } from 'lucide-react';
 import { useStore } from '@/app/store';
-import { CLOSED_CASES, DISAGREEMENTS, OVERALL_AGREEMENT, THRESHOLD, type SettleChoice } from '@/data/provingGround';
+import { CLOSED_CASES, DISAGREEMENTS, OVERALL_AGREEMENT, OVERALL_GOLDEN_SET, THRESHOLD, type SettleChoice } from '@/data/provingGround';
+import { MODEL_UPDATE } from '@/data/scoreboard';
+import { goldenSetScores } from '@/lib/trust';
 import { CRITERIA_BY_ID } from '@/data/criteria';
 import { AgreementBars } from '@/components/charts/AgreementBars';
 import { Banner } from '@/components/ui/Banner';
@@ -18,6 +20,12 @@ export function ProvingGroundScreen() {
   const settled = useStore((s) => s.provingGround.settled);
   const tally = useStore((s) => s.provingGround.tally);
   const settle = useStore((s) => s.settle);
+  const modelSwitched = useStore((s) => s.scoreboard.modelSwitched);
+  const scores = goldenSetScores(modelSwitched);
+  const overallGolden = modelSwitched ? MODEL_UPDATE.after : OVERALL_GOLDEN_SET;
+  const total = Object.keys(scores).length;
+  const meeting = Object.values(scores).filter((v) => v >= THRESHOLD).length;
+  const below = (Object.keys(scores) as (keyof typeof scores)[]).filter((id) => scores[id] < THRESHOLD).map((id) => CRITERIA_BY_ID[id].shortName);
   const settledCount = useCountUp(tally.settled);
   const claude = useCountUp(tally.claude);
   const reviewer = useCountUp(tally.reviewer);
@@ -30,12 +38,26 @@ export function ProvingGroundScreen() {
 
         <div className={styles.top}>
           <Card className={styles.headline}>
-            <div className={styles.bigNumber} data-headline-agreement>
-              {OVERALL_AGREEMENT}%
+            <div className={styles.numbers}>
+              <div className={styles.number}>
+                <div className={cx(styles.bigNumber, styles.bigNumberMuted)} data-headline-agreement>
+                  {OVERALL_AGREEMENT}%
+                </div>
+                <div className={styles.numberLabel}>agreed</div>
+              </div>
+              <div className={styles.number}>
+                <div className={styles.bigNumber} data-headline-golden>
+                  {overallGolden}%
+                </div>
+                <div className={styles.numberLabel}>golden set</div>
+              </div>
             </div>
             <div>
               <p className={styles.headlineText} data-headline>
                 {CLOSED_CASES.toLocaleString('en-US')} closed cases from 2024 to 2025. Claude agreed with the original decision on {OVERALL_AGREEMENT}%.
+              </p>
+              <p className={styles.floor} data-floor>
+                Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on {overallGolden}%.
               </p>
               <div className={styles.headlineChip}>
                 <SourceChip label="R5" onClick={() => openDrawer({ kind: 'source', sourceId: 'R5' })} />
@@ -45,17 +67,21 @@ export function ProvingGroundScreen() {
           </Card>
           <Banner tone="success" icon={Check} className={styles.readiness}>
             <span data-readiness>
-              Threshold for first review: {THRESHOLD}%. <strong>Met.</strong>
+              Threshold for First review: {THRESHOLD}% on the golden set, per criterion.{' '}
+              <strong>
+                {meeting} of {total} met.
+              </strong>
             </span>
           </Banner>
         </div>
 
         <div className={styles.grid}>
           <Card className={styles.barsCard}>
-            <h2 className={styles.cardTitle}>Agreement by criterion</h2>
-            <AgreementBars />
+            <h2 className={styles.cardTitle}>By criterion</h2>
+            <AgreementBars goldenSet={scores} />
             <p className={styles.barsNote} data-bars-note>
-              Most disagreement sits in setbacks, roof pathways, and electrical capacity across permits.
+              Electrical capacity has the lowest agreement and one of the highest golden-set scores: most of those originals approved two permits separately and missed the combined load.
+              {below.length > 0 && ` ${below.join(', ')} ${below.length === 1 ? 'sits' : 'sit'} below the line, so ${below.length === 1 ? 'it stays' : 'they stay'} at Second reader.`}
             </p>
           </Card>
 

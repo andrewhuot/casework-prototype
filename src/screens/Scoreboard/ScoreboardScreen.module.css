@@ -287,6 +287,13 @@
   font-weight: 500;
 }
 
+.rungCoverage {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--accent-700);
+  margin-top: 2px;
+}
+
 .footnote {
   margin-top: var(--space-4);
   font-size: var(--text-sm);

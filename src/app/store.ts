@@ -5,6 +5,8 @@ import { PROPOSED_S2_TEST } from '@/data/criteria';
 import { reviewCase } from '@/data/reviews';
 import { DISAGREEMENTS, INITIAL_TALLY, type SettleChoice } from '@/data/provingGround';
 import { TRUST_LADDER } from '@/data/scoreboard';
+import { CRITERIA_BY_ID } from '@/data/criteria';
+import { eligibleToMoveUp, initialFirstReview } from '@/lib/trust';
 import type { CaseStatus, CriterionId, CriterionStatus, Decision, Review, SendOptions, Source, SourceId, SourceStatus } from '@/data/types';
 import { DEMO_DATE, defaultReplyDue, reminderDates, type ISODate } from '@/lib/dates';
 
@@ -64,6 +66,8 @@ export interface ProvingGroundState {
 export interface ScoreboardState {
   rungs: Record<string, boolean>;
   modelSwitched: boolean;
+  /** Criteria at First review. The rest sit at Second reader until they clear the threshold and the director moves them up. */
+  firstReview: CriterionId[];
 }
 
 export interface AppState {
@@ -105,6 +109,7 @@ export interface AppState {
   settle: (rowId: string, choice: SettleChoice) => void;
   toggleRung: (rungId: string, on: boolean) => void;
   approveModelSwitch: () => void;
+  moveUpToFirstReview: (criterionId: CriterionId) => void;
 
   /* UI */
   dismissHint: () => void;
@@ -150,6 +155,7 @@ function initialScoreboard(): ScoreboardState {
   return {
     rungs: Object.fromEntries(TRUST_LADDER.map((r) => [r.id, r.on])),
     modelSwitched: false,
+    firstReview: initialFirstReview(),
   };
 }
 
@@ -414,6 +420,13 @@ export const useStore = create<AppState>()((set, get) => ({
 
   approveModelSwitch() {
     set((state) => ({ scoreboard: { ...state.scoreboard, modelSwitched: true } }));
+  },
+
+  moveUpToFirstReview(criterionId) {
+    const { scoreboard } = get();
+    if (!eligibleToMoveUp(scoreboard.modelSwitched, scoreboard.firstReview).includes(criterionId)) return;
+    set((state) => ({ scoreboard: { ...state.scoreboard, firstReview: [...state.scoreboard.firstReview, criterionId] } }));
+    get().pushToast({ message: `${criterionId} ${CRITERIA_BY_ID[criterionId].shortName} moved to First review.`, kind: 'success' });
   },
 
   dismissHint() {

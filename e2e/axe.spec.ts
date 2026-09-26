@@ -103,5 +103,7 @@ test.describe('accessibility', () => {
     await checkA11y(page, 'scoreboard');
     await page.locator('[data-approve-switch]').click();
     await checkA11y(page, 'scoreboard switched');
+    await page.locator('[data-move-up]').click();
+    await checkA11y(page, 'scoreboard criterion moved up');
   });
 });

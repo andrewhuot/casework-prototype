@@ -3,6 +3,8 @@ import { ChevronRight, PenLine } from 'lucide-react';
 import { useStore } from '@/app/store';
 import { Button } from '@/components/ui/Button';
 import { CriterionStatusChip, OutcomeChip, SourceChip } from '@/components/ui/Chip';
+import { Tooltip } from '@/components/ui/Tooltip';
+import { THRESHOLD } from '@/data/provingGround';
 import type { CriterionView } from '@/lib/caseReview';
 import { ChangeFindingDialog } from './dialogs';
 import styles from './RuleCard.module.css';
@@ -19,6 +21,7 @@ interface RuleCardProps {
 export function RuleCard({ caseId, view, next, onNext, notFound }: RuleCardProps) {
   const openDrawer = useStore((s) => s.openDrawer);
   const decided = useStore((s) => s.cases[caseId]?.status === 'decided' || s.cases[caseId]?.status === 'waiting');
+  const atFirstReview = useStore((s) => s.scoreboard.firstReview.includes(view.id));
   const [changeOpen, setChangeOpen] = useState(false);
 
   return (
@@ -29,6 +32,13 @@ export function RuleCard({ caseId, view, next, onNext, notFound }: RuleCardProps
           <h2 className={styles.name}>{view.shortName}</h2>
           <CriterionStatusChip status={view.status} size="sm" />
           {view.change && <span className={styles.changedTag}>Changed by reviewer</span>}
+          {!atFirstReview && (
+            <Tooltip text={`Below the city's ${THRESHOLD}% threshold for First review on its golden set. Check this one yourself.`}>
+              <span className={styles.rungTag} data-rung-tag>
+                Second reader
+              </span>
+            </Tooltip>
+          )}
         </div>
         <Button variant="secondary" size="sm" iconRight={ChevronRight} disabled={!next} onClick={onNext} data-next-flagged title={next ? `Go to ${next}` : 'No more flagged criteria'}>
           Next flagged
