@@ -5,7 +5,6 @@ import { MODEL_UPDATE } from '@/data/scoreboard';
 import { goldenSetScores } from '@/lib/trust';
 import { CRITERIA_BY_ID } from '@/data/criteria';
 import { AgreementBars } from '@/components/charts/AgreementBars';
-import { Banner } from '@/components/ui/Banner';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Chip, SourceChip } from '@/components/ui/Chip';
@@ -59,20 +58,20 @@ export function ProvingGroundScreen() {
               <p className={styles.floor} data-floor>
                 Agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a random sample of agreed cases, so shared mistakes count too. On that golden set, Claude is right on {overallGolden}%.
               </p>
-              <div className={styles.headlineChip}>
-                <SourceChip label="R5" onClick={() => openDrawer({ kind: 'source', sourceId: 'R5' })} />
-                <span className={styles.headlineHint}>Closed cases 2024 to 2025</span>
+              <div className={styles.headlineFoot}>
+                <span className={styles.readiness}>
+                  <Check size={14} strokeWidth={2.5} className={styles.readinessIcon} aria-hidden />
+                  <span data-readiness>
+                    Threshold for First review: {THRESHOLD}% on the golden set, per criterion.{' '}
+                    <strong>
+                      {meeting} of {total} met.
+                    </strong>
+                  </span>
+                </span>
+                <SourceChip label="R5" size="sm" onClick={() => openDrawer({ kind: 'source', sourceId: 'R5' })} />
               </div>
             </div>
           </Card>
-          <Banner tone="success" icon={Check} className={styles.readiness}>
-            <span data-readiness>
-              Threshold for First review: {THRESHOLD}% on the golden set, per criterion.{' '}
-              <strong>
-                {meeting} of {total} met.
-              </strong>
-            </span>
-          </Banner>
         </div>
 
         <div className={styles.grid}>

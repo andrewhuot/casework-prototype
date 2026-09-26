@@ -19,10 +19,8 @@
 }
 
 .headerLabel {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -38,10 +36,8 @@
 }
 
 .groupLabel {
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--text-muted);
   margin: 4px 0 2px;
 }
@@ -73,8 +69,8 @@
 .belowTag {
   font-size: var(--text-xs);
   font-weight: 600;
-  color: var(--violet-fg);
-  background: var(--violet-bg);
+  color: var(--text-secondary);
+  background: var(--bg-hover);
   padding: 0 5px;
   border-radius: var(--radius-sm);
   white-space: nowrap;

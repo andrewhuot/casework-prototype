@@ -45,8 +45,9 @@
 }
 
 .tileCurrent {
+  font-family: var(--font-display);
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
   color: var(--text-primary);
@@ -145,14 +146,11 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  border-color: var(--accent-200);
-  background: var(--accent-50);
   transition: background-color var(--dur-slow) var(--ease-out), border-color var(--dur-slow) var(--ease-out);
 }
 
 .modelCardDone {
-  border-color: var(--green-border);
-  background: var(--green-bg);
+  background: var(--bg-surface);
 }
 
 .modelIcon {
@@ -162,15 +160,14 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--bg-surface);
-  color: var(--accent-600);
+  background: var(--bg-hover);
+  color: var(--text-primary);
   flex: none;
-  border: 1px solid var(--accent-200);
 }
 
 .modelCardDone .modelIcon {
   color: var(--green-icon);
-  border-color: var(--green-border);
+  background: var(--green-bg);
 }
 
 .modelText {
@@ -224,7 +221,7 @@
 }
 
 .rungLocked {
-  background: repeating-linear-gradient(-45deg, transparent 0 8px, rgba(22, 27, 34, 0.025) 8px 16px), var(--bg-subtle);
+  background: var(--bg-subtle);
   color: var(--text-muted);
 }
 
@@ -235,10 +232,10 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--accent-100);
-  color: var(--accent-700);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
   font-size: var(--text-xs);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .rungLocked .rungLevel {
@@ -288,14 +285,14 @@
 }
 
 .rungNote {
-  color: var(--accent-700);
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .rungCoverage {
   font-size: var(--text-xs);
   font-weight: 500;
-  color: var(--accent-700);
+  color: var(--text-primary);
   margin-top: 2px;
 }
 

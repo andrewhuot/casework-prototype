@@ -152,11 +152,12 @@ function UsedFor({ source, version }: { source: Source; version: '1.0' | '1.1' }
   const ids: CriterionId[] = source.id === 'R6' && version === '1.0' ? [] : source.usedFor;
   if (ids.length === 0) return <span className={styles.usedMuted}>Reference only</span>;
   return (
-    <span className={styles.chips}>
-      {ids.map((id) => (
-        <Chip key={id} tone="neutral" size="sm" title={CRITERIA_BY_ID[id].shortName}>
+    <span className={styles.usedText}>
+      {ids.map((id, i) => (
+        <span key={id} title={CRITERIA_BY_ID[id].shortName}>
+          {i > 0 && ', '}
           {id}
-        </Chip>
+        </span>
       ))}
     </span>
   );

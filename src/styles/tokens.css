@@ -3,39 +3,45 @@
 :root {
   color-scheme: light;
 
-  /* Neutral scale (cool grey) */
+  /* Neutral scale (warm stone). The interface stays neutral so that colour
+     only ever marks something that needs attention, or the evidence itself. */
   --gray-0: #ffffff;
-  --gray-25: #fcfcfd;
-  --gray-50: #f7f8fa;
-  --gray-100: #eff1f4;
-  --gray-150: #e6e9ed;
-  --gray-200: #dde1e6;
-  --gray-300: #c8ced6;
-  --gray-400: #9aa3b0;
-  --gray-500: #5f6a78;
-  --gray-600: #4d5866;
-  --gray-700: #3a4350;
-  --gray-800: #272e38;
-  --gray-900: #161b22;
+  --gray-25: #fcfbf9;
+  --gray-50: #f7f6f3;
+  --gray-100: #f0eee9;
+  --gray-150: #e8e5df;
+  --gray-200: #dfdbd3;
+  --gray-300: #cac5bb;
+  --gray-400: #a29d93;
+  --gray-500: #6b665e;
+  --gray-600: #55514a;
+  --gray-700: #3e3b36;
+  --gray-800: #2a2825;
+  --gray-900: #1c1b19;
 
-  /* Accent (one colour) */
-  --accent-50: #eef3ff;
-  --accent-100: #dce6ff;
-  --accent-200: #b8ccff;
-  --accent-300: #8aabff;
-  --accent-500: #2f5fe0;
-  --accent-600: #244fc4;
-  --accent-700: #1c3f9f;
+  /* Accent (one colour, used sparingly: links, selection, focus, charts) */
+  --accent-50: #f1f4fc;
+  --accent-100: #e2e8f8;
+  --accent-200: #c5d0f0;
+  --accent-300: #9fb0e4;
+  --accent-500: #3a58c4;
+  --accent-600: #2e49a8;
+  --accent-700: #243b8a;
+
+  /* Ink: the primary action */
+  --ink: var(--gray-900);
+  --ink-hover: var(--gray-800);
+  --ink-active: var(--gray-700);
 
   /* Status tints: background, foreground text, icon, border. Each foreground
-     passes 4.5:1 on its own background. */
-  --blue-bg: #e8effe;   --blue-fg: #1e46b8;   --blue-icon: #2f5fe0;   --blue-border: #c5d5fb;
-  --green-bg: #e3f5ea;  --green-fg: #146c3a;  --green-icon: #1f8a4c;  --green-border: #b9e4c9;
-  --amber-bg: #fdf0d5;  --amber-fg: #8a4b0b;  --amber-icon: #c77414;  --amber-border: #f2d59a;
-  --violet-bg: #efeafd; --violet-fg: #5b3bb5; --violet-icon: #7c5cd6; --violet-border: #d6cbf6;
-  --slate-bg: #e8edf3;  --slate-fg: #3b4a5e;  --slate-icon: #5b6b82;  --slate-border: #cbd5e1;
-  --neutral-bg: #eceef1;--neutral-fg: #4b5361;--neutral-icon: #6f7a89;--neutral-border: #d5d9df;
-  --red-bg: #fdeaea;    --red-fg: #a3262b;    --red-icon: #c9353b;    --red-border: #f3c3c5;
+     passes 4.5:1 on its own background and on white. */
+  --blue-bg: #edf1fb;   --blue-fg: #2c46a3;   --blue-icon: #3a58c4;   --blue-border: #d3dcf4;
+  --green-bg: #e9f3ec;  --green-fg: #1f6a41;  --green-icon: #2f8752;  --green-border: #cfe5d6;
+  --amber-bg: #fbf0de;  --amber-fg: #86470d;  --amber-icon: #bf7417;  --amber-border: #f0dab4;
+  --violet-bg: #f0ecf9; --violet-fg: #583da8; --violet-icon: #7659c8; --violet-border: #ddd4f2;
+  --slate-bg: #eeece7;  --slate-fg: #4d4943;  --slate-icon: #7a756c;  --slate-border: #dcd8d0;
+  --neutral-bg: #efede8;--neutral-fg: #4f4b45;--neutral-icon: #7a756c;--neutral-border: #dcd8d0;
+  --red-bg: #fbeceb;    --red-fg: #a02e2c;    --red-icon: #c0403c;    --red-border: #f1cfcd;
 
   /* Evidence highlight */
   --highlight-bg: #fff1a3;
@@ -53,8 +59,8 @@
   --drawing-line: #3d4652;
   --drawing-light: #9aa3b0;
   --drawing-fill: #eef1f5;
-  --drawing-accent: #2f5fe0;
-  --drawing-accent-fill: #dce6ff;
+  --drawing-accent: #3a58c4;
+  --drawing-accent-fill: #e2e8f8;
 
   /* Semantic aliases */
   --bg-app: var(--gray-50);
@@ -62,8 +68,9 @@
   --bg-subtle: var(--gray-50);
   --bg-hover: var(--gray-100);
   --bg-active: var(--gray-150);
-  --bg-selected: var(--accent-50);
+  --bg-selected: var(--gray-100);
   --border-subtle: var(--gray-150);
+  --border-hairline: rgba(28, 27, 25, 0.08);
   --border-default: var(--gray-200);
   --border-strong: var(--gray-300);
   --text-primary: var(--gray-900);
@@ -79,6 +86,9 @@
   --font-ui: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Source Serif 4 Variable', 'Iowan Old Style', Georgia, serif;
   --font-hand: 'Caveat', 'Bradley Hand', cursive;
+  /* Page titles share the serif of the paper documents, so the product reads
+     as one calm document rather than a dashboard. */
+  --font-display: var(--font-serif);
   --text-xs: 11px;
   --text-sm: 12px;
   --text-md: 13px;
@@ -105,15 +115,15 @@
 
   /* Radius */
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  --radius-md: 7px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   --radius-full: 999px;
 
   /* Elevation */
-  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06), 0 0 0 1px rgba(16, 24, 40, 0.04);
-  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.1), 0 1px 3px rgba(16, 24, 40, 0.06);
-  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16), 0 2px 6px rgba(16, 24, 40, 0.08);
+  --shadow-sm: 0 1px 2px rgba(28, 27, 25, 0.04);
+  --shadow-md: 0 6px 16px rgba(28, 27, 25, 0.08), 0 1px 3px rgba(28, 27, 25, 0.05);
+  --shadow-lg: 0 20px 48px rgba(28, 27, 25, 0.14), 0 2px 8px rgba(28, 27, 25, 0.06);
   --shadow-paper: 0 1px 2px rgba(43, 41, 37, 0.08), 0 4px 14px rgba(43, 41, 37, 0.06), 0 0 0 1px var(--paper-border);
 
   /* Motion */

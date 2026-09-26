@@ -50,14 +50,14 @@
 }
 
 .checked {
-  background: var(--accent-500);
-  border-color: var(--accent-500);
+  background: var(--ink);
+  border-color: var(--ink);
   color: #fff;
 }
 
 .label:hover .checked {
-  background: var(--accent-600);
-  border-color: var(--accent-600);
+  background: var(--ink-hover);
+  border-color: var(--ink-hover);
 }
 
 .input:focus-visible + .box {

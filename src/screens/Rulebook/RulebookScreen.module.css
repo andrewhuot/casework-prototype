@@ -93,7 +93,7 @@
 }
 
 .proposed:hover {
-  background: #e6ddfb;
+  background: var(--violet-bg);
   border-color: var(--violet-icon);
 }
 

@@ -2,13 +2,11 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  padding: 8px 10px;
-  border-radius: var(--radius-md);
-  border: 1px dashed var(--gray-300);
-  background: var(--gray-50);
+  padding: 10px 10px 2px;
+  border-top: 1px solid var(--border-subtle);
   font-size: var(--text-xs);
-  line-height: 1.4;
-  color: var(--gray-600);
+  line-height: 1.45;
+  color: var(--text-muted);
 }
 
 .icon {

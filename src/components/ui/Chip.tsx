@@ -46,7 +46,7 @@ export function StatusChip({ status, size, className }: { status: CaseStatus; si
 }
 
 export const CRITERION_STATUS_META: Record<CriterionStatus, { label: string; tone: Tone; icon: LucideIcon }> = {
-  met: { label: 'Met', tone: 'green', icon: Check },
+  met: { label: 'Met', tone: 'neutral', icon: Check },
   not_met: { label: 'Not met', tone: 'amber', icon: TriangleAlert },
   unclear: { label: 'Unclear', tone: 'violet', icon: CircleHelp },
 };

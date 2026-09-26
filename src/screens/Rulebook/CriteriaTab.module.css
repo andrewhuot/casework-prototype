@@ -8,10 +8,8 @@
   height: 30px;
   padding: 0 16px;
   text-align: left;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--text-muted);
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--border-subtle);

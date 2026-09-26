@@ -38,13 +38,20 @@ A document's searchable text is the concatenation of its text blocks. Evidence q
 - **Charts (`components/charts`)**: AgreementBars, BacklogChart (12 weeks, week-4 marker).
 - **Screens (`screens/`)**: Queue (+ RunReviewDialog), CaseReview (CriteriaPane, RuleCard, EvidencePane, RecommendationPane, LetterEditor, SendOptions, ActionBar, Approve/Escalate/Deny/Change dialogs, AskAboutCase, NotCoveredNote), Rulebook (SourcesTab, CriteriaTab, AddSourceDialog, ProposedChangeDialog), ProvingGround, Scoreboard.
 
-## 4. Design tokens (proposed)
+## 4. Design direction and tokens
 
-- **Colour.** Cool-neutral grey scale (`--gray-0` to `--gray-900`), one accent blue (`--accent-500: #2f5fe0`, 5.5:1 on white) for the primary action, links, selection, and focus. Status tints, each a light background with a dark text colour that passes AA on that background: blue (New), green (Approve-ready, Met), amber (Needs information, Not met), violet (Needs judgment, Unclear), slate (Waiting on applicant), grey (Decided). Evidence highlight: a warm yellow with a 2 px underline so it survives greyscale. Paper: warm off-white with a hairline border.
-- **Type.** Inter Variable. Scale: 11, 12, 13 (default interface), 14, 16, 18, 22, 28 px. Line heights 1.35 to 1.5. `font-variant-numeric: tabular-nums` on IDs, dates, and metrics. Source Serif 4 for paper. Caveat for signatures.
+The product lives inside Claude, so it should feel calm and paper-like, and let the evidence carry the colour. Four rules, revised on 26 Sep:
+
+1. **Colour means something.** The interface is warm neutral. Colour marks only what needs attention (not met, unclear, needs judgment) and the evidence highlights. "Met" is quiet grey.
+2. **One strong action, in ink.** Primary buttons, switches, checkboxes and the selected tab are near-black. Blue is kept for links, focus, source chips and charts.
+3. **Fewer boxes.** Hairline borders, no drop shadows on cards, no outlines on chips, no tinted rows. Space and alignment do the separating.
+4. **Sentence case, and a serif for titles.** Interface labels are sentence case. Page titles, the case title and hero numbers use Source Serif 4, the same serif as the paper documents.
+
+- **Colour.** Warm stone greys (`--gray-0` to `--gray-900`), ink (`--ink`, `--gray-900`), one accent blue (`--accent-500: #3a58c4`, 6.2:1 on white). Status tints are soft backgrounds with dark text, each 4.5:1 or better on its background and on white. Evidence highlight: a warm yellow with a 2 px underline so it survives greyscale. Paper: warm off-white with a hairline border.
+- **Type.** Inter Variable for the interface. Scale: 11, 12, 13 (default interface), 14, 16, 18, 22, 28 px. Source Serif 4 for titles, hero numbers and paper. Caveat for signatures. `font-variant-numeric: tabular-nums` on IDs, dates, and metrics.
 - **Spacing.** 4 px base: 4, 8, 12, 16, 20, 24, 32, 40, 48.
-- **Radius.** 4 (chips, inputs), 6 (buttons), 8 (cards), 12 (dialogs), 999 (pills).
-- **Elevation.** `--shadow-sm` for cards, `--shadow-md` for menus and toasts, `--shadow-lg` for the drawer and dialogs.
+- **Radius.** 4 (chips and tags), 7 (buttons and inputs), 10 (cards), 14 (dialogs), 999 (pills).
+- **Elevation.** Cards are flat with a hairline. `--shadow-md` for menus and toasts, `--shadow-lg` for the drawer and dialogs.
 - **Motion.** `--dur-fast: 150ms`, `--dur-base: 200ms`, `--dur-slow: 250ms`, `--ease-out: cubic-bezier(.2,.8,.2,1)`. Every animation is disabled under `prefers-reduced-motion: reduce`, and JS animations check the same media query.
 
 ## 5. Milestones

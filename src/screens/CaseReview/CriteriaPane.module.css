@@ -3,7 +3,7 @@
   flex-direction: column;
   min-height: 0;
   min-width: 0;
-  border-right: 1px solid var(--border-default);
+  border-right: 1px solid var(--border-subtle);
   background: var(--bg-surface);
 }
 
@@ -28,10 +28,8 @@
 
 .groupLabel {
   padding: 8px 8px 4px;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -47,49 +45,17 @@
   text-align: left;
   font-size: var(--text-md);
   color: var(--text-primary);
-  border: 1px solid transparent;
-  transition: background-color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  transition: background-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
 
 .row:hover {
   background: var(--bg-hover);
 }
 
-.row_not_met {
-  background: var(--amber-bg);
-}
-
-.row_not_met:hover {
-  background: #fbe8c2;
-}
-
-.row_unclear {
-  background: var(--violet-bg);
-}
-
-.row_unclear:hover {
-  background: #e6ddfb;
-}
-
 .rowSelected,
 .rowSelected:hover {
-  border-color: var(--accent-500);
-  box-shadow: inset 3px 0 0 var(--accent-500);
   background: var(--bg-selected);
-}
-
-.row_not_met.rowSelected,
-.row_not_met.rowSelected:hover {
-  background: #fbe8c2;
-  border-color: var(--amber-icon);
-  box-shadow: inset 3px 0 0 var(--amber-icon);
-}
-
-.row_unclear.rowSelected,
-.row_unclear.rowSelected:hover {
-  background: #e6ddfb;
-  border-color: var(--violet-icon);
-  box-shadow: inset 3px 0 0 var(--violet-icon);
+  box-shadow: inset 2px 0 0 var(--ink);
 }
 
 .row:focus-visible {
@@ -97,7 +63,7 @@
 }
 
 .rowSelected:focus-visible {
-  box-shadow: var(--focus-ring), inset 3px 0 0 var(--accent-500);
+  box-shadow: var(--focus-ring), inset 2px 0 0 var(--ink);
 }
 
 .icon {
@@ -110,7 +76,7 @@
 }
 
 .icon_met {
-  color: var(--green-icon);
+  color: var(--gray-400);
 }
 
 .icon_not_met {
@@ -147,7 +113,8 @@
 }
 
 .status_met {
-  color: var(--green-fg);
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .status_not_met {
