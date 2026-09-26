@@ -19,17 +19,17 @@ The memo makes five claims. A prototype earns its place by making each one concr
 
 | The memo claims | Where you see it |
 | --- | --- |
-| Time to decision is wait, plus touch, plus rework, and chat only shrinks touch | The queue is sorted by how much judgment each case needs. One consolidated letter replaces three rounds. The applicant's clock pauses while she replies |
+| Time to decision is wait, plus touch, plus rework, and chat only trims touch inside a case already open | The queue is sorted by how much judgment each case needs. One consolidated letter replaces three rounds. The applicant's clock pauses while she replies |
 | Claude catches what separate reviewers miss, and shows its work | The Delgado case, X1: each electrical sheet passes alone, and together they fail. Every finding is one click from its evidence, its rule, and its precedents |
 | Trust is earned per criterion, on the agency's own cases | Proving ground: 91% agreed, 95% on the golden set. Setbacks sits below the city's bar, so it stays at Second reader |
 | A stronger model becomes a measured gain | Scoreboard: a new model is re-run on the golden set first, and setbacks moves up a rung when the director says so |
-| Revenue can follow the mission | Scoreboard: days to decision against a baseline and a comparison group, which is what a share of fees at risk would be measured on |
+| Revenue can follow the mission | Scoreboard: calendar days to decision against a baseline and a comparison group, which is what a share of fees at risk would be measured on |
 
 ## Four surfaces, one for each person who can say no
 
 | Surface | For | The question it answers |
 | --- | --- | --- |
-| Queue and Case review | The reviewer | What do I open next, and what did Claude find? |
+| Review (the Queue and Case review) | The reviewer | What do I open next, and what did Claude find? |
 | Rulebook | The policy lead | Where do the rules come from, and what changes if I approve this? |
 | Proving ground | The general counsel | How accurate is it on our own cases? |
 | Scoreboard | The director | Is the mission metric moving, and how far do we trust it? |
@@ -39,9 +39,9 @@ The memo makes five claims. A prototype earns its place by making each one concr
 - **The reviewer never writes a prompt.** Opening a case shows the finished review. Prompting is a skill we should not require of every reviewer.
 - **Evidence before verdict.** The recommendation stays hidden until every flagged criterion has been opened. It is the cheapest defense against rubber-stamping.
 - **Claude can speed a yes, never automate a no.** It never proposes a denial. Only a person starts an adverse action.
-- **Agreement is a floor, not a ceiling.** A disagreement is not an error until someone settles it, blind. Electrical capacity has the lowest agreement and one of the highest golden-set scores, because the original reviewers approved two permits separately.
-- **A stronger model changes the scores, never the permissions.** Criteria move up one at a time, and only when a person moves them.
-- **Applicant time never counts against the city.** The clock pauses while a request is out, so the metric stays fair to the reviewer.
+- **Agreement is not accuracy.** A disagreement is not an error until someone settles it, blind, and an agreement is not proof, so senior reviewers also relabel a random sample of agreed cases. Electrical capacity has the lowest agreement and the largest gain once settled, 79% to 94%, because the original reviewers approved two permits separately.
+- **A stronger model changes the scores, never the permissions.** Its new disagreements are settled blind first, and criteria move up one at a time, only when a person moves them.
+- **Two clocks, on purpose.** The queue clock pauses while a request is out, so no reviewer is blamed for the applicant's time. The metric a fee would be paid on never pauses: it counts calendar days, as the applicant lives them, so more requests can never look like speed.
 - **Rules never change mid-application.** Every change carries an effective date and a preview of its effect on past decisions.
 - **Team-level metrics only, with the override rate beside them.** The tool measures the mission, not the person. An override rate near zero would be a warning, not a win.
 
@@ -64,7 +64,7 @@ Click **Reset demo** first. The full script, with what to click and what to say,
 | 1:20 | X1 Electrical capacity | Each sheet passes alone; together, 144 A of load sits on a 125 A breaker |
 | 1:50 | Recommendation and send | Evidence before verdict. One letter, in Spanish, with reminders, on the record |
 | 2:35 | Rulebook | A new bulletin becomes a proposed change, with its effect on 37 past decisions |
-| 3:10 | Proving ground | Agreement is a floor: electrical capacity is 79% agreed, 94% on the golden set |
+| 3:10 | Proving ground | Agreement is not accuracy: electrical capacity is 79% agreed, 94% on the golden set |
 | 3:45 | Scoreboard | 34 to 21 days against a comparison group. A new model lifts setbacks over the bar, and the director moves it up |
 | 4:20 | Close | "Casework: from seats to cases." |
 

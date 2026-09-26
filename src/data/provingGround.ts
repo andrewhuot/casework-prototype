@@ -4,16 +4,21 @@ export type SettleChoice = 'a' | 'b' | 'unclear';
 
 export interface AgreementRow {
   id: CriterionId;
-  /** Agreement with the original decision. A floor on accuracy, because the original can be wrong. */
+  /** Agreement with the original decision. Not accuracy, because the original can be wrong. */
   agreement: number;
-  /** Score on the golden set: agreed cases plus disagreements settled blind by senior reviewers. */
+  /** Score on the golden set: disagreements settled blind, plus a blind random sample of agreed cases. */
   goldenSet: number;
 }
 
 /**
- * Shadow results on 1,200 closed cases, by criterion. The golden-set score is
- * never below agreement: settling can only credit Claude where the original
- * decision was wrong. Electrical capacity shows the gap most, because the
+ * Shadow results on a sample of 1,200 closed cases, by criterion.
+ *
+ * Agreement is not accuracy: the original decision can be wrong, and so can a
+ * decision Claude agrees with. The golden set measures both. Senior reviewers
+ * settle every disagreement blind, and also relabel a random sample of agreed
+ * cases blind, so a mistake Claude shares with the original still counts.
+ * Here that sample found few shared mistakes, so each golden-set score sits at
+ * or above its agreement. Electrical capacity gains the most, because the
  * originals approved two permits separately and missed the combined load.
  */
 export const AGREEMENT: AgreementRow[] = [
@@ -46,7 +51,7 @@ export interface Disagreement {
   claudeSide: 'a' | 'b';
 }
 
-/** Five of the 108 cases still to settle. Original reviewers are never named. */
+/** Five of the eight disagreements still to settle. Original reviewers are never named. */
 export const DISAGREEMENTS: Disagreement[] = [
   { id: 'P-2024-0812', criterion: 'X1', a: 'both permits approved separately.', b: 'the solar derate leaves the main breaker too small for the ADU load.', claudeSide: 'b' },
   { id: 'P-2025-0044', criterion: 'A3', a: 'consent letter is missing, so the waiver is not supported.', b: 'rear setback 4 ft 9 in, waiver granted without consent on file.', claudeSide: 'a' },
@@ -55,4 +60,8 @@ export const DISAGREEMENTS: Disagreement[] = [
   { id: 'P-2024-0677', criterion: 'A5', a: 'certificate accepted as filed.', b: 'elevation certificate predates the survey and needs updating.', claudeSide: 'b' },
 ];
 
-export const INITIAL_TALLY = { settled: 40, total: 108, claude: 19, reviewer: 17, unclear: 4 };
+/**
+ * 100 of 108 disagreements settled. Counting unclear and unsettled cases
+ * against Claude, the golden-set score is (1,092 agreed + 46) / 1,192 = 95%.
+ */
+export const INITIAL_TALLY = { settled: 100, total: 108, claude: 46, reviewer: 48, unclear: 6 };

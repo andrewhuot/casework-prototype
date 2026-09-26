@@ -1,6 +1,6 @@
 # Casework: the four-minute demo
 
-One application from arrival to decision, then one screen each for the people who can say no: the policy lead, the general counsel, and the director. About 4:20 at a normal speaking pace. The silent recording in `docs/walkthrough.mp4` performs these clicks at these times, so you can rehearse against it.
+One application from arrival to decision, then one screen each for the people who can say no: the policy lead, the general counsel, and the director. About 4:20 at a normal speaking pace (the recording holds the last frame to 4:26). The silent recording in `docs/walkthrough.mp4` performs these clicks at these times, so you can rehearse against it.
 
 ## Before you start
 
@@ -56,13 +56,13 @@ One application from arrival to decision, then one screen each for the people wh
 
 **Do.** Click **Proving ground**. Point at 91% and 95%, then at the X1 row in the chart, where the ring and the dot are furthest apart. On the first X1 row of the disagreement queue, click **B is right**.
 
-**Say.** "Why trust any of it? Before touching a live case, Claude ran on 1,200 closed cases and agreed with the city 91% of the time. Agreement is a floor. Where they disagreed, senior reviewers settled it blind, and on electrical capacity Claude was usually right: the originals approved two permits separately. On that golden set Claude scores 95%, and the city's bar applies criterion by criterion."
+**Say.** "Why trust any of it? Before touching a live case, Claude ran on a sample of 1,200 closed cases and agreed with the city 91% of the time. But agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a sample of agreements too. On electrical capacity Claude was usually right: the originals approved two permits separately. On that golden set Claude scores 95%, and the city's bar applies criterion by criterion."
 
 ### 3:45 · Scoreboard
 
 **Do.** Click **Scoreboard**. Point at the days tile and its comparison group, then at the override rate and the First review rung. Click **Approve switch**, then **Move A3 to First review**.
 
-**Say.** "The director's view: 34 days down to 21, while permit types not yet on Casework barely moved. Reviewers still change 11% of findings, because zero would mean rubber-stamping. A new model arrives and is re-run on the golden set first. Setbacks rises to 91%, over the bar, so the director moves it up. That is what 'AI gets stronger' should mean for an agency."
+**Say.** "The director's view: 34 calendar days down to 21, while permit types not yet on Casework barely moved. Reviewers still change 11% of findings, because zero would mean rubber-stamping. A new model arrives and is re-run on the golden set first. Setbacks rises to 91%, over the bar, so the director moves it up. That is what 'AI gets stronger' should mean for an agency."
 
 ### 4:20 · Close
 

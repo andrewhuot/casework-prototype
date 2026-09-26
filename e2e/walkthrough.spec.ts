@@ -197,21 +197,22 @@ test.describe('four-minute demo script', () => {
 
     // 3:10 Proving ground: agreement and golden set; settle the first X1 row.
     await page.getByRole('link', { name: 'Proving ground' }).first().click();
-    await expect(page.locator('[data-headline]')).toHaveText('1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%.');
-    await expect(page.locator('[data-floor]')).toHaveText('Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on 95%.');
+    await expect(page.locator('[data-headline]')).toHaveText('A sample of 1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%.');
+    await expect(page.locator('[data-floor]')).toHaveText('Agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a random sample of agreed cases, so shared mistakes count too. On that golden set, Claude is right on 95%.');
     await expect(page.locator('[data-readiness]')).toHaveText('Threshold for First review: 90% on the golden set, per criterion. 11 of 12 met.');
     await expect(page.locator('[data-agreement="X1"]')).toContainText('79%');
     await expect(page.locator('[data-agreement="X1"] [data-golden-value]')).toHaveText('94%');
     await expect(page.locator('[data-agreement="A3"]')).toHaveAttribute('data-below', 'true');
-    await expect(page.locator('[data-tally]')).toContainText('40 of 108 settled: Claude right 19, reviewer right 17, unclear 4');
+    await expect(page.locator('[data-tally]')).toContainText('100 of 108 settled: Claude right 46, reviewer right 48, unclear 6');
     const x1Row = page.locator('[data-disagreement]').filter({ hasText: 'X1' }).first();
     await expect(x1Row).toContainText('A: both permits approved separately.');
     await expect(x1Row).toContainText('B: the solar derate leaves the main breaker too small for the ADU load.');
+    await expect(page.locator('[data-toast]')).toHaveCount(0, { timeout: 12000 });
     await shot(page, '14-proving-ground');
     await x1Row.locator('[data-settle="b"]').click();
     await expect(x1Row.locator('[data-reveal]')).toHaveText('B was Claude');
     await expect(x1Row).toHaveAttribute('data-settled', 'true');
-    await expect(page.locator('[data-tally]')).toContainText('41 of 108 settled: Claude right 20, reviewer right 17, unclear 4', { timeout: 5000 });
+    await expect(page.locator('[data-tally]')).toContainText('101 of 108 settled: Claude right 47, reviewer right 48, unclear 6', { timeout: 5000 });
     await expect(page.locator('[data-tally]')).toContainText('Settled cases become the golden set.');
     await shot(page, '15-proving-ground-settled');
 

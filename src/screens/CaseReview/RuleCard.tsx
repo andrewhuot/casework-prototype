@@ -33,7 +33,7 @@ export function RuleCard({ caseId, view, next, onNext, notFound }: RuleCardProps
           <CriterionStatusChip status={view.status} size="sm" />
           {view.change && <span className={styles.changedTag}>Changed by reviewer</span>}
           {!atFirstReview && (
-            <Tooltip text={`Below the city's ${THRESHOLD}% threshold for First review on its golden set. Check this one yourself.`}>
+            <Tooltip text={`Below the city's ${THRESHOLD}% bar for First review on its golden set. Your call comes first; treat Claude's finding as a second read.`}>
               <span className={styles.rungTag} data-rung-tag>
                 Second reader
               </span>

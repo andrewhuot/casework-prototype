@@ -1,6 +1,6 @@
 # How the saved reviews were produced
 
-Every review in `src/data/reviews/*.json` is model output, not a hand-assembled fixture. During the build, Claude (model family: Claude Fable 5.1) performed each of the seven reviews from the packet text in `src/data/packets/`, following the instructions below, and the result was saved as JSON with its case. The output was edited only where a build-time check in `src/data/reviews.test.ts` failed, and each such edit is noted at the end of this file.
+Every review in `src/data/reviews/*.json` is model output, not a hand-assembled fixture. During the build, Claude performed each of the seven reviews from the packet text in `src/data/packets/`, following the instructions below, and the result was saved as JSON with its case. The output was edited only where a build-time check in `src/data/reviews.test.ts` failed, and each such edit is noted at the end of this file.
 
 Nothing calls a model at runtime. `reviewCase(caseId)` in `src/data/reviews/index.ts` returns the saved review and is the seam where a live call would go.
 

@@ -25,10 +25,6 @@
   fill: var(--text-muted);
 }
 
-.area {
-  fill: var(--accent-500);
-  fill-opacity: 0.08;
-}
 
 .line {
   fill: none;

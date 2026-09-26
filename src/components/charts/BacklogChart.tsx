@@ -7,7 +7,7 @@ const PAD = { top: 28, right: 36, bottom: 34, left: 44 };
 const Y_MIN = 250;
 const Y_MAX = 450;
 
-/** Open backlog over 12 weeks, falling from 412 to 286, with a marker at week 4. */
+/** Open backlog over 12 weeks, falling from 412 to 286, with a marker at week 4. A line, not a filled area, because the axis starts at 250. */
 export function BacklogChart() {
   const innerW = W - PAD.left - PAD.right;
   const innerH = H - PAD.top - PAD.bottom;
@@ -15,7 +15,6 @@ export function BacklogChart() {
   const y = (v: number) => PAD.top + ((Y_MAX - v) / (Y_MAX - Y_MIN)) * innerH;
   const points = BACKLOG_SERIES.map((d) => `${x(d.week).toFixed(1)},${y(d.backlog).toFixed(1)}`);
   const line = `M ${points.join(' L ')}`;
-  const area = `${line} L ${x(BACKLOG_SERIES.length).toFixed(1)},${(PAD.top + innerH).toFixed(1)} L ${x(1).toFixed(1)},${(PAD.top + innerH).toFixed(1)} Z`;
   const first = BACKLOG_SERIES[0];
   const last = BACKLOG_SERIES[BACKLOG_SERIES.length - 1];
   const marker = BACKLOG_SERIES.find((d) => d.week === FIRST_REVIEW_WEEK);
@@ -38,7 +37,6 @@ export function BacklogChart() {
             {d.week === 1 ? 'Wk 1' : d.week}
           </text>
         ))}
-        <path d={area} className={styles.area} />
         <path d={line} className={styles.line} />
         {marker && (
           <g>

@@ -6,7 +6,7 @@ Every item below was exercised in a browser: by the Playwright suite in Chromium
 
 | Item | Result | Exercised by |
 | --- | --- | --- |
-| The section 11 script runs start to finish in about four minutes, with no dead end | Pass | `e2e/walkthrough.spec.ts` performs every beat and its assertions in about 40 s of machine time; `docs/walkthrough.mp4` paces it at 4:20 |
+| The section 11 script runs start to finish in about four minutes, with no dead end | Pass | `e2e/walkthrough.spec.ts` performs every beat and its assertions in about 40 s of machine time; `docs/walkthrough.mp4` paces it at 4:26 |
 | Navigation between Queue, Rulebook, Proving ground, and Scoreboard, with no sign-in and no setup | Pass | walkthrough; sidebar links |
 | Queue sorting, filter chips, the first-visit hint, and the summary line updating after each change | Pass | walkthrough (sort order, summary before and after send), `offscript.spec.ts` (filters, empty filter, hint dismiss), `src/lib/queue.test.ts` |
 | "Run review" on the Delgado case: three readable progress steps, then the saved review with its "Saved review" tag and tooltip | Pass | walkthrough asserts the three step labels, the ticks, the tag, and the tooltip text |
@@ -22,7 +22,7 @@ Every item below was exercised in a browser: by the Playwright suite in Chromium
 | Waiting and Decided cases open a Decision record that lists the send options chosen | Pass | walkthrough (reply due, reminders, Spanish copy), offscript (approved case record) |
 | Source viewer, Past decision, Decision record, and Letter preview all use the same drawer | Pass | one `Drawer` component; `axe.spec.ts` opens each |
 | Add source with "Load example", the proposed S2 change with its impact line and effective date, approval, and v1.1 shown everywhere | Pass | walkthrough asserts the diff text, impact line, date, toast, top bar, heading, R6 Active, Updated in v1.1 |
-| Proving ground shows agreement and the golden set per criterion, applies the threshold to the golden set, and settles disagreements blind | Pass | walkthrough (floor line, 11 of 12 met, X1 79% and 94%, A3 below, B was Claude, tally 41 of 108), offscript (A, Unclear) |
+| Proving ground shows agreement and the golden set per criterion, applies the threshold to the golden set, and settles disagreements blind | Pass | walkthrough (the agreement-is-not-accuracy line, 11 of 12 met, X1 79% and 94%, A3 below, B was Claude, tally 101 of 108), offscript (A, Unclear) |
 | The model card moves through its three states, and moving A3 up updates the ladder and removes the tag | Pass | walkthrough (switch, move up, coverage line, toast), offline, axe on each state |
 | Scoreboard renders the numbers given here, the comparison group, the override-rate line, and the team-level footnote | Pass | walkthrough asserts all four tiles, the comparison group, both lines, the footnote in the viewport |
 | "What this review does not cover" opens its note | Pass | offscript |

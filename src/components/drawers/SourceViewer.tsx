@@ -61,7 +61,7 @@ export function SourceViewer({ sourceId, section }: SourceViewerProps) {
       <div className={styles.section}>
         <div className={styles.sectionLabel}>Used for</div>
         {source.usedFor === 'precedents' ? (
-          <p className={styles.prose}>Precedents and Proving ground. The eight prior decisions below are drawn from these 1,200 closed cases.</p>
+          <p className={styles.prose}>Precedents and Proving ground. The eight prior decisions below are drawn from this sample of 1,200 closed cases.</p>
         ) : usedFor.length === 0 ? (
           <p className={styles.prose}>No criteria cite this source yet. A proposed change to S2 is waiting for approval.</p>
         ) : (

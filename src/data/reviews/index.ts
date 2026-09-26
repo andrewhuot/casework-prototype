@@ -19,7 +19,7 @@ export const SAVED_REVIEWS: Record<string, Review> = {
 };
 
 /** Model family that produced the saved reviews. See docs/REVIEW_GENERATION.md. */
-export const REVIEW_MODEL = 'Claude Fable 5.1';
+export const REVIEW_MODEL = 'Claude';
 
 /**
  * The one seam through which reviews load. A live model call would replace the

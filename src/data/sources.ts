@@ -68,7 +68,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'R5',
-    name: 'Closed cases 2024 to 2025 (1,200 decisions)',
+    name: 'Closed cases 2024 to 2025 (a sample of 1,200 decisions)',
     type: 'prior_decisions',
     added: '2026-03-16',
     usedFor: 'precedents',

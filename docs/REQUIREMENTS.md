@@ -275,10 +275,10 @@ The screen has two tabs, Sources (default) and Criteria. Its heading shows the c
 
 This screen shows how accurate Claude was on the city's own closed cases before anyone relied on it. All numbers are hard-coded.
 
-The screen separates two numbers that are easy to conflate. Agreement with the original decision is a floor on accuracy, because the original can be wrong. The golden set, which adds disagreements settled blind by senior reviewers, is the measure the city's thresholds apply to.
+The screen separates two numbers that are easy to conflate. Agreement with the original decision is not accuracy, because the original can be wrong, and so can a decision Claude agrees with. The golden set is the measure the city's thresholds apply to: senior reviewers settle every disagreement blind, and relabel a random sample of agreed cases blind, so shared mistakes count too. A new model's new disagreements are settled the same way before any criterion moves up.
 
-- Headline: "1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%." Beside it, two figures: 91% agreed and 95% on the golden set. A source chip for R5 sits below.
-- A second line: "Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on 95%."
+- Headline: "A sample of 1,200 closed cases from 2024 to 2025. Claude agreed with the original decision on 91%." Beside it, two figures: 91% agreed and 95% on the golden set. A source chip for R5 sits below.
+- A second line: "Agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a random sample of agreed cases, so shared mistakes count too. On that golden set, Claude is right on 95%."
 - Readiness banner: "Threshold for First review: 90% on the golden set, per criterion. 11 of 12 met."
 - A dot plot per criterion, grouped as in section 2, on an axis from 70% to 100%. A ring marks agreement, a dot marks the golden-set score, and a dashed line marks the 90% threshold. Numbers sit at the right of each row.
 
@@ -292,12 +292,12 @@ The screen separates two numbers that are easy to conflate. Agreement with the o
 | S1 | 97% | 98% | X2 | 95% | 96% |
 
 - A3 Setbacks is the only criterion below the threshold. Its row carries a "Second reader" tag.
-- One line under the plot: "Electrical capacity has the lowest agreement and one of the highest golden-set scores: most of those originals approved two permits separately and missed the combined load." When a criterion sits below the line, the note adds that it stays at Second reader.
-- Disagreement queue: "108 cases to settle". Show five rows with Case ID, criterion, "Decision A", "Decision B", and a one-line reason for each. Two of the five are X1 rows.
+- One line under the plot: "Electrical capacity has the lowest agreement and the largest gain once disagreements are settled, 79% to 94%: most of those originals approved two permits separately and missed the combined load." When a criterion sits below the line, the note adds that it stays at Second reader.
+- Disagreement queue: "8 of 108 disagreements left to settle". Show five of them as rows with Case ID, criterion, "Decision A", "Decision B", and a one-line reason for each. Two of the five are X1 rows.
 - Settling is blind. A and B are the original decision and Claude's finding in random order, and original reviewers are never named.
 - The first X1 row reads: "A: both permits approved separately. B: the solar derate leaves the main breaker too small for the ADU load."
 - Each row has three buttons: "A is right", "B is right", "Unclear". A click reveals which side was Claude, greys the row, and updates the tally.
-- The tally starts at "40 of 108 settled: Claude right 19, reviewer right 17, unclear 4" and ends with "Settled cases become the golden set."
+- The tally starts at "100 of 108 settled: Claude right 46, reviewer right 48, unclear 6" and ends with "Settled cases become the golden set." Counting unclear and unsettled cases against Claude, the golden-set score is (1,092 agreed + 46) / 1,192 = 95%.
 
 ## 8. Screen 5: Scoreboard
 
@@ -307,10 +307,10 @@ This screen shows the mission metric moving, and it is where the director contro
 
 | Metric | Baseline (Q1 2026) | Last 30 days |
 | --- | --- | --- |
-| Median days to decision | 34 | 21, with the comparison group beneath: "Permit types not yet on Casework: 34 to 33" |
+| Median calendar days to decision | 34 | 21, with the comparison group beneath: "Permit types not yet on Casework: 34 to 33". Calendar days never pause, unlike the queue clock, so more requests cannot look like speed |
 | Open backlog (cases) | 412 | 286 |
 | Rework rate (sent back more than once) | 38% | 24% |
-| Decisions reversed on appeal | 3.1% | 2.9%, labelled "Early read: appeals lag decisions" |
+| Decisions reversed on appeal | 3.1% | 2.9%, labelled "Early read: appeals lag decisions", with the change shown in neutral grey |
 
 - One line under the tiles reads: "Cases reviewed with Casework this quarter: 1,482." It is the usage measure that per-case pricing would follow.
 - A second line reads: "Reviewer changes to Claude's findings: 11%." Its helper text says: "A rate near zero would suggest rubber-stamping."
@@ -323,14 +323,14 @@ This screen shows the mission metric moving, and it is where the director contro
 **Trust ladder**
 
 - Five rungs in a vertical list, each with a one-line description, its threshold on the golden set, and a state. Thresholds: X-ray 80%, Second reader 85%, First review 90% per criterion.
-- Trust is earned per criterion. Each criterion sits on the highest rung its golden-set score clears, and moves up only when the director moves it.
+- Trust is earned per criterion. A criterion is eligible for the highest rung its golden-set score clears, and moves up only when the director moves it.
 - Shadow: on. X-ray: on. Second reader: on. First review: on, "On for 11 of 12 criteria. A3 Setbacks at Second reader." Front door: locked, "planned for v2".
-- On Case review, a criterion below First review carries a "Second reader" tag with the tooltip "Below the city's 90% threshold for First review on its golden set. Check this one yourself."
+- On Case review, a criterion below First review carries a "Second reader" tag with the tooltip "Below the city's 90% bar for First review on its golden set. Your call comes first; treat Claude's finding as a second read."
 - Each unlocked rung has an on/off switch that only changes its label. The locked rung's switch is disabled.
 
 **Model update card**
 
-- State 1: "A new model is available. Golden set: 95% to 97%. No criterion got worse." Beneath: "A3 Setbacks rises from 88% to 91%, above the 90% threshold. Every new model is re-run on the golden set before it touches a live case." Button: "Approve switch".
+- State 1: "A new model is available. Golden set: 95% to 97%. No criterion got worse." Beneath: "A3 Setbacks rises from 88% to 91%, above the 90% threshold. Every new model is re-run on the golden set, and its new disagreements are settled blind, before it touches a live case." Button: "Approve switch".
 - State 2: "Switched to the new model. The rulebook is unchanged." Beneath: "A3 Setbacks now clears the 90% threshold. Moving it up is the director's call." Button: "Move A3 to First review".
 - State 3: the ladder reads "On for all 12 criteria", the tag leaves A3 on Case review, and a toast confirms "A3 Setbacks moved to First review."
 - A stronger model changes the scores, never the permissions. That is the mechanism by which "AI gets stronger" becomes "this agency gets measurably better".
@@ -450,8 +450,8 @@ The full script, with what to click and what to say, is in `docs/DEMO_SCRIPT.md`
 | 1:20 | X1 Electrical capacity | Each electrical sheet passes alone; together, 144 A of load sits on a 125 A breaker |
 | 1:50 | Recommendation and send | Evidence before verdict. One letter instead of three rounds, in Spanish, with reminders, on the record |
 | 2:35 | Rulebook | A new bulletin becomes a proposed change with its effect on 37 past decisions, for new applications only |
-| 3:10 | Proving ground | Agreement is a floor. Electrical capacity: 79% agreed, 94% on the golden set |
-| 3:45 | Scoreboard | 34 to 21 days against a comparison group of 34 to 33. A new model lifts setbacks over the bar, and the director moves it up |
+| 3:10 | Proving ground | Agreement is not accuracy. Electrical capacity: 79% agreed, 94% on the golden set |
+| 3:45 | Scoreboard | 34 to 21 calendar days against a comparison group of 34 to 33. A new model lifts setbacks over the bar, and the director moves it up |
 | 4:20 | Close | "Casework: from seats to cases." |
 
 ## 12. Fit with the exercise brief
@@ -506,5 +506,6 @@ These small details show care for the three people the product touches: the revi
 ## Revision note, 26 Sep 2026
 
 - **Electrical capacity follows the 120% busbar rule.** The first version added ADU load amps to solar backfeed amps, which do not add. The packet now carries the real conflict, a main breaker derated to fit solar that cannot carry the ADU, and tests re-derive the finding from the packet's numbers.
-- **Trust is earned per criterion, on the golden set.** The first version applied one threshold to overall agreement while four criteria sat below it. Agreement is now shown as a floor, the threshold applies to each criterion's golden-set score, and a model switch lets the director move one criterion up.
+- **Trust is earned per criterion, on the golden set.** The first version applied one threshold to overall agreement while four criteria sat below it. The golden set now settles every disagreement blind and relabels a random sample of agreements, the threshold applies to each criterion's score on it, and a model switch lets the director move one criterion up.
 - **The script is four minutes.** The brief says three to five is plenty, and a shorter demo lands the argument harder.
+- **The measurement holds up to a skeptic.** The closed cases are a sample, the golden-set score reconciles with the tally, the days metric counts calendar days so extra requests cannot look like speed, the reversal rate is shown as too early to call, and the backlog chart is a line rather than a filled area on a cut axis.

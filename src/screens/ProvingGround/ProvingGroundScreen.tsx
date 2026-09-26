@@ -54,10 +54,10 @@ export function ProvingGroundScreen() {
             </div>
             <div>
               <p className={styles.headlineText} data-headline>
-                {CLOSED_CASES.toLocaleString('en-US')} closed cases from 2024 to 2025. Claude agreed with the original decision on {OVERALL_AGREEMENT}%.
+                A sample of {CLOSED_CASES.toLocaleString('en-US')} closed cases from 2024 to 2025. Claude agreed with the original decision on {OVERALL_AGREEMENT}%.
               </p>
               <p className={styles.floor} data-floor>
-                Agreement is a floor, not a ceiling. Where the two disagreed, senior reviewers settled it blind. On that golden set, Claude is right on {overallGolden}%.
+                Agreement is not accuracy. Senior reviewers settle every disagreement blind, and relabel a random sample of agreed cases, so shared mistakes count too. On that golden set, Claude is right on {overallGolden}%.
               </p>
               <div className={styles.headlineChip}>
                 <SourceChip label="R5" onClick={() => openDrawer({ kind: 'source', sourceId: 'R5' })} />
@@ -80,7 +80,7 @@ export function ProvingGroundScreen() {
             <h2 className={styles.cardTitle}>By criterion</h2>
             <AgreementBars goldenSet={scores} />
             <p className={styles.barsNote} data-bars-note>
-              Electrical capacity has the lowest agreement and one of the highest golden-set scores: most of those originals approved two permits separately and missed the combined load.
+              Electrical capacity has the lowest agreement and the largest gain once disagreements are settled, 79% to 94%: most of those originals approved two permits separately and missed the combined load.
               {below.length > 0 && ` ${below.join(', ')} ${below.length === 1 ? 'sits' : 'sit'} below the line, so ${below.length === 1 ? 'it stays' : 'they stay'} at Second reader.`}
             </p>
           </Card>
@@ -91,7 +91,7 @@ export function ProvingGroundScreen() {
                 <h2 className={styles.cardTitle}>Disagreement queue</h2>
                 <p className={styles.queueSub}>
                   <Chip tone="violet" size="sm">
-                    {tally.total} cases to settle
+                    {tally.total - tally.settled} of {tally.total} disagreements left to settle
                   </Chip>
                   <span className={styles.blind}>
                     <EyeOff size={12} aria-hidden />

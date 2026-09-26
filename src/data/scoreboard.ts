@@ -6,15 +6,17 @@ export interface MetricTile {
   baseline: number;
   current: number;
   unit: 'days' | 'cases' | 'percent';
+  /** Shown without a good-news colour, because the figure is too early to call. */
+  neutral?: boolean;
   /** Lower is better for every tile on this screen. */
   decimals?: number;
 }
 
 export const METRICS: MetricTile[] = [
-  { id: 'days', label: 'Median days to decision', baseline: 34, current: 21, unit: 'days' },
+  { id: 'days', label: 'Median calendar days to decision', baseline: 34, current: 21, unit: 'days' },
   { id: 'backlog', label: 'Open backlog', baseline: 412, current: 286, unit: 'cases' },
   { id: 'rework', label: 'Rework rate', baseline: 38, current: 24, unit: 'percent' },
-  { id: 'reversed', label: 'Decisions reversed on appeal', baseline: 3.1, current: 2.9, unit: 'percent', decimals: 1 },
+  { id: 'reversed', label: 'Decisions reversed on appeal', baseline: 3.1, current: 2.9, unit: 'percent', decimals: 1, neutral: true },
 ];
 
 /**

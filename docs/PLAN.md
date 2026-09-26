@@ -74,7 +74,7 @@ A document's searchable text is the concatenation of its text blocks. Evidence q
 | Decided and Waiting cases opened from the queue | Open in a read-only state: the right pane shows the outcome, the letter as sent, and a link to the decision record. |
 | Proving ground A/B order | Fixed per row (looks random, is deterministic) so the script and tests are stable. The first X1 row has Claude as B, as the spec requires. |
 | Date fields | Native `<input type="date">` for accessibility, with the plain-English date shown beside it. |
-| Model name in the decision record | "Claude" with the model family used to generate the saved reviews, as recorded in `docs/REVIEW_GENERATION.md`. |
+| Model name in the decision record | "Claude". The saved reviews were produced in more than one session, so no single model version is claimed. |
 | Reviewer changes and the recommendation | A change updates the counts and tags the row. The saved recommendation is not re-derived, and the change is listed in the decision record. |
 | Escalate outcome | The case becomes Decided with the outcome "Escalated to senior reviewer". |
 | Spanish copy after edits | The preview shows the saved Spanish letter. The decision record notes that the copy was updated to match the reviewer's edits when sent, as the helper text promises. |
@@ -86,7 +86,7 @@ A document's searchable text is the concatenation of its text blocks. Evidence q
 | Layout below 1280 px | The sidebar collapses to an icon rail and the prototype tag moves into the top bar so it stays visible. Phones are out of scope. |
 | Source viewer for R6 before approval | "Used for" reads "No criteria cite this source yet" until the S2 change is approved, then lists S2. |
 | Evidence scrolling | The centre pane centres the whole span of highlights when it fits, so every quote for the selected criterion is on screen at once. Otherwise the first quote sits near the top. |
-| Agreement or accuracy for the threshold? (revision, 26 Sep) | The threshold applies to the golden-set score, per criterion. Agreement with the original decision is shown beside it as a floor, because the original can be wrong. One overall threshold hid four criteria below the line. |
+| Agreement or accuracy for the threshold? (revision, 26 Sep) | The threshold applies to the golden-set score, per criterion. The golden set settles every disagreement blind and relabels a random sample of agreed cases, so a mistake Claude shares with the original still counts. Agreement is shown beside it, because it is what people will otherwise quote. One overall threshold hid four criteria below the line. |
 | How a model switch affects trust (revision, 26 Sep) | A new model changes the golden-set scores, never the permissions. A criterion that now clears its threshold waits for the director to move it up, so the demo shows both halves: the evidence, then the decision. |
 | Chart for agreement and golden set (revision, 26 Sep) | A dot plot on a 70% to 100% axis: ring for agreement, dot for the golden set, a line between them for what settling credited. Dots, not bars, so the cut axis does not mislead. |
 | Where the electrical rules live (revision, 26 Sep) | `src/lib/electrical.ts` states the service rule and the 120% busbar rule as arithmetic. The saved reviews stay model output; the tests re-derive each X1 conclusion from the packet's numbers. |

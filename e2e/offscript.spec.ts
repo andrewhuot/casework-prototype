@@ -199,11 +199,11 @@ test.describe('off the script path', () => {
     const rows = page.locator('[data-disagreement]');
     await rows.nth(1).locator('[data-settle="a"]').click();
     await expect(rows.nth(1).locator('[data-reveal]')).toHaveText('A was Claude');
-    await expect(page.locator('[data-tally]')).toContainText('41 of 108 settled: Claude right 20', { timeout: 5000 });
+    await expect(page.locator('[data-tally]')).toContainText('101 of 108 settled: Claude right 47', { timeout: 5000 });
     await rows.nth(2).locator('[data-settle="unclear"]').click();
-    await expect(page.locator('[data-tally]')).toContainText('42 of 108 settled: Claude right 20, reviewer right 17, unclear 5', { timeout: 5000 });
+    await expect(page.locator('[data-tally]')).toContainText('102 of 108 settled: Claude right 47, reviewer right 48, unclear 7', { timeout: 5000 });
     await rows.nth(3).locator('[data-settle="b"]').click();
-    await expect(page.locator('[data-tally]')).toContainText('43 of 108 settled: Claude right 20, reviewer right 18, unclear 5', { timeout: 5000 });
+    await expect(page.locator('[data-tally]')).toContainText('103 of 108 settled: Claude right 47, reviewer right 49, unclear 7', { timeout: 5000 });
     await page.goto('/#/scoreboard');
     const shadow = page.locator('[data-rung="shadow"]').getByRole('switch');
     await expect(shadow).toHaveAttribute('aria-checked', 'true');

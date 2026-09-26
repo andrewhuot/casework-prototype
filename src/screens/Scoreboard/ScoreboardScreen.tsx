@@ -61,7 +61,7 @@ export function ScoreboardScreen() {
                 <span className={cx(styles.tileBaseline, 'tnum')}>
                   Baseline {formatValue(tile, tile.baseline)}
                 </span>
-                <span className={cx(styles.tileChange, 'tnum')}>
+                <span className={cx(styles.tileChange, tile.neutral && styles.tileChangeNeutral, 'tnum')}>
                   <ArrowDownRight size={12} strokeWidth={2.5} aria-hidden />
                   {change(tile)}
                 </span>
@@ -113,7 +113,7 @@ export function ScoreboardScreen() {
                       A new model is available. Golden set: {MODEL_UPDATE.before}% to {MODEL_UPDATE.after}%. No criterion got worse.
                     </p>
                     <p className={styles.modelSub} data-model-sub>
-                      {unlock.id} {unlock.shortName} rises from {unlockBefore}% to {MODEL_UPDATE.goldenSet[unlock.id]}%, above the {THRESHOLD}% threshold. Every new model is re-run on the golden set before it touches a live case.
+                      {unlock.id} {unlock.shortName} rises from {unlockBefore}% to {MODEL_UPDATE.goldenSet[unlock.id]}%, above the {THRESHOLD}% threshold. Every new model is re-run on the golden set, and its new disagreements are settled blind, before it touches a live case.
                     </p>
                   </>
                 )}

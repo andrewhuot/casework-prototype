@@ -65,7 +65,7 @@ test.describe('single-file build, offline', () => {
     await expect(page.locator('[data-rulebook-version]')).toHaveText('Rulebook v1.1');
     await page.goto(`file://${file}#/proving-ground`);
     await page.locator('[data-disagreement]').first().locator('[data-settle="b"]').click();
-    await expect(page.locator('[data-tally]')).toContainText('41 of 108 settled');
+    await expect(page.locator('[data-tally]')).toContainText('101 of 108 settled');
     await page.goto(`file://${file}#/scoreboard`);
     await page.locator('[data-approve-switch]').click();
     await expect(page.locator('[data-model-text]')).toHaveText('Switched to the new model. The rulebook is unchanged.');
