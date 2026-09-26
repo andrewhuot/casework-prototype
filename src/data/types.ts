@@ -122,6 +122,8 @@ export interface DrawingRoofPlan {
 export interface DrawingSingleLine {
   kind: 'single_line';
   panelRating: string;
+  /** Present when the main breaker is smaller than the busbar, for example derated to fit a solar backfeed. */
+  mainBreaker?: string;
   backfeedBreaker: string;
   inverter: string;
   subpanel?: string;

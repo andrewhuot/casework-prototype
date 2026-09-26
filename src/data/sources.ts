@@ -63,7 +63,7 @@ export const SOURCES: Source[] = [
       { label: 'Item 6', text: 'Structural. Route to structural review where the scope requires it.' },
       { label: 'Item 7', text: 'Flood. Confirm the elevation certificate where the parcel lies in a flood zone.' },
       { label: 'Item 8', text: 'Fire. Confirm roof access pathways for rooftop equipment.' },
-      { label: 'Item 9', text: 'Electrical capacity. Where one application adds load and generation together, confirm that the main service panel can carry the added load and the backfeed breaker within its rating, or that a panel upgrade is included in the scope of work.' },
+      { label: 'Item 9', text: 'Electrical capacity. Where one application adds load and generation together, check both sheets against one panel. The main breaker must carry the combined calculated load, and the main breaker plus the backfeed breaker must stay within 120 percent of the busbar rating. A main breaker derated to fit solar must still carry the new load. Otherwise a panel upgrade must be included in the scope of work.' },
     ],
   },
   {

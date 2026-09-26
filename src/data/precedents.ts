@@ -53,9 +53,9 @@ export const PRECEDENTS: Precedent[] = [
     summary: 'Panel upgraded from 150 A to 200 A after ADU and solar were filed together',
     decided: '2025-07-30',
     address: '4820 Seagrape Terrace',
-    facts: 'A combined ADU and solar application added a 45 A subpanel load and a 40 A backfeed breaker to a 150 A main service panel.',
+    facts: 'The solar plan derated the main breaker on a 150 A panel to 125 A to fit a 40 A backfeed, while the ADU load calculation assumed the full 150 A service.',
     decision: 'A request for information asked for a panel upgrade or a revised load calculation. The applicant resubmitted with a 200 A panel upgrade in scope, and the permit was issued.',
-    similarity: 'The same combination of ADU load and solar backfeed on a 150 A panel.',
+    similarity: 'The same conflict: a main breaker derated for solar, and an ADU load that needs the full service.',
   },
   {
     id: 'P-2024-0733',

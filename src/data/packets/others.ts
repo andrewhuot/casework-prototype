@@ -184,8 +184,8 @@ export const CHEN_PACKET: Packet = {
       received: '2026-08-31',
       blocks: [
         { type: 'para', text: '2210 Seagrape Drive. Parcel 01-3210-009-0270. Owner: Wei Chen.' },
-        { type: 'list', items: ['Main service panel: 200 A, with a 45 A solar backfeed breaker', 'Inverter: 7.6 kW AC, string type, exterior wall.', 'AC disconnect: lockable, exterior, beside the meter.'] },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '45 A', inverter: '7.6 kW' }, caption: 'Single-line diagram' },
+        { type: 'list', items: ['Main service panel: 200 A, with a 40 A solar backfeed breaker', 'Inverter: 7.6 kW AC, string type, exterior wall.', 'AC disconnect: lockable, exterior, beside the meter.'] },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '200 A', backfeedBreaker: '40 A', inverter: '7.6 kW' }, caption: 'Single-line diagram' },
       ],
     },
     {
@@ -277,7 +277,10 @@ export const PATEL_PACKET: Packet = {
       title: 'ADU electrical load calculation',
       letterhead: { kind: 'contractor', org: 'Keystone Electric and Solar LLC', sub: 'EC13006666 · Sheet E-1' },
       received: '2026-09-07',
-      blocks: [{ type: 'para', text: 'New 60 A subpanel fed from the main panel. Added load: 40 A' }],
+      blocks: [
+        { type: 'para', text: 'Existing load: 90 A. Added load: 40 A' },
+        { type: 'para', text: 'Total with the ADU: 130 A, within the 200 A service.' },
+      ],
     },
     {
       title: 'Solar single-line diagram notes',

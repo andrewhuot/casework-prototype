@@ -10,7 +10,7 @@ export const QUESTIONS: Record<string, SavedQuestion[]> = {
     },
     {
       question: 'What would a panel upgrade need to show?',
-      answer: 'A revised single-line diagram with a 200 A main panel, or a load calculation showing the existing house load plus 48 A and the 40 A backfeed within 150 A. In the closest past decision, P-2025-0418, the applicant upgraded to 200 A and the permit was issued.',
+      answer: 'A revised single-line diagram with a 200 A panel and a full 200 A main breaker. That carries the 144 A load, and 200 A plus the 40 A backfeed is exactly 120 percent of the busbar. In the closest past decision, P-2025-0418, the applicant upgraded to 200 A and the permit was issued.',
       quote: { document: 'ADU electrical load calculation', text: 'No service upgrade is included in this scope.' },
     },
     {
@@ -67,7 +67,7 @@ export const QUESTIONS: Record<string, SavedQuestion[]> = {
     {
       question: 'Is the rest of the packet in order?',
       answer: 'Yes. The licence is current, the pathways and ridge setback meet §RS-3, the single-line diagram is complete, and both spec sheets state UL listings.',
-      quote: { document: 'Solar single-line diagram notes', text: 'Main service panel: 200 A, with a 45 A solar backfeed breaker' },
+      quote: { document: 'Solar single-line diagram notes', text: 'Main service panel: 200 A, with a 40 A solar backfeed breaker' },
     },
   ],
   'MIA-2026-1163': [
@@ -83,8 +83,8 @@ export const QUESTIONS: Record<string, SavedQuestion[]> = {
     },
     {
       question: 'Does the panel carry the combined load?',
-      answer: 'Yes. The 200 A panel carries 40 A of new ADU load with a 30 A backfeed, unlike the Delgado case on a 150 A panel.',
-      quote: { document: 'ADU electrical load calculation', text: 'Added load: 40 A' },
+      answer: 'Yes. The ADU brings the calculated load to 130 A on a 200 A service, and the 30 A backfeed stays within the busbar limit. Unlike the Delgado case, the main breaker is not derated.',
+      quote: { document: 'ADU electrical load calculation', text: 'Total with the ADU: 130 A, within the 200 A service.' },
     },
   ],
   'MIA-2026-1171': [

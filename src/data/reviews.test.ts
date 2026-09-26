@@ -138,7 +138,8 @@ describe('the Delgado hero case', () => {
       'ADU floor area: 640 sq ft',
       'Proposed ADU footprint is 4 ft 6 in from the rear lot line',
       'New 60 A subpanel fed from the main panel. Added load: 48 A',
-      'Main service panel: 150 A, with a 40 A solar backfeed breaker',
+      'Total with the ADU: 144 A, within the 150 A service.',
+      'Main service panel: 150 A busbar. Main breaker derated to 125 A for a 40 A solar backfeed breaker.',
       'High-Velocity Hurricane Zone',
       '36 in pathway',
       'Ridge setback: 18 in',
@@ -169,10 +170,10 @@ describe('the Delgado hero case', () => {
     expect(byId('A5')?.precedents).toContain('P-2024-0733');
   });
 
-  it('X1 quotes the load line and the panel line, and lists one past decision', () => {
+  it('X1 quotes the load total and the derated main breaker, and lists one past decision', () => {
     const quotes = byId('X1')?.evidence.map((e) => e.quote) ?? [];
-    expect(quotes).toContain('Added load: 48 A');
-    expect(quotes).toContain('Main service panel: 150 A, with a 40 A solar backfeed breaker');
+    expect(quotes).toContain('Total with the ADU: 144 A, within the 150 A service.');
+    expect(quotes).toContain('Main breaker derated to 125 A for a 40 A solar backfeed breaker.');
     expect(byId('X1')?.precedents).toEqual(['P-2025-0418']);
   });
 
@@ -193,10 +194,10 @@ describe('the Delgado hero case', () => {
     expect(es).toContain('MIA-2026-1187');
     expect(es).toContain('5 de octubre de 2026');
     expect(es.toLowerCase()).toContain('certificado de elevación');
-    expect(es).toMatch(/150 A/);
-    expect(es).toMatch(/48 A/);
-    expect(es).toMatch(/40 A/);
-    expect(en).toMatch(/150 A/);
+    for (const figure of ['125 A', '144 A', '200 A']) {
+      expect(en, figure).toContain(figure);
+      expect(es, figure).toContain(figure);
+    }
     expect(wordCount(es)).toBeLessThan(260);
   });
 });

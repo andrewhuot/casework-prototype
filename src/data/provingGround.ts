@@ -38,7 +38,7 @@ export interface Disagreement {
 
 /** Five of the 108 cases still to settle. Original reviewers are never named. */
 export const DISAGREEMENTS: Disagreement[] = [
-  { id: 'P-2024-0812', criterion: 'X1', a: 'both permits approved separately.', b: 'combined load exceeds the 150 A panel.', claudeSide: 'b' },
+  { id: 'P-2024-0812', criterion: 'X1', a: 'both permits approved separately.', b: 'the solar derate leaves the main breaker too small for the ADU load.', claudeSide: 'b' },
   { id: 'P-2025-0044', criterion: 'A3', a: 'consent letter is missing, so the waiver is not supported.', b: 'rear setback 4 ft 9 in, waiver granted without consent on file.', claudeSide: 'a' },
   { id: 'P-2024-1105', criterion: 'S2', a: 'pathway measured at 34 in was accepted as close enough.', b: 'pathway is under 36 in, so §RS-3 is not met.', claudeSide: 'b' },
   { id: 'P-2025-0290', criterion: 'X1', a: 'existing house load was not counted, so capacity is unknown.', b: '200 A panel carries the added load with the backfeed.', claudeSide: 'a' },

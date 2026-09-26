@@ -2,11 +2,11 @@ import type { DrawingSingleLine } from '@/data/types';
 import { cx } from '@/lib/cx';
 import s from './Drawings.module.css';
 
-/** Single-line electrical diagram: array, inverter, disconnect, backfeed breaker, main panel, meter. */
+/** Single-line electrical diagram: array, inverter, disconnect, backfeed breaker, main panel (with a derated main breaker when given), meter. */
 export function SingleLineDiagram({ spec }: { spec: DrawingSingleLine }) {
   const y = 90;
   return (
-    <svg viewBox="0 0 520 220" className={s.svg} role="img" aria-label={`Single-line diagram showing the PV array, inverter, AC disconnect, a ${spec.backfeedBreaker} backfeed breaker and a ${spec.panelRating} main service panel`}>
+    <svg viewBox="0 0 520 220" className={s.svg} role="img" aria-label={`Single-line diagram showing the PV array, inverter, AC disconnect, a ${spec.backfeedBreaker} backfeed breaker and a ${spec.panelRating} main service panel${spec.mainBreaker ? ` with its main breaker derated to ${spec.mainBreaker}` : ''}`}>
       {/* PV array */}
       {[0, 1, 2].map((i) => (
         <g key={i}>
@@ -68,12 +68,23 @@ export function SingleLineDiagram({ spec }: { spec: DrawingSingleLine }) {
       <text x="378" y={y - 11} textAnchor="middle" className={cx(s.label, s.small)}>
         panel
       </text>
-      <text x="378" y={y + 10} textAnchor="middle" className={s.dimText} style={{ fontSize: 14 }}>
+      <text x="378" y={spec.mainBreaker ? y + 6 : y + 10} textAnchor="middle" className={s.dimText} style={{ fontSize: 14 }}>
         {spec.panelRating}
       </text>
-      <text x="378" y={y + 28} textAnchor="middle" className={cx(s.small, s.muted)}>
-        existing · no upgrade
-      </text>
+      {spec.mainBreaker ? (
+        <>
+          <text x="378" y={y + 20} textAnchor="middle" className={cx(s.small, s.muted)}>
+            busbar · no upgrade
+          </text>
+          <text x="378" y={y + 32} textAnchor="middle" className={cx(s.small, s.dimText)}>
+            main {spec.mainBreaker}, derated
+          </text>
+        </>
+      ) : (
+        <text x="378" y={y + 28} textAnchor="middle" className={cx(s.small, s.muted)}>
+          existing · no upgrade
+        </text>
+      )}
       <line x1="426" y1={y} x2="456" y2={y} className={s.line} />
       {/* Meter */}
       <circle cx="470" cy={y} r="14" className={s.fill} />

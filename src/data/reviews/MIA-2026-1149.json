@@ -30,9 +30,9 @@
     {
       "id": "S4",
       "status": "met",
-      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 45 A backfeed breaker.",
+      "finding": "The single-line diagram shows the inverter, a lockable AC disconnect, and the 200 A main panel rating with its 40 A backfeed breaker.",
       "evidence": [
-        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 45 A solar backfeed breaker" },
+        { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 40 A solar backfeed breaker" },
         { "document": "Solar single-line diagram notes", "quote": "AC disconnect: lockable, exterior, beside the meter." }
       ],
       "precedents": []

@@ -97,9 +97,9 @@
     {
       "id": "X1",
       "status": "met",
-      "finding": "The 200 A main panel can carry 40 A of new ADU load together with a 30 A solar backfeed within its rating.",
+      "finding": "The ADU brings the calculated load to 130 A on the 200 A service, and the full 200 A main breaker plus the 30 A backfeed stays within 120% of the busbar, so one panel serves both.",
       "evidence": [
-        { "document": "ADU electrical load calculation", "quote": "Added load: 40 A" },
+        { "document": "ADU electrical load calculation", "quote": "Total with the ADU: 130 A, within the 200 A service." },
         { "document": "Solar single-line diagram notes", "quote": "Main service panel: 200 A, with a 30 A solar backfeed breaker" }
       ],
       "precedents": []

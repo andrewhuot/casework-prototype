@@ -91,8 +91,8 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-rule-card="X1"]')).toContainText('Not met');
     const x1Marks = page.locator('mark[data-evidence]');
     await expect(x1Marks).toHaveCount(2);
-    await expect(x1Marks.nth(0)).toHaveText('Added load: 48 A');
-    await expect(x1Marks.nth(1)).toHaveText('Main service panel: 150 A, with a 40 A solar backfeed breaker');
+    await expect(x1Marks.nth(0)).toHaveText('Total with the ADU: 144 A, within the 150 A service.');
+    await expect(x1Marks.nth(1)).toHaveText('Main breaker derated to 125 A for a 40 A solar backfeed breaker.');
     await page.waitForTimeout(600);
     await expect(x1Marks.nth(0)).toBeInViewport();
     await expect(x1Marks.nth(1)).toBeInViewport();
@@ -201,7 +201,7 @@ test.describe('five-minute demo script', () => {
     await expect(page.locator('[data-tally]')).toContainText('40 of 108 settled: Claude right 19, reviewer right 17, unclear 4');
     const x1Row = page.locator('[data-disagreement]').filter({ hasText: 'X1' }).first();
     await expect(x1Row).toContainText('A: both permits approved separately.');
-    await expect(x1Row).toContainText('B: combined load exceeds the 150 A panel.');
+    await expect(x1Row).toContainText('B: the solar derate leaves the main breaker too small for the ADU load.');
     await shot(page, '14-proving-ground');
     await x1Row.locator('[data-settle="b"]').click();
     await expect(x1Row.locator('[data-reveal]')).toHaveText('B was Claude');

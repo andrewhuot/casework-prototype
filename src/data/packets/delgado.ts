@@ -4,6 +4,10 @@ import type { Packet } from '@/data/types';
  * Hero case. Seven plain-text documents under 450 words in total. Every quoted
  * phrase from the spec appears literally so exact-string highlighting works.
  * The elevation certificate is absent on purpose.
+ *
+ * The electrical sheets are each correct on their own and wrong together: the
+ * solar sheet derates the main breaker to 125 A so a 40 A backfeed fits the
+ * 120% busbar rule, and the ADU sheet assumes the full 150 A for a 144 A load.
  */
 export const DELGADO_PACKET: Packet = {
   caseId: 'MIA-2026-1187',
@@ -88,6 +92,7 @@ export const DELGADO_PACKET: Packet = {
             { label: 'Water heater', value: '6 A' },
           ],
         },
+        { type: 'para', text: 'Existing house calculated load: 96 A. Total with the ADU: 144 A, within the 150 A service.' },
         { type: 'para', text: 'No service upgrade is included in this scope.' },
       ],
     },
@@ -100,13 +105,14 @@ export const DELGADO_PACKET: Packet = {
         {
           type: 'list',
           items: [
-            'Main service panel: 150 A, with a 40 A solar backfeed breaker',
+            'Main service panel: 150 A busbar. Main breaker derated to 125 A for a 40 A solar backfeed breaker.',
+            'Busbar check: 125 A main plus 40 A backfeed is 165 A, within 120% of the 150 A busbar.',
             'Array: 18 modules, 7.2 kW DC, two strings.',
             'Inverter: 6.0 kW AC, string type, wall mounted in the garage.',
             'AC disconnect: lockable, exterior, within sight of the meter.',
           ],
         },
-        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '150 A', backfeedBreaker: '40 A', inverter: '6.0 kW', subpanel: '60 A' }, caption: 'Single-line diagram' },
+        { type: 'drawing', drawing: { kind: 'single_line', panelRating: '150 A', mainBreaker: '125 A', backfeedBreaker: '40 A', inverter: '6.0 kW' }, caption: 'Single-line diagram' },
       ],
     },
     {

@@ -11,7 +11,7 @@ export const CRITERIA: Criterion[] = [
   { id: 'S3', group: 'solar', shortName: 'Wind load', test: "Signed and sealed engineer's letter covers attachment in the High-Velocity Hurricane Zone", citations: [{ sourceId: 'R2', section: '§RS-5', label: 'R2 §RS-5' }] },
   { id: 'S4', group: 'solar', shortName: 'Electrical diagram', test: 'Single-line diagram shows inverter, disconnect, and main panel rating', citations: [{ sourceId: 'R2', section: '§RS-6', label: 'R2 §RS-6' }] },
   { id: 'S5', group: 'solar', shortName: 'Equipment listing', test: 'Spec sheets for modules and inverter each state a UL listing', citations: [{ sourceId: 'R2', section: '§RS-7', label: 'R2 §RS-7' }] },
-  { id: 'X1', group: 'cross', shortName: 'Electrical capacity', test: 'Main panel can carry the ADU load and the solar backfeed together, or a panel upgrade is in scope', citations: [{ sourceId: 'R4', section: 'Item 9', label: 'R4 item 9' }] },
+  { id: 'X1', group: 'cross', shortName: 'Electrical capacity', test: 'Main breaker carries the combined load, and main plus backfeed stay within 120% of the busbar, or an upgrade is in scope', citations: [{ sourceId: 'R4', section: 'Item 9', label: 'R4 item 9' }] },
   { id: 'X2', group: 'cross', shortName: 'Consistency', test: 'Owner, parcel number, and address match across all documents', citations: [{ sourceId: 'R4', section: 'Item 1', label: 'R4 item 1' }] },
 ];
 
