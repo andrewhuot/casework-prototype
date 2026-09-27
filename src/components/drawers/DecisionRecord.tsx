@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { cx } from '@/lib/cx';
 import { DEMO_DATE, formatDate } from '@/lib/dates';
 import { caseRulebookVersion } from '@/lib/rulebook';
+import { listWithAnd } from '@/lib/text';
 import styles from './drawers.module.css';
 
 interface Event {
@@ -128,7 +129,7 @@ export function DecisionRecord({ caseId }: { caseId: string }) {
       icon: BellRing,
       title: 'Reminders scheduled',
       date: dates.length ? dates.map(formatDate).join(' and ') : '',
-      detail: channels.length ? `By ${channels.join(' and ')} on ${dates.map(formatDate).join(' and ')}. Reminders stop when the applicant replies.` : 'No reminders were selected.',
+      detail: channels.length ? `By ${listWithAnd(channels)} on ${dates.map(formatDate).join(' and ')}. Reminders stop when the applicant replies.` : 'No reminders were selected.',
     });
     if (meta.preferredLanguage) {
       events.push({
