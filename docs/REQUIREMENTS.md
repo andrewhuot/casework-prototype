@@ -4,7 +4,7 @@ Andrew Huot · 20 Sep 2026, revised 26 Sep 2026 (see the revision note at the en
 
 ## 1. Purpose and scope
 
-The deliverable is a four-minute, end-to-end demo, and section 11 is its script. Every requirement in this document exists to make that script run without a dead end.
+The deliverable is a five-minute, end-to-end demo, and section 11 is its script. Every requirement in this document exists to make that script run without a dead end.
 
 The demo shows a City of Miami reviewer clearing a combined ADU and rooftop solar application in minutes. Claude has already checked it against the city's own rules, and every finding links to its evidence, its rule, and similar past decisions. Three supporting screens show where the rules come from (Rulebook), how trust is earned (Proving ground), and how the mission metric moves (Scoreboard).
 
@@ -432,27 +432,28 @@ The build is done when the script in section 11 runs start to finish, and every 
 
 ## 11. Four-minute demo flow and script
 
-The demo follows one application from arrival to decision, then shows where the rules come from, why the city trusts them, and what changes for the mission. Each surface is shown to the person who can say no: the reviewer, the policy lead, the general counsel, and the director. It runs about 4:20 at a normal speaking pace.
+The demo follows one application from arrival to decision, then shows where the rules come from, why the city trusts them, and what changes for the mission. Each surface is shown to the person who can say no: the reviewer, the policy lead, the general counsel, and the director. A plain-words intro of about 35 seconds opens it, and the demo itself runs about 4:25 at a relaxed speaking pace.
 
 ```mermaid
 flowchart LR
   Q[Queue] --> R[Run review] --> C[Case review] --> D[Send one letter] --> B[Rulebook] --> P[Proving ground] --> S[Scoreboard]
 ```
 
-The full script, with what to click and what to say, is in `docs/DEMO_SCRIPT.md`. Its beats:
+The full script, with what to click and what to say, is in `docs/DEMO_SCRIPT.md`, and the spoken lines alone are in `docs/DEMO_SCRIPT_SAY_ONLY.md`. Its beats:
 
 | Time | Beat | The point it lands |
 | --- | --- | --- |
-| 0:00 | Queue | Most of 34 days is waiting and rework, not reading. The queue is sorted by how much judgment each case needs |
-| 0:20 | Run review | The reviewer never writes a prompt |
-| 0:35 | A3 Setbacks | Conflicting documents are marked unclear, not guessed. Rule and precedents are one click away. Setbacks is still at Second reader, so the call is the reviewer's |
-| 1:10 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
-| 1:20 | X1 Electrical capacity | Each electrical sheet passes alone; together, 144 A of load sits on a 125 A breaker |
-| 1:50 | Recommendation and send | Evidence before verdict. One letter instead of three rounds, in Spanish, with reminders, on the record |
-| 2:35 | Rulebook | A new bulletin becomes a proposed change with its effect on 37 past decisions, for new applications only |
-| 3:10 | Proving ground | Agreement is not accuracy. Electrical capacity: 79% agreed, 94% on the golden set |
-| 3:45 | Scoreboard | 34 to 21 calendar days against a comparison group of 34 to 33. A new model lifts setbacks over the bar, and the director moves it up |
-| 4:20 | Close | "Casework: from seats to cases." |
+| Before 0:00 | Intro | What Casework is, in plain words: Claude checks each case against the agency's own rules and shows its evidence, and a person decides |
+| 0:00 | Queue | Most of 34 days is waiting and rework, not reading. The queue is sorted to keep applications moving, and balanced, oldest first within each group, so none gets stuck |
+| 0:30 | Run review | The reviewer never writes a prompt |
+| 0:45 | A3 Setbacks | Conflicting documents are marked unclear, not guessed. Rule and precedents are one click away. Setbacks is still at Second reader, so the call is the reviewer's |
+| 1:20 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
+| 1:30 | X1 Electrical capacity | Each electrical sheet passes alone; together, 144 A of load sits on a 125 A breaker |
+| 1:55 | Recommendation and send | Evidence before verdict. One letter instead of three rounds, in Spanish, with reminders by email, text, and a virtual agent call, on the record |
+| 2:45 | Rulebook | A new bulletin becomes a proposed change with its effect on 37 past decisions, for new applications only |
+| 3:10 | Proving ground | Agreement is not accuracy. Electrical capacity: 79% agreed, 94% on the golden set. Setbacks sits just under the bar, which is why the Delgado setback call was the reviewer's |
+| 3:50 | Scoreboard | 34 to 21 calendar days against a comparison group of 34 to 33. A new model lifts setbacks over the bar, and the director moves it up |
+| 4:25 | Close | "Casework: from seats to cases." |
 
 ## 12. Fit with the exercise brief
 
@@ -467,7 +468,7 @@ The table maps each line of the brief to where the prototype meets it.
 | Today's usage is knowledge workers chatting in Claude Enterprise | Casework sits in the same navigation as Chats and Projects (section 3) |
 | Revenue follows mission success | Days to decision against a baseline and a comparison group, which is what a share of fees at risk would be measured on, and the "Cases reviewed" usage line |
 | What to build next, and where it fits the strategy | The prototype shows the product. The strategy belongs in the memo |
-| A prototype, mockup, or sketch; a recording of 3 to 5 minutes is plenty | A clickable prototype with a single-file build, and a four-minute walkthrough of the section 11 script |
+| A prototype, mockup, or sketch; a recording of 3 to 5 minutes is plenty | A clickable prototype with a single-file build, and a silent 4:31 walkthrough of the section 11 script, with a spoken intro before it |
 | Do not use the company name in anything hosted publicly | The naming rule in section 3, enforced by a name check in the build |
 | Synthetic data is fine; do not chase real data | All data is invented and tagged on every screen (section 2) |
 | No cloud infrastructure, nothing production-shaped, no configuring services | Front-end only, with no network calls at runtime and no services to configure |

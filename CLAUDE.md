@@ -29,4 +29,6 @@ npm run build:single   # single-file build to release/casework-demo.html
 npm test               # unit tests (section 9 checks, dates)
 npm run test:e2e       # Playwright walkthrough, axe, offline
 npm run check:names    # naming rule
+npm run docs:say-only  # regenerate docs/DEMO_SCRIPT_SAY_ONLY.md from docs/DEMO_SCRIPT.md
+npm run check:script   # the spoken-lines copy matches the full script
 ```
