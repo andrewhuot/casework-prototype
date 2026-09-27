@@ -11,13 +11,13 @@ Casework is a review layer inside Claude for Government and Claude Enterprise. I
 ## Try it
 
 - **In one minute, no install.** Download `casework-demo.html` from the [latest release](https://github.com/andrewhuot/casework-prototype/releases/latest) (or from [`release/`](release/casework-demo.html) in this repo), open it in a browser window at least 1280 px wide, and click **Run review** on the Delgado case. It works offline.
-- **Watch it.** [`docs/walkthrough.mp4`](docs/walkthrough.mp4) is a silent 4:26 recording, paced to [the demo script](docs/DEMO_SCRIPT.md).
+- **Watch it.** [`docs/walkthrough.mp4`](docs/walkthrough.mp4) is a silent 4:31 recording, paced to [the demo script](docs/DEMO_SCRIPT.md).
 
 ## What the prototype has to prove
 
 | The memo claims | Where you see it |
 | --- | --- |
-| Much of a case's life is waiting and rework, and chat only trims the minutes inside an open case | The queue is sorted by what each case needs. One letter asks for everything missing. The applicant's clock pauses while she replies |
+| Much of a case's life is waiting and rework, and chat only trims the minutes inside an open case | The queue is sorted to keep applications moving, oldest first within each group so none gets stuck. One letter asks for everything missing. The applicant's clock pauses while she replies |
 | Claude catches what separate reviewers miss, and shows its work | Delgado, X1: each electrical sheet passes alone, and together they fail. Every finding is one click from its evidence, its rule, and its precedents |
 | Trust is earned per criterion on the agency's own cases, so a stronger model is a measured gain | Proving ground: 91% agreed, 95% on the golden set, and setbacks stays at Second reader. Scoreboard: a new model lifts setbacks over the bar, and the director moves it up |
 | The agency pays for results | Scoreboard: calendar days against the baseline, with a comparison group beside it, and accuracy on known-answer cases, the two numbers the share at risk would be paid on |
@@ -50,22 +50,23 @@ The first version of the hero finding added the new unit's load to the solar bac
 - **Illustrative.** Every figure on the Proving ground and the Scoreboard, every rule excerpt, and every name.
 - **Not built.** Live model calls (`reviewCase(caseId)` in `src/data/reviews/index.ts` is the seam), integrations, sign-in, and persistence.
 
-## The four-minute demo
+## The five-minute demo
 
-Click **Reset demo** first. The full script, with what to click and what to say, is in [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
+Click **Reset demo** first. The full script, with what to click and what to say, is in [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The spoken lines alone, for reading from, are in [`docs/DEMO_SCRIPT_SAY_ONLY.md`](docs/DEMO_SCRIPT_SAY_ONLY.md). A 35-second intro comes first, then the timed beats:
 
 | Time | Beat | The point it lands |
 | --- | --- | --- |
-| 0:00 | Queue | Much of 34 days is waiting and rework, not reading |
-| 0:20 | Run review on Delgado | The reviewer never writes a prompt |
-| 0:35 | A3 Setbacks | Conflicts are marked unclear, not guessed, and setbacks is still at Second reader |
-| 1:10 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
-| 1:20 | X1 Electrical capacity | Each sheet passes alone; together, 144 A of load sits on a 125 A breaker |
-| 1:50 | Recommendation and send | Evidence before verdict. One letter, in Spanish, with reminders, on the record |
-| 2:35 | Rulebook | A new bulletin becomes a proposed change, with its effect on 37 past decisions |
-| 3:10 | Proving ground | Agreement is not accuracy: electrical capacity is 79% agreed, 94% on the golden set |
-| 3:45 | Scoreboard | What the share at risk is paid on, and a new model that lifts setbacks over the bar |
-| 4:20 | Close | "Casework: from seats to cases." |
+| Before 0:00 | Intro | What Casework is, in plain words: Claude checks each case against the agency's own rules and shows its evidence; a person decides |
+| 0:00 | Queue | Much of 34 days is waiting and rework, not reading. The queue is sorted for speed, and balanced so no case gets stuck |
+| 0:30 | Run review on Delgado | The reviewer never writes a prompt |
+| 0:45 | A3 Setbacks | Conflicts are marked unclear, not guessed, and setbacks is still at Second reader |
+| 1:20 | A5 Flood elevation | A missing document is caught in the first minute, not three weeks later |
+| 1:30 | X1 Electrical capacity | Each sheet passes alone; together, 144 A of load sits on a 125 A breaker |
+| 1:55 | Recommendation and send | Evidence before verdict. One letter, in Spanish, with reminders by email, text, and a virtual agent call, on the record |
+| 2:45 | Rulebook | A new bulletin becomes a proposed change, with its effect on 37 past decisions |
+| 3:10 | Proving ground | Agreement is not accuracy: electrical capacity is 79% agreed, 94% on the golden set. Setbacks sits just under the bar, so it stays at Second reader |
+| 3:50 | Scoreboard | What the share at risk is paid on, and a new model that lifts setbacks over the bar |
+| 4:25 | Close | "Casework: from seats to cases." |
 
 ## Run it from source
 
@@ -80,10 +81,13 @@ npm run dev            # http://localhost:5173
 
 ```bash
 npm run build:single   # one self-contained file: release/casework-demo.html
-npm test               # data checks, electrical rules, dates (87 tests)
+npm test               # data checks, electrical rules, dates (88 tests)
 npm run test:e2e       # the demo script beat by beat, axe on every screen, offline build (19 tests)
 npm run check:names    # naming rule
+npm run check:script   # the spoken-lines script matches the full script
 ```
+
+After editing `docs/DEMO_SCRIPT.md`, run `npm run docs:say-only` to regenerate the spoken-lines copy.
 
 The demo date is fixed at 21 Sep 2026, and state lives in memory only. **Reset demo** restores the start.
 
